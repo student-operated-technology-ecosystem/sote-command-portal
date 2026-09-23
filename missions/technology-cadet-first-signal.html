@@ -6,6 +6,19 @@
   <meta name="description" content="First Technology Cadet mission page for the SOTE Command Portal demo.">
   <title>Technology Cadet First Signal Mission | SOTE Command Portal</title>
   <link rel="stylesheet" href="../assets/css/styles.css?v=0.9-approved">
+<style>
+  .compact-hero{padding-top:46px}
+  .compact-hero .hero-grid{align-items:center}
+  .badge-hero-panel{max-width:390px;margin-left:auto}
+  .badge-hero-panel img{max-height:310px;width:auto;margin:auto;display:block}
+  .hero-actions{gap:10px;flex-wrap:wrap}
+  @media(max-width:760px){
+    .compact-hero{padding-top:30px}
+    .compact-hero .hero-grid{grid-template-columns:1fr}
+    .badge-hero-panel{max-width:270px;margin:18px auto 0}
+    .hero-actions .button{width:100%;text-align:center}
+  }
+</style>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -13,24 +26,15 @@
     <div class="container header-inner">
       <a class="brand" href="../index.html" aria-label="SOTE Command Portal home">
         <img src="../assets/img/brand/sote_paw_badge_icon.webp" alt="" width="52" height="52">
-        <span><strong>SOTE Command Portal</strong><small>The SOTE Codex, Mission Board, and Student Corps Profiles</small></span>
+        <span><strong>SOTE Command Portal</strong><small>Student-Operated Technology Ecosystem</small></span>
       </a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">Menu</button>
       <nav id="primary-nav" class="primary-nav" aria-label="Primary navigation">
         <a href="../index.html">Home</a>
-<a href="../start-here.html">Start Here</a>
-<a href="../tour-mode.html">Tour Mode</a>
-<a href="../tour-guide-kit.html">Tour Guide Kit</a>
-<a href="../environment-map.html">Map</a>
-<a href="../zones.html">Zones</a>
-<a href="../characters.html">Characters</a>
-<a class="active" href="../mission-board.html">Mission Board</a>
-<a href="../badges.html">Badges</a>
-<a href="../student-technology-corps.html">Student Corps</a>
-<a href="../codex.html">Codex</a>
+<a href="../ace-help-desk.html">Ace Help Desk</a>
+<a href="../knowledge-base.html">Knowledge Base</a>
 <a href="../projects.html">Projects</a>
-<a href="../media-asset-checklist.html">Media</a>
-<a href="../get-involved.html">Get Involved</a>
+<a class="active" href="../ecosystem.html">Explore SOTE</a>
       </nav>
     </div>
   </header>
@@ -64,8 +68,8 @@
       <div class="section-heading"><h2>Mission checklist</h2><p>Check off each item as you complete it. This demo runs in the browser only and does not save private information.</p></div>
       <div class="mission-demo-card" data-mission-demo>
         <label><input type="checkbox" data-mission-check> I can explain SOTE in one sentence.</label>
-        <label><input type="checkbox" data-mission-check> I found three named <a href="../zones.html">SOTE Zones</a>.</label>
-        <label><input type="checkbox" data-mission-check> I met at least two <a href="../characters.html">SOTE characters</a>.</label>
+        <label><input type="checkbox" data-mission-check> I found three named <a href="../ecosystem.html#zones">SOTE Zones</a>.</label>
+        <label><input type="checkbox" data-mission-check> I met at least two <a href="../ecosystem.html#guides">SOTE characters</a>.</label>
         <label><input type="checkbox" data-mission-check> I can describe one Student Technology Corps pathway.</label>
         <label><input type="checkbox" data-mission-check> I chose one future mission or badge I would try next.</label>
         <div class="mission-progress"><div data-mission-progress-bar></div></div>
@@ -81,7 +85,7 @@
       <div class="section-heading"><h2>What to do during the mission</h2><p>This version is designed to be usable immediately during a tour.</p></div>
       <div class="card-grid">
         <article class="card"><span class="tag">Step 1</span><h3>Say what SOTE is</h3><p>Example: “SOTE is a student-operated technology ecosystem where students build, support, document, and defend real learning infrastructure.”</p></article>
-        <article class="card"><span class="tag blue">Step 2</span><h3>Find three zones</h3><p>Pick any three: Mission Control, Rocket’s Forge, Ace’s Support Command, Patch Bay Alpha, Rocket’s Launch Pad, or Cyber Defense Command.</p></article>
+        <article class="card"><span class="tag blue">Step 2</span><h3>Find three zones</h3><p>Pick any three: Mission Control, Rocket’s Forge, ACE Support Command, Patch Bay Alpha, Rocket’s Engineering Bay, or Western Pennsylvania Cyber Defense Command.</p></article>
         <article class="card"><span class="tag green">Step 3</span><h3>Meet the characters</h3><p>Choose two characters and explain what they represent. SOTEE guides, Ace supports, Rocket builds, Kingston defends, and Cypher Raven challenges.</p></article>
       </div>
     </div></section>
@@ -94,7 +98,7 @@
     </div></section>
 
     <section class="section alt"><div class="container">
-      <div class="callout"><h2>Physical badge note</h2><p>This mission is the recommended first physical badge experience for visitors. Version 0.8 includes a temporary printable badge sheet that can be used for demos until final badge art is approved.</p><div class="hero-actions"><a class="button" href="../print/technology-cadet-first-signal-badge-sheet.html">Open printable badge sheet</a></div></div>
+      <div class="callout"><h2>Physical badge note</h2><p>This mission is the recommended first physical badge experience for visitors. Use the printable badge sheet for guided visits when a physical Technology Cadet badge experience is appropriate.</p><div class="hero-actions"><a class="button" href="../print/technology-cadet-first-signal-badge-sheet.html">Open printable badge sheet</a></div></div>
     </div></section>
 
   </main>
