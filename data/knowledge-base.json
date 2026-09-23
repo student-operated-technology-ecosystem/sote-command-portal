@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "generated_from": "student-operated-technology-ecosystem/SOTE-framework/knowledge",
-  "publishing_note": "Public-safe catalog metadata only. Operational article bodies remain controlled in SOTE-framework.",
+  "publishing_note": "Public-safe catalog metadata. Draft operational articles remain controlled in SOTE-framework and are surfaced here for review/learning, not as approved production guidance.",
   "articles": [
     {
       "id": "KA-001",
@@ -9,8 +9,9 @@
       "category": "network",
       "category_label": "Network devices",
       "version": "1.0",
-      "status": "Operational KA",
-      "summary": "Console access and identifying a Cisco device's boot state before proceeding with controlled work."
+      "status": "Draft · Validation Required",
+      "summary": "Console access and identifying a Cisco device's boot state before proceeding with controlled work.",
+      "url": "knowledge-article.html?id=KA-001"
     },
     {
       "id": "KA-002",
@@ -18,8 +19,9 @@
       "category": "network",
       "category_label": "Network devices",
       "version": "1.0",
-      "status": "Operational KA",
-      "summary": "Safe discovery and evidence collection without making configuration changes."
+      "status": "Draft · Validation Required",
+      "summary": "Safe discovery and evidence collection without making configuration changes.",
+      "url": "knowledge-article.html?id=KA-002"
     },
     {
       "id": "KA-003",
@@ -27,8 +29,9 @@
       "category": "network",
       "category_label": "Network devices",
       "version": "1.0",
-      "status": "Operational KA",
-      "summary": "Capture physical inventory and rack-cabling evidence in a repeatable, reviewable way."
+      "status": "Draft · Validation Required",
+      "summary": "Capture physical inventory and rack-cabling evidence in a repeatable, reviewable way.",
+      "url": "knowledge-article.html?id=KA-003"
     },
     {
       "id": "KA-004",
@@ -36,8 +39,9 @@
       "category": "environment",
       "category_label": "Equipment & environment",
       "version": "1.0",
-      "status": "Operational KA",
-      "summary": "Measure and document environmental conditions around rack equipment."
+      "status": "Draft · Validation Required",
+      "summary": "Measure and document environmental conditions around rack equipment.",
+      "url": "knowledge-article.html?id=KA-004"
     },
     {
       "id": "KA-005",
@@ -45,8 +49,9 @@
       "category": "environment",
       "category_label": "Equipment & environment",
       "version": "1.0",
-      "status": "Operational KA",
-      "summary": "Power equipment under controlled conditions while observing and preserving useful evidence."
+      "status": "Draft · Validation Required",
+      "summary": "Power equipment under controlled conditions while observing and preserving useful evidence.",
+      "url": "knowledge-article.html?id=KA-005"
     }
   ]
 }
