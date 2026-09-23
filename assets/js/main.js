@@ -157,35 +157,32 @@ if (document.querySelector('[data-kb-list]')) {
 
 
 // Live SOTE GitHub project dashboard
-const SOTE_REPO_API = 'https://api.github.com/repos/student-operated-technology-ecosystem/SOTE-framework';
 let liveIssues = [];
 let liveFilter = 'all';
 function escapeLive(v){const d=document.createElement('div');d.textContent=String(v??'');return d.innerHTML;}
-function issueType(i){const t=(i.title||'').toUpperCase();if(t.includes('CLASSROOM')||t.includes('CIT-205'))return'classroom';if(t.includes('DOCUMENTATION'))return'documentation';if(t.includes('PLANNED')||t.includes('PROPOSAL')||t.includes('ROADMAP'))return'planned';return'active';}
+function issueType(i){const t=(i.title||'').toUpperCase();if(t.includes('CLASSROOM')||t.includes('CIT-205'))return'classroom';if(t.includes('DOCUMENTATION'))return'documentation';if(t.includes('PLANNED')||t.includes('PROPOSAL')||t.includes('ROADMAP')||t.includes('FUTURE WORK'))return'planned';return'active';}
 function issueLabel(t){return {active:'Active',planned:'Planned',classroom:'Classroom',documentation:'Documentation'}[t]||'Active';}
-function issueSummary(i){const b=(i.body||'').replace(/[#*_>\\[\\]]/g,' ').replace(/\\s+/g,' ').trim();return b?(b.slice(0,220)+(b.length>220?'…':'')):'Open SOTE work item tracked in GitHub.';}
 function renderLiveIssues(){
  const host=document.querySelector('[data-live-projects]');if(!host)return;
  const term=(document.querySelector('[data-live-project-search]')?.value||'').toLowerCase().trim();
- const shown=liveIssues.filter(i=>{const type=issueType(i);return(liveFilter==='all'||type===liveFilter)&&(!term||((i.title||'')+' '+(i.body||'')).toLowerCase().includes(term));});
- host.innerHTML=shown.length?shown.map(i=>{const type=issueType(i);const updated=i.updated_at?new Date(i.updated_at).toLocaleDateString(undefined,{month:'short',day:'numeric',year:'numeric'}):'';return '<article class="project-card live-project-card"><div class="project-card-top"><span class="status-badge status-online">'+escapeLive(issueLabel(type))+'</span><span class="priority-pill">#'+i.number+'</span></div><h3>'+escapeLive(i.title)+'</h3><p>'+escapeLive(issueSummary(i))+'</p><div class="project-meta"><span><strong>Source</strong>SOTE Framework</span><span><strong>Updated</strong>'+escapeLive(updated)+'</span></div><a class="card-link" href="'+escapeLive(i.html_url)+'" target="_blank" rel="noopener noreferrer">Open GitHub Issue →</a></article>';}).join(''):'<article class="project-card"><h3>No matching work</h3><p>Try another filter or search term.</p></article>';
+ const shown=liveIssues.filter(i=>{const type=issueType(i);return(liveFilter==='all'||type===liveFilter)&&(!term||(i.title||'').toLowerCase().includes(term));});
+ host.innerHTML=shown.length?shown.map(i=>{const type=issueType(i);return '<article class="project-card live-project-card"><div class="project-card-top"><span class="status-badge status-online">'+escapeLive(issueLabel(type))+'</span><span class="priority-pill">#'+i.number+'</span></div><h3>'+escapeLive(i.title)+'</h3><p>Tracked operational work from the SOTE Framework repository.</p><div class="project-meta"><span><strong>Source</strong>SOTE Framework</span></div><a class="card-link" href="'+escapeLive(i.html_url)+'" target="_blank" rel="noopener noreferrer">Open GitHub Issue →</a></article>';}).join(''):'<article class="project-card"><h3>No matching work</h3><p>Try another filter or search term.</p></article>';
 }
 function setLiveMetric(n,v){const e=document.querySelector('[data-metric="'+n+'"]');if(e)e.textContent=v;}
 async function loadSoteDashboard(){
  if(!document.querySelector('[data-live-projects]'))return;
  try{
-  const responses=await Promise.all([fetch(SOTE_REPO_API+'/issues?state=open&per_page=100&sort=updated&direction=desc'),fetch(SOTE_REPO_API+'/commits?per_page=8')]);
-  if(!responses[0].ok||!responses[1].ok)throw new Error('GitHub API unavailable');
-  const raw=await responses[0].json();const commits=await responses[1].json();
-  liveIssues=raw.filter(i=>!i.pull_request);
+  const response=await fetch('assets/data/projects.json?ts='+Date.now(),{cache:'no-store'});
+  if(!response.ok)throw new Error('Dashboard snapshot unavailable');
+  const data=await response.json();liveIssues=data.issues||[];const commits=data.commits||[];
   setLiveMetric('active',liveIssues.filter(i=>issueType(i)==='active').length);
   setLiveMetric('planned',liveIssues.filter(i=>issueType(i)==='planned').length);
   setLiveMetric('classroom',liveIssues.filter(i=>issueType(i)==='classroom').length);
   setLiveMetric('recent',commits.length);
   renderLiveIssues();
   const activity=document.querySelector('[data-github-activity]');
-  if(activity)activity.innerHTML=commits.map(c=>{const first=(c.commit?.message||'Repository update').split('\\n')[0];const when=c.commit?.committer?.date?new Date(c.commit.committer.date).toLocaleDateString(undefined,{month:'short',day:'numeric',year:'numeric'}):'';return '<article class="activity-item"><div><strong>'+escapeLive(first)+'</strong><span>'+escapeLive(when)+'</span></div><a href="'+escapeLive(c.html_url)+'" target="_blank" rel="noopener noreferrer">View commit →</a></article>';}).join('');
-  const stamp=document.querySelector('[data-github-updated]');if(stamp)stamp.textContent='· refreshed '+new Date().toLocaleTimeString([],{hour:'numeric',minute:'2-digit'});
+  if(activity)activity.innerHTML=commits.map(c=>{const first=(c.message||'Repository update').split('\n')[0];const when=c.created_at?new Date(c.created_at).toLocaleDateString(undefined,{month:'short',day:'numeric',year:'numeric'}):'';return '<article class="activity-item"><div><strong>'+escapeLive(first)+'</strong><span>'+escapeLive(when)+'</span></div><a href="'+escapeLive(c.html_url)+'" target="_blank" rel="noopener noreferrer">View commit →</a></article>';}).join('');
+  const stamp=document.querySelector('[data-github-updated]');if(stamp&&data.generated_at)stamp.textContent='· snapshot '+new Date(data.generated_at).toLocaleString();
  }catch(e){const err=document.querySelector('[data-github-error]');if(err)err.hidden=false;const host=document.querySelector('[data-live-projects]');if(host)host.innerHTML='';}
 }
 document.querySelector('[data-live-project-search]')?.addEventListener('input',renderLiveIssues);
