@@ -22,6 +22,19 @@
 @media (max-width: 430px){
   .compact-hero .hero-actions{grid-template-columns:1fr}
 }
+</style><style>
+.mobile-title,.mobile-copy{display:none}
+@media (max-width:760px){
+  .desktop-title,.desktop-copy{display:none!important}
+  .mobile-title,.mobile-copy{display:inline}
+  .compact-hero{padding:24px 0 18px}
+  .compact-hero h1{font-size:clamp(2.45rem,11vw,3.3rem);line-height:1;margin:8px 0 12px}
+  .compact-hero .hero-text{font-size:1.02rem;line-height:1.45;margin-bottom:0}
+  .compact-hero .hero-actions{display:grid!important;grid-template-columns:1fr 1fr!important;gap:8px!important;margin-top:18px!important}
+  .compact-hero .hero-actions .button{padding:12px 8px!important;font-size:.86rem!important;white-space:nowrap}
+  .compact-hero .hero-panel{display:none!important}
+  #articles{padding-top:26px}
+}
 </style></head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -32,9 +45,9 @@
 <nav id="primary-nav" class="primary-nav" aria-label="Primary navigation"><a href="index.html">Home</a><a href="ace-help-desk.html">Ace Help Desk</a><a href="knowledge-base.html">Knowledge Base</a><a href="projects.html">Projects</a><a href="ecosystem.html">Explore SOTE</a></nav></div></header>
 <main id="main">
 <section class="hero compact-hero"><div class="container hero-grid"><div>
-<p class="eyebrow">Operational knowledge</p><h1>SOTE Knowledge Base</h1>
-<p class="hero-text">Find approved technical knowledge, understand where it came from, and learn how SOTE turns troubleshooting into reusable institutional knowledge.</p>
-<div class="hero-actions"><a class="button" href="#articles">Browse Knowledge</a><a class="button secondary" href="#contribute">Contribute Knowledge</a></div>
+<p class="eyebrow">Operational knowledge</p><h1><span class="desktop-title">SOTE Knowledge Base</span><span class="mobile-title">Knowledge Base</span></h1>
+<p class="hero-text"><span class="desktop-copy">Find approved technical knowledge, understand where it came from, and learn how SOTE turns troubleshooting into reusable institutional knowledge.</span><span class="mobile-copy">Approved SOTE procedures, troubleshooting, and operational knowledge.</span></p>
+<div class="hero-actions"><a class="button" href="#articles">Browse Knowledge</a><a class="button secondary" href="#contribute"><span class="desktop-copy">Contribute Knowledge</span><span class="mobile-copy">Contribute</span></a></div>
 </div><div class="hero-panel"><span>Ticket / Mission</span><span>Troubleshoot + Evidence</span><span>Knowledge Article</span><span>Review + Merge</span><strong>Future technician benefits</strong></div></div></section>
 
 <section class="section alt"><div class="container"><div class="section-heading"><h2>One knowledge system, different jobs.</h2><p>The Command Portal is the readable front door. The SOTE Framework repository remains the controlled source for operational Markdown, review history, and accepted changes.</p></div>
