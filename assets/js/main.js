@@ -98,8 +98,26 @@ document.querySelector('[data-copy-proposal]')?.addEventListener('click', async 
 });
 
 
-// v1.0 knowledge base filtering
+// v1.0 data-driven knowledge base
 let activeKbCategory = 'all';
+
+function escapeKb(value) {
+  return String(value ?? '').replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
+}
+
+function renderKnowledgeBase(articles) {
+  const list = document.querySelector('[data-kb-list]');
+  if (!list) return;
+  list.innerHTML = articles.map(article => `
+    <article class="project-card" data-kb-card data-category="${escapeKb(article.category)}">
+      <div class="project-card-top"><span class="status-badge status-online">${escapeKb(article.status)}</span><span class="priority-pill">${escapeKb(article.id)}</span></div>
+      <h3>${escapeKb(article.title)}</h3>
+      <p>${escapeKb(article.summary)}</p>
+      <div class="project-meta"><span><strong>Category</strong>${escapeKb(article.category_label)}</span><span><strong>Source</strong>SOTE Framework</span><span><strong>Version</strong>${escapeKb(article.version)}</span></div>
+    </article>`).join('');
+  applyKbFilters();
+}
+
 function applyKbFilters() {
   const term = (document.querySelector('[data-kb-filter-input]')?.value || '').trim().toLowerCase();
   let visible = 0;
@@ -113,6 +131,7 @@ function applyKbFilters() {
   const empty = document.querySelector('[data-kb-empty]');
   if (empty) empty.hidden = visible !== 0;
 }
+
 document.querySelector('[data-kb-filter-input]')?.addEventListener('input', applyKbFilters);
 document.querySelectorAll('[data-kb-category]').forEach(button => {
   button.addEventListener('click', () => {
@@ -122,4 +141,16 @@ document.querySelectorAll('[data-kb-category]').forEach(button => {
     applyKbFilters();
   });
 });
-applyKbFilters();
+
+if (document.querySelector('[data-kb-list]')) {
+  fetch('data/knowledge-base.json')
+    .then(response => {
+      if (!response.ok) throw new Error('Knowledge Base catalog unavailable');
+      return response.json();
+    })
+    .then(data => renderKnowledgeBase(data.articles || []))
+    .catch(() => {
+      const list = document.querySelector('[data-kb-list]');
+      if (list) list.innerHTML = '<article class="project-card"><h3>Knowledge Base temporarily unavailable</h3><p>The catalog could not be loaded. Try again shortly.</p></article>';
+    });
+}
