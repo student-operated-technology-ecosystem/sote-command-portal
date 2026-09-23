@@ -109,11 +109,11 @@ function renderKnowledgeBase(articles) {
   const list = document.querySelector('[data-kb-list]');
   if (!list) return;
   list.innerHTML = articles.map(article => `
-    <article class="project-card" data-kb-card data-category="${escapeKb(article.category)}">
+    <article class="project-card kb-card" data-kb-card data-category="${escapeKb(article.category)}">
       <div class="project-card-top"><span class="status-badge status-online">${escapeKb(article.status)}</span><span class="priority-pill">${escapeKb(article.id)}</span></div>
-      <h3>${escapeKb(article.title)}</h3>
+      <h3><a class="kb-card-link" href="${escapeKb(article.url || `knowledge-article.html?id=${article.id}`)}">${escapeKb(article.title)}</a></h3>
       <p>${escapeKb(article.summary)}</p>
-      <div class="project-meta"><span><strong>Category</strong>${escapeKb(article.category_label)}</span><span><strong>Source</strong>SOTE Framework</span><span><strong>Version</strong>${escapeKb(article.version)}</span></div>
+      <div class="project-meta"><span><strong>Category</strong>${escapeKb(article.category_label)}</span><span><strong>Source</strong>SOTE Framework</span><span><strong>Version</strong>${escapeKb(article.version)}</span></div><a class="button secondary kb-open" href="${escapeKb(article.url || `knowledge-article.html?id=${article.id}`)}">Open article →</a>
     </article>`).join('');
   applyKbFilters();
 }
