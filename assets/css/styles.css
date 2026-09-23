@@ -362,3 +362,26 @@ th { color: var(--gold); background: rgba(7,17,31,.55); }
 .ka-document pre { overflow:auto; background:#050b14; border:1px solid var(--line); border-radius:16px; padding:16px; }
 .ka-document pre code { border:0; padding:0; background:none; }
 .ka-meta-line { margin:4px 0; }
+
+
+/* v1.2 CIT-205 contribution launchpad */
+.contribute-launch { display:grid; grid-template-columns:minmax(0,1.45fr) minmax(280px,.55fr); gap:18px; margin:26px 0 42px; }
+.contribute-primary, .contribute-boundary { border:1px solid var(--line); border-radius:var(--radius); padding:24px; background:rgba(7,17,31,.6); }
+.contribute-primary { background:linear-gradient(135deg,rgba(95,211,255,.10),rgba(244,181,68,.08)); }
+.contribute-primary h3 { font-size:1.65rem; margin-top:12px; }
+.contribute-boundary { border-color:rgba(244,181,68,.5); background:rgba(244,181,68,.08); }
+.contribute-boundary strong { color:var(--gold); font-size:1.1rem; }
+.contribute-heading { margin-top:18px; }
+.contribute-steps { display:grid; gap:14px; }
+.contribute-step { display:grid; grid-template-columns:76px 1fr; gap:20px; align-items:start; border:1px solid var(--line); border-radius:var(--radius); padding:22px 24px; background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.025)); }
+.step-number { color:var(--gold); font-size:1.35rem; font-weight:900; letter-spacing:.06em; }
+.contribute-step h3 { margin:0 0 6px; }
+.contribute-step p { margin:0 0 10px; }
+.contribute-step a, .resource-grid a { color:var(--blue); font-weight:900; text-decoration:none; }
+.contribute-step a:hover, .resource-grid a:hover { text-decoration:underline; }
+.step-links { display:flex; gap:16px; flex-wrap:wrap; }
+.resource-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:28px; }
+.resource-grid .tag { margin-bottom:14px; }
+.contribute-finish { margin-top:28px; }
+@media (max-width:980px){ .contribute-launch,.resource-grid { grid-template-columns:1fr; } }
+@media (max-width:620px){ .contribute-step { grid-template-columns:1fr; gap:6px; } }
