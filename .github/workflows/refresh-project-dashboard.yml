@@ -1,0 +1,40 @@
+name: Refresh SOTE Project Dashboard
+
+on:
+  schedule:
+    - cron: "17 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build public-safe project snapshot
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p assets/data
+          issues=$(curl -fsSL -H "Accept: application/vnd.github+json" "https://api.github.com/repos/student-operated-technology-ecosystem/SOTE-framework/issues?state=open&per_page=100&sort=updated&direction=desc")
+          commits=$(curl -fsSL -H "Accept: application/vnd.github+json" "https://api.github.com/repos/student-operated-technology-ecosystem/SOTE-framework/commits?per_page=8")
+          jq -n --arg generated_at "$(date -u +%Y-%m-%dT%H:%M:%SZ)" --arg source "student-operated-technology-ecosystem/SOTE-framework" --argjson issues "$issues" --argjson commits "$commits" '{
+            generated_at:$generated_at,
+            source:$source,
+            issues:[$issues[] | select(.pull_request|not) | {number,title,updated_at,html_url,labels:[.labels[].name]}],
+            commits:[$commits[] | {sha,message:.commit.message,created_at:.commit.committer.date,html_url}]
+          }' > assets/data/projects.json
+      - name: Publish snapshot when changed
+        shell: bash
+        run: |
+          if git diff --quiet -- assets/data/projects.json; then
+            echo "No dashboard changes."
+            exit 0
+          fi
+          git config user.name "sote-dashboard-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add assets/data/projects.json
+          git commit -m "Refresh live SOTE project dashboard"
+          git push
