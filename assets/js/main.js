@@ -33,6 +33,7 @@
       '<a'+activeFor('knowledge-base.html')+' href="'+href('knowledge-base.html')+'">Knowledge Base</a>' +
       '<a'+activeFor('projects.html')+' href="'+href('projects.html')+'">Projects</a>' +
       '<a'+activeFor('ecosystem.html')+' href="'+href('ecosystem.html')+'">Explore SOTE</a>' +
+      '<a'+activeFor('operator.html')+' href="'+href('operator.html')+'">Operator Login</a>' +
       '</nav></div>';
     const button = header.querySelector('.nav-toggle');
     const nav = header.querySelector('#primary-nav');
