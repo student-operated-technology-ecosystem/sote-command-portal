@@ -510,3 +510,68 @@ th { color: var(--gold); background: rgba(7,17,31,.55); }
 .activity-item span{color:var(--muted);font-size:.82rem}
 .activity-item a{color:var(--blue);font-weight:800;text-decoration:none;white-space:nowrap}
 @media(max-width:720px){.activity-item{align-items:flex-start;flex-direction:column;gap:8px}}
+
+
+/* v1.6 mobile homepage repair */
+@media (max-width: 720px) {
+  .home-hero { padding: 22px 0 10px; }
+  .home-hero-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .home-hero-copy { text-align: center; }
+  .home-hero-copy .eyebrow {
+    margin-bottom: 6px;
+    font-size: .78rem;
+    letter-spacing: .16em;
+  }
+  .home-hero-copy h1,
+  .home-intro .home-hero-copy h1 {
+    max-width: none;
+    font-size: clamp(2.35rem, 12vw, 3.25rem);
+    line-height: .92;
+    margin: 4px 0 10px;
+  }
+  .home-hero-copy .hero-text,
+  .home-intro .hero-text {
+    max-width: 34ch;
+    margin: 0 auto;
+    font-size: .96rem;
+    line-height: 1.45;
+  }
+  .home-hero-visual {
+    width: 100%;
+    max-width: 520px;
+    justify-self: center;
+    border-radius: 14px;
+  }
+  .home-hero-visual img {
+    width: 100%;
+    max-height: 190px;
+    object-fit: cover;
+  }
+  .home-paths { padding: 14px 0 24px; }
+  .home-paths .section-heading {
+    text-align: center;
+    margin-bottom: 12px;
+  }
+  .home-paths .section-heading h2 { font-size: 1.55rem; }
+  .home-paths .card-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .home-paths .card {
+    min-height: 0;
+    padding: 17px 18px;
+  }
+  .home-paths .card h3 {
+    margin: 8px 0 4px;
+    font-size: 1.12rem;
+  }
+  .home-paths .card p {
+    font-size: .88rem;
+    line-height: 1.4;
+  }
+  .home-paths .card-link { padding-top: 8px; }
+}
