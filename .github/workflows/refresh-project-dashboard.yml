@@ -26,15 +26,18 @@ jobs:
             issues:[$issues[] | select(.pull_request|not) | {number,title,updated_at,html_url,labels:[.labels[].name]}],
             commits:[$commits[] | {sha,message:.commit.message,created_at:.commit.committer.date,html_url}]
           }' > assets/data/projects.json
+          printf 'window.SOTE_PROJECT_DATA = ' > assets/data/projects.js
+          cat assets/data/projects.json >> assets/data/projects.js
+          printf ';\n' >> assets/data/projects.js
       - name: Publish snapshot when changed
         shell: bash
         run: |
-          if git diff --quiet -- assets/data/projects.json; then
+          if git diff --quiet -- assets/data/projects.json assets/data/projects.js; then
             echo "No dashboard changes."
             exit 0
           fi
           git config user.name "sote-dashboard-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add assets/data/projects.json
+          git add assets/data/projects.json assets/data/projects.js
           git commit -m "Refresh live SOTE project dashboard"
           git push
