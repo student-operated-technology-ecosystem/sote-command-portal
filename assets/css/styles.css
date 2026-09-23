@@ -385,3 +385,53 @@ th { color: var(--gold); background: rgba(7,17,31,.55); }
 .contribute-finish { margin-top:28px; }
 @media (max-width:980px){ .contribute-launch,.resource-grid { grid-template-columns:1fr; } }
 @media (max-width:620px){ .contribute-step { grid-template-columns:1fr; gap:6px; } }
+
+
+/* v1.3 streamlined Command Portal front door */
+.prototype-banner {
+  padding: 6px 20px;
+  text-align: center;
+  font-size: .76rem;
+  line-height: 1.25;
+  color: var(--muted);
+  background: rgba(0,0,0,.28);
+  border-bottom: 1px solid var(--line);
+}
+.site-header { position: relative; }
+.header-inner { min-height: 72px; }
+.brand img { width: 44px; height: 44px; }
+.brand strong { font-size: 1rem; }
+.primary-nav a { font-size: .84rem; padding: 8px 10px; }
+.home-hero { padding: 48px 0 30px; }
+.home-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0,1.15fr) minmax(320px,.85fr);
+  gap: 52px;
+  align-items: center;
+}
+.home-hero-copy h1 {
+  max-width: 760px;
+  font-size: clamp(2.8rem,5vw,4.7rem);
+}
+.home-hero-copy .hero-text { max-width: 690px; margin-top: 20px; }
+.home-hero-visual {
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  box-shadow: 0 20px 60px rgba(0,0,0,.28);
+  background: rgba(255,255,255,.035);
+}
+.home-hero-visual img { width: 100%; height: auto; display: block; }
+.home-paths { padding-top: 32px; padding-bottom: 54px; }
+.home-paths .section-heading { margin-bottom: 20px; }
+.home-paths .card {
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+}
+.home-paths .card p { margin-top: 4px; }
+.home-paths .card-link { margin-top: auto; padding-top: 18px; }
+@media (max-width: 980px) {
+  .home-hero-grid { grid-template-columns: 1fr; gap: 28px; }
+  .home-hero-visual { max-width: 680px; }
+}
