@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="SOTE Project Status Board and proposal progress dashboard.">
+  <meta name="description" content="SOTE projects: active builds, classroom infrastructure, service desk systems, and future initiatives.">
   <title>Projects | SOTE Command Portal</title>
   <link rel="stylesheet" href="assets/css/styles.css">
 </head>
@@ -27,17 +27,13 @@
   </header>
 
   <main id="main">
-    <section class="hero">
+    <section class="hero compact-hero">
       <div class="container hero-grid">
         <div>
-          <p class="eyebrow">v0.8 project status board</p>
-          <h1>The Projects page is now the public build tracker for SOTE.</h1>
-          <p class="hero-text">This board shows what is active, what is ready, what is still conceptual, what needs support, and where students can plug into real SOTE work.</p>
-          <div class="hero-actions">
-            <a class="button" href="#status-board">Open Status Board</a>
-            <a class="button secondary" href="project-submission.html">Submit a Project</a>
-            <a class="button secondary" href="mission-report-workflow.html">Mission Report Workflow</a>
-          </div>
+          <p class="eyebrow">SOTE Projects</p>
+          <h1>See what SOTE is building.</h1>
+          <p class="hero-text">Follow active infrastructure, service desk, classroom, software, and research projects across the Student-Operated Technology Ecosystem.</p>
+          <div class="hero-actions"><a class="button" href="#status-board">Browse Projects</a></div>
         </div>
         <div class="project-pulse" aria-label="Project status summary">
           <div><strong>4</strong><span>Builds in progress</span></div>
@@ -48,25 +44,8 @@
       </div>
     </section>
 
-    <section class="section alt"><div class="container">
-      <div class="section-heading"><h2>What changed this week</h2><p>This area gives the portal a living “what is happening now” rhythm. Student reporters can update these cards after build days.</p></div>
-      <div class="card-grid">
-        <article class="card"><span class="tag green">New in v0.8</span><h3>Project cards now show progress</h3><p>Each proposal can display status, connected zone, connected character, pathway, next action, and mission tie-in.</p></article>
-        <article class="card"><span class="tag">Active build</span><h3>Command Portal becomes its own project</h3><p>The website itself is now a live Software Development Technician project with versioned releases and student update potential.</p></article>
-        <article class="card"><span class="tag blue">Operations value</span><h3>Build in Progress becomes visible</h3><p>Visitors and students can see that SOTE is being constructed in public, with clear next actions and safe progress notes.</p></article>
-      </div>
-    </div></section>
-
-    
-    <section class="section"><div class="container">
-      <div class="section-heading"><h2>Student project intake</h2><p>The status board should not only show faculty-created proposals. It should also give students a path to suggest useful work.</p></div>
-      <div class="two-grid">
-        <article class="card callout"><span class="tag">Submit a project</span><h3>Turn an idea into a proposal draft.</h3><p>A student can propose a mission, portal feature, dashboard, physical lab improvement, documentation project, tour experience, or automation idea.</p><a class="card-link" href="project-submission.html">Open project submission draft builder</a></article>
-        <article class="card"><span class="tag blue">Update from mission report</span><h3>Keep the board current.</h3><p>When a build day happens, the mission report becomes the input for updating statuses, blockers, weekly changes, and next actions.</p><a class="card-link" href="mission-report-workflow.html">Open mission report workflow</a></article>
-      </div>
-    </div></section>
-    <section class="section"><div class="container"><div class="section-heading"><h2>Project status icon set</h2><p>This recovered/generated status icon poster is included as the status-board visual reference. Future builds can crop it into individual status tiles if needed.</p></div><div class="card image-card"><img src="assets/img/status/sote-project-status-icon-set.webp" alt="SOTE Project Status Icon Set"></div></div></section><section class="section" id="status-board"><div class="container">
-      <div class="section-heading"><h2>SOTE Project Status Board</h2><p>Filter by status, category, or keyword. This is still a static local prototype, but it establishes the update pattern for future student-maintained project reporting.</p></div>
+    <section class="section" id="status-board"><div class="container">
+      <div class="section-heading"><p class="eyebrow">Project portfolio</p><h2>SOTE Project Status Board</h2><p>Browse current work by status, category, or keyword. Project cards show what is being built, where it fits in SOTE, and the next documented action.</p></div>
       <div class="filter-panel">
         <label for="project-search"><strong>Search projects</strong></label>
         <input id="project-search" data-filter-input type="search" placeholder="Search by project, zone, character, pathway, mission, or next action">
@@ -299,22 +278,17 @@
       </div>
     </div></section>
 
-    <section class="section"><div class="container">
-      <div class="callout"><h2>Student project roles</h2><p>The Projects board creates real student work: Project Reporter, Build Log Writer, Documentation Technician, Portal Builder, Mission Control Operator, and Faculty Reviewer. Updates should be factual, safe, and approved before publishing.</p></div>
-    </div></section>
-
-  <section class="section"><div class="container"><div class="callout"><h2>Media replacement checklist</h2><p>Use the media checklist to replace concept visuals with approved SOTE photos, badge art, character artwork, and map references.</p><a class="button" href="media-asset-checklist.html">Open Media Checklist</a></div></div></section>
-<section class="section alt"><div class="container"><div class="section-heading"><h2>Media readiness</h2><p>v0.8 adds a formal media checklist so project pages can be upgraded with photos without exposing sensitive information.</p></div><div class="card-grid"><article class="card"><span class="tag red">Blocked</span><h3>Final public photos</h3><p>Most projects still need approved room, rack, and project photos before public review.</p><a class="card-link" href="media-asset-checklist.html">Open media checklist</a></article><article class="card"><span class="tag green">Ready</span><h3>Concept visuals</h3><p>Internal approved recovered artwork and schematics are available for demo review and tour planning.</p></article><article class="card"><span class="tag blue">Next</span><h3>Asset collection day</h3><p>During the next lab visit, capture the priority photos listed in the checklist.</p></article></div></div></section>
+    
 
   </main>
 
   <footer class="site-footer">
     <div class="container footer-grid">
       <div><strong>SOTE Command Portal</strong><p>Training the next generation of technology heroes. Defending Western Pennsylvania from digital villains.</p></div>
-      <div><strong>Version</strong><p>Static package v0.9 approved-media baseline, June 26, 2026</p></div>
+      <div><strong>Projects</strong><p>Active builds, planned work, and documented next actions.</p></div>
       <div><strong>Operating rule</strong><p>No student private data, no production credentials, no sensitive infrastructure details.</p></div>
     </div>
   </footer>
-  <script src="assets/js/main.js?v=0.9-approved"></script>
+  <script src="assets/js/main.js"></script>
 </body>
 </html>
