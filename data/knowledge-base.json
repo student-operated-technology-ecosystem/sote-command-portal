@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0",
+  "generated_from": "student-operated-technology-ecosystem/SOTE-framework/knowledge",
+  "publishing_note": "Public-safe catalog metadata only. Operational article bodies remain controlled in SOTE-framework.",
+  "articles": [
+    {
+      "id": "KA-001",
+      "title": "Cisco Console Access and Boot-State Identification",
+      "category": "network",
+      "category_label": "Network devices",
+      "version": "1.0",
+      "status": "Operational KA",
+      "summary": "Console access and identifying a Cisco device's boot state before proceeding with controlled work."
+    },
+    {
+      "id": "KA-002",
+      "title": "Cisco Non-Destructive Discovery and Evidence Capture",
+      "category": "network",
+      "category_label": "Network devices",
+      "version": "1.0",
+      "status": "Operational KA",
+      "summary": "Safe discovery and evidence collection without making configuration changes."
+    },
+    {
+      "id": "KA-003",
+      "title": "Network Device Physical Inventory and Rack Cabling Evidence",
+      "category": "network",
+      "category_label": "Network devices",
+      "version": "1.0",
+      "status": "Operational KA",
+      "summary": "Capture physical inventory and rack-cabling evidence in a repeatable, reviewable way."
+    },
+    {
+      "id": "KA-004",
+      "title": "Measuring Rack Temperature, Airflow, and Thermal Delta",
+      "category": "environment",
+      "category_label": "Equipment & environment",
+      "version": "1.0",
+      "status": "Operational KA",
+      "summary": "Measure and document environmental conditions around rack equipment."
+    },
+    {
+      "id": "KA-005",
+      "title": "Controlled Equipment Power-Up and Environmental Observation",
+      "category": "environment",
+      "category_label": "Equipment & environment",
+      "version": "1.0",
+      "status": "Operational KA",
+      "summary": "Power equipment under controlled conditions while observing and preserving useful evidence."
+    }
+  ]
+}
