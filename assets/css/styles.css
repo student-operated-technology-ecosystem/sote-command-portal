@@ -496,3 +496,17 @@ th { color: var(--gold); background: rgba(7,17,31,.55); }
 @media (min-width:981px) {
   body#top .site-footer { padding-top:20px; padding-bottom:20px; }
 }
+
+
+/* live GitHub project dashboard */
+.live-indicator{display:inline-flex;gap:8px;align-items:center;margin-top:18px;padding:8px 12px;border:1px solid var(--line);border-radius:999px;color:var(--muted);font-size:.86rem;background:rgba(255,255,255,.035)}
+.live-indicator span:first-child{color:#58d68d}
+.live-pulse{margin:0 0 38px}
+.dashboard-heading{margin-top:8px}
+.live-project-card h3{margin-top:12px}
+.activity-feed{display:grid;gap:10px}
+.activity-item{display:flex;justify-content:space-between;gap:24px;align-items:center;padding:14px 18px;border:1px solid var(--line);border-radius:14px;background:rgba(7,17,31,.55)}
+.activity-item div{display:grid;gap:4px}
+.activity-item span{color:var(--muted);font-size:.82rem}
+.activity-item a{color:var(--blue);font-weight:800;text-decoration:none;white-space:nowrap}
+@media(max-width:720px){.activity-item{align-items:flex-start;flex-direction:column;gap:8px}}
