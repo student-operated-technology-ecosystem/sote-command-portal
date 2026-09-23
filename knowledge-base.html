@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="SOTE Knowledge Base: approved operational knowledge and classroom contribution pathways.">
+<title>Knowledge Base | SOTE Command Portal</title>
+<link rel="icon" href="assets/img/brand/sote_paw_badge_icon.webp" type="image/webp">
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="prototype-banner">SOTE Command Portal operational knowledge preview. Public-safe content only.</div>
+<header class="site-header"><div class="container header-inner">
+<a class="brand" href="index.html"><img src="assets/img/brand/sote_paw_badge_icon.webp" alt="" width="52" height="52"><span><strong>SOTE Command Portal</strong><small>Knowledge Base and operational learning</small></span></a>
+<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">Menu</button>
+<nav id="primary-nav" class="primary-nav" aria-label="Primary navigation">
+<a href="index.html">Home</a><a href="start-here.html">Start Here</a><a class="active" href="knowledge-base.html">Knowledge Base</a><a href="mission-board.html">Mission Board</a><a href="projects.html">Projects</a><a href="codex.html">Codex</a><a href="student-technology-corps.html">Student Corps</a>
+</nav></div></header>
+<main id="main">
+<section class="hero compact-hero"><div class="container hero-grid"><div>
+<p class="eyebrow">Operational knowledge</p><h1>SOTE Knowledge Base</h1>
+<p class="hero-text">Find approved technical knowledge, understand where it came from, and learn how SOTE turns troubleshooting into reusable institutional knowledge.</p>
+<div class="hero-actions"><a class="button" href="#articles">Browse Articles</a><a class="button secondary" href="#contribute">Contribute Knowledge</a><a class="button secondary" href="codex.html">Open the Codex</a></div>
+</div><div class="hero-panel"><span>Ticket / Mission</span><span>Troubleshoot + Evidence</span><span>Knowledge Article</span><span>Review + Merge</span><strong>Future technician benefits</strong></div></div></section>
+
+<section class="section alt"><div class="container"><div class="section-heading"><h2>One knowledge system, different jobs.</h2><p>The Command Portal is the readable front door. The SOTE Framework repository remains the controlled source for operational Markdown, review history, and accepted changes.</p></div>
+<div class="four-grid">
+<article class="card"><span class="tag blue">GLPI</span><h3>Work enters</h3><p>Tickets record incidents, requests, troubleshooting context, and future links to approved knowledge.</p></article>
+<article class="card"><span class="tag orange">GitHub</span><h3>Knowledge changes</h3><p>Branches and pull requests make proposed documentation changes visible and reviewable before acceptance.</p></article>
+<article class="card"><span class="tag green">Knowledge Base</span><h3>Technicians read</h3><p>Approved articles become easy to discover and use from the Command Portal.</p></article>
+<article class="card"><span class="tag purple">Codex</span><h3>SOTE stays consistent</h3><p>Names, vocabulary, zones, characters, mission language, and public-safe rules remain governed by the Codex.</p></article>
+</div></div></section>
+
+<section class="section" id="articles"><div class="container"><div class="section-heading"><h2>Current approved operational articles</h2><p>These articles live in the private SOTE Framework repository. Command Portal exposes the catalog without duplicating the controlled source.</p></div>
+<div class="filter-panel"><label for="kb-search">Search the Knowledge Base</label><input id="kb-search" data-kb-filter-input type="search" placeholder="Try Cisco, console, rack, temperature, power..."></div>
+<div class="status-filter-bar"><button class="active" data-kb-category="all">All</button><button data-kb-category="network">Network devices</button><button data-kb-category="environment">Equipment & environment</button></div>
+<div class="project-board" data-kb-list>
+<article class="project-card" data-kb-card data-category="network"><div class="project-card-top"><span class="status-badge status-online">Operational KA</span><span class="priority-pill">KA-001</span></div><h3>Cisco Console Access and Boot-State Identification</h3><p>Console access and identifying a Cisco device's boot state before proceeding with controlled work.</p><div class="project-meta"><span><strong>Category</strong>Network devices</span><span><strong>Source</strong>SOTE Framework</span><span><strong>Version</strong>1.0</span></div></article>
+<article class="project-card" data-kb-card data-category="network"><div class="project-card-top"><span class="status-badge status-online">Operational KA</span><span class="priority-pill">KA-002</span></div><h3>Cisco Non-Destructive Discovery and Evidence Capture</h3><p>Safe discovery and evidence collection without making configuration changes.</p><div class="project-meta"><span><strong>Category</strong>Network devices</span><span><strong>Source</strong>SOTE Framework</span><span><strong>Version</strong>1.0</span></div></article>
+<article class="project-card" data-kb-card data-category="network"><div class="project-card-top"><span class="status-badge status-online">Operational KA</span><span class="priority-pill">KA-003</span></div><h3>Network Device Physical Inventory and Rack Cabling Evidence</h3><p>Capture physical inventory and rack-cabling evidence in a repeatable, reviewable way.</p><div class="project-meta"><span><strong>Category</strong>Network devices</span><span><strong>Source</strong>SOTE Framework</span><span><strong>Version</strong>1.0</span></div></article>
+<article class="project-card" data-kb-card data-category="environment"><div class="project-card-top"><span class="status-badge status-online">Operational KA</span><span class="priority-pill">KA-004</span></div><h3>Measuring Rack Temperature, Airflow, and Thermal Delta</h3><p>Measure and document environmental conditions around rack equipment.</p><div class="project-meta"><span><strong>Category</strong>Equipment & environment</span><span><strong>Source</strong>SOTE Framework</span><span><strong>Version</strong>1.0</span></div></article>
+<article class="project-card" data-kb-card data-category="environment"><div class="project-card-top"><span class="status-badge status-online">Operational KA</span><span class="priority-pill">KA-005</span></div><h3>Controlled Equipment Power-Up and Environmental Observation</h3><p>Power equipment under controlled conditions while observing and preserving useful evidence.</p><div class="project-meta"><span><strong>Category</strong>Equipment & environment</span><span><strong>Source</strong>SOTE Framework</span><span><strong>Version</strong>1.0</span></div></article>
+</div>
+<p class="page-note" data-kb-empty hidden>No articles match that search yet.</p>
+</div></section>
+
+<section class="section alt" id="contribute"><div class="container"><div class="section-heading"><h2>CIT-205: from troubleshooting to published knowledge</h2><p>Classroom participants do not become SOTE Operators simply by using GitHub. Their assigned GitHub work is a controlled learning pathway for drafting, revising, reviewing, and understanding knowledge articles.</p></div>
+<div class="timeline">
+<div class="timeline-item"><strong>1. Draft</strong><p>Start from the classroom KA template and turn troubleshooting evidence into technician-facing documentation.</p></div>
+<div class="timeline-item"><strong>2. Branch</strong><p>Make the assigned documentation change away from <code>main</code>, preserving the accepted version.</p></div>
+<div class="timeline-item"><strong>3. Pull Request</strong><p>Propose the change and explain what was improved, corrected, or learned.</p></div>
+<div class="timeline-item"><strong>4. Review</strong><p>Instructor or designated reviewer validates technical accuracy, safety, clarity, scope, and evidence.</p></div>
+<div class="timeline-item"><strong>5. Merge</strong><p>Accepted knowledge becomes part of the repository's current version and can be surfaced here for future technicians.</p></div>
+</div>
+<div class="callout" style="margin-top:22px"><h3>Publishing boundary</h3><p>Draft classroom work is not automatically approved operational knowledge. Never publish credentials, private ticket data, student information, sensitive internal IP details, security weaknesses, or unapproved screenshots.</p></div>
+</div></section>
+
+<section class="section"><div class="container"><div class="section-heading"><h2>Knowledge article standard</h2><p>Operational articles use a consistent structure so technicians know what they are allowed to do, what success looks like, what evidence to preserve, and when to stop.</p></div>
+<div class="card-grid">
+<article class="card"><h3>Purpose & scope</h3><p>What the article teaches, where it applies, and what authorization is required.</p></article>
+<article class="card"><h3>Stop & escalate</h3><p>Explicit boundaries for safety, destructive actions, uncertainty, and production impact.</p></article>
+<article class="card"><h3>Procedure & results</h3><p>Execution-order steps plus expected and alternate states.</p></article>
+<article class="card"><h3>Evidence</h3><p>Outputs, screenshots, measurements, logs, or notes that make the work defensible.</p></article>
+<article class="card"><h3>Troubleshooting</h3><p>Safe recovery guidance without inviting improvisation beyond authorization.</p></article>
+<article class="card"><h3>Version history</h3><p>Related missions, runbooks, knowledge, and a traceable history of accepted changes.</p></article>
+</div></div></section>
+</main>
+<footer class="site-footer"><div class="container footer-grid"><div><strong>SOTE Command Portal</strong><p>Operational knowledge built from real learning and reviewed work.</p></div><div><strong>Knowledge source</strong><p>SOTE Framework repository</p></div><div><strong>Safety rule</strong><p>No private student data, credentials, secrets, or sensitive infrastructure details.</p></div></div></footer>
+<script src="assets/js/main.js"></script>
+</body></html>
