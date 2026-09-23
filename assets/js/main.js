@@ -96,3 +96,30 @@ document.querySelector('[data-copy-proposal]')?.addEventListener('click', async 
   proposalText.select();
   try { await navigator.clipboard.writeText(proposalText.value); } catch (e) { document.execCommand('copy'); }
 });
+
+
+// v1.0 knowledge base filtering
+let activeKbCategory = 'all';
+function applyKbFilters() {
+  const term = (document.querySelector('[data-kb-filter-input]')?.value || '').trim().toLowerCase();
+  let visible = 0;
+  document.querySelectorAll('[data-kb-card]').forEach(card => {
+    const searchMatch = !term || card.textContent.toLowerCase().includes(term);
+    const categoryMatch = activeKbCategory === 'all' || card.dataset.category === activeKbCategory;
+    const show = searchMatch && categoryMatch;
+    card.style.display = show ? '' : 'none';
+    if (show) visible++;
+  });
+  const empty = document.querySelector('[data-kb-empty]');
+  if (empty) empty.hidden = visible !== 0;
+}
+document.querySelector('[data-kb-filter-input]')?.addEventListener('input', applyKbFilters);
+document.querySelectorAll('[data-kb-category]').forEach(button => {
+  button.addEventListener('click', () => {
+    activeKbCategory = button.dataset.kbCategory;
+    document.querySelectorAll('[data-kb-category]').forEach(btn => btn.classList.remove('active'));
+    button.classList.add('active');
+    applyKbFilters();
+  });
+});
+applyKbFilters();
