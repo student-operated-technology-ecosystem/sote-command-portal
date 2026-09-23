@@ -1,0 +1,126 @@
+{
+  "generated_at": "2026-09-23T20:50:00Z",
+  "source": "student-operated-technology-ecosystem/SOTE-framework",
+  "issues": [
+    {
+      "number": 40,
+      "title": "ACE | INTERIM DEPLOYMENT | Bare-metal GLPI service",
+      "html_url": "https://github.com/student-operated-technology-ecosystem/SOTE-framework/issues/40"
+    },
+    {
+      "number": 44,
+      "title": "CIT-205 | CLASSROOM EXERCISE | GitHub Orientation Check-In",
+      "html_url": "https://github.com/student-operated-technology-ecosystem/SOTE-framework/issues/44"
+    },
+    {
+      "number": 42,
+      "title": "ACE | PLANNED MISSION | Controlled GLPI classroom access via Mission Control",
+      "html_url": "https://github.com/student-operated-technology-ecosystem/SOTE-framework/issues/42"
+    },
+    {
+      "number": 38,
+      "title": "OPS-003 | DOCUMENTATION TASK | Create server-validation operating pack",
+      "html_url": "https://github.com/student-operated-technology-ecosystem/SOTE-framework/issues/38"
+    },
+    {
+      "number": 37,
+      "title": "OPS-003 | EXECUTION TASK | Inventory and validate initial server backlog",
+      "html_url": "https://github.com/student-operated-technology-ecosystem/SOTE-framework/issues/37"
+    },
+    {
+      "number": 12,
+      "title": "OPS-003 | MISSION ISSUE | Mission Server Intake and Validation | Standing Capability",
+      "html_url": "https://github.com/student-operated-technology-ecosystem/SOTE-framework/issues/12"
+    },
+    {
+      "number": 13,
+      "title": "OPS-004 | MISSION ISSUE | Mission Aggregation Forge | Workstation Aggregation",
+      "html_url": "https://github.com/student-operated-technology-ecosystem/SOTE-framework/issues/13"
+    },
+    {
+      "number": 34,
+      "title": "OPS-003 | SUPPORT TASK | Price dedicated server transport cart",
+      "html_url": "https://github.com/student-operated-technology-ecosystem/SOTE-framework/issues/34"
+    },
+    {
+      "number": 4,
+      "title": "OPS-002 | MISSION ISSUE | Mission Thermal Shield | Environmental Baseline",
+      "html_url": "https://github.com/student-operated-technology-ecosystem/SOTE-framework/issues/4"
+    },
+    {
+      "number": 26,
+      "title": "Infrastructure onboarding: review SOTE Operations and Mission Control",
+      "html_url": "https://github.com/student-operated-technology-ecosystem/SOTE-framework/issues/26"
+    },
+    {
+      "number": 3,
+      "title": "OPS-001 | MISSION ISSUE | Mission Backbone Forge | Switch Discovery",
+      "html_url": "https://github.com/student-operated-technology-ecosystem/SOTE-framework/issues/3"
+    },
+    {
+      "number": 22,
+      "title": "OPS-006 | MISSION ISSUE | Mission End-to-End Validation | Commissioning",
+      "html_url": "https://github.com/student-operated-technology-ecosystem/SOTE-framework/issues/22"
+    },
+    {
+      "number": 14,
+      "title": "OPS-005 | MISSION ISSUE | Mission Distribution Link | Cyber Defense Uplink",
+      "html_url": "https://github.com/student-operated-technology-ecosystem/SOTE-framework/issues/14"
+    },
+    {
+      "number": 1,
+      "title": "Future Work: CCAC SOTE physical field verification and source-of-truth reconciliation",
+      "html_url": "https://github.com/student-operated-technology-ecosystem/SOTE-framework/issues/1"
+    }
+  ],
+  "commits": [
+    {
+      "sha": "f5168307295fcc41a59b14f545a1310b114c4679",
+      "message": "Document Command Portal Knowledge Base publication pipeline",
+      "created_at": "2026-09-23T18:46:39Z",
+      "html_url": "https://github.com/student-operated-technology-ecosystem/SOTE-framework/commit/f5168307295fcc41a59b14f545a1310b114c4679"
+    },
+    {
+      "sha": "368de33a5e94cd965453fae12ebfc8fce7b01894",
+      "message": "Add reviewed Knowledge Base catalog publishing workflow",
+      "created_at": "2026-09-23T18:46:31Z",
+      "html_url": "https://github.com/student-operated-technology-ecosystem/SOTE-framework/commit/368de33a5e94cd965453fae12ebfc8fce7b01894"
+    },
+    {
+      "sha": "4a03ea7ed20249676d10f3a9ffc46c8c64c38bc2",
+      "message": "Document the deployed public CIT-205 classroom repository (#50)",
+      "created_at": "2026-09-23T17:07:11Z",
+      "html_url": "https://github.com/student-operated-technology-ecosystem/SOTE-framework/commit/4a03ea7ed20249676d10f3a9ffc46c8c64c38bc2"
+    },
+    {
+      "sha": "b50f13913d96519422e923c5f15d2044fdea9fb7",
+      "message": "Connect SOTE framework to the public CIT-205 classroom (#49)",
+      "created_at": "2026-09-23T17:06:29Z",
+      "html_url": "https://github.com/student-operated-technology-ecosystem/SOTE-framework/commit/b50f13913d96519422e923c5f15d2044fdea9fb7"
+    },
+    {
+      "sha": "04e9af078b00974b6321730c2cd43ee7de0ca366",
+      "message": "Link CIT-205 lesson to actual review demonstration (#48)",
+      "created_at": "2026-09-23T13:42:46Z",
+      "html_url": "https://github.com/student-operated-technology-ecosystem/SOTE-framework/commit/04e9af078b00974b6321730c2cd43ee7de0ca366"
+    },
+    {
+      "sha": "c6ecd15b66423d7ce2c3f575aef36e432e4da4b0",
+      "message": "Demonstrate review: check unsaved work before restart (#47)",
+      "created_at": "2026-09-23T13:42:18Z",
+      "html_url": "https://github.com/student-operated-technology-ecosystem/SOTE-framework/commit/c6ecd15b66423d7ce2c3f575aef36e432e4da4b0"
+    },
+    {
+      "sha": "9c1b970f49b5018096f0f6e6d2ec5136bcb74ff5",
+      "message": "Build CIT-205 classroom knowledge front door and lesson (#46)",
+      "created_at": "2026-09-23T13:41:30Z",
+      "html_url": "https://github.com/student-operated-technology-ecosystem/SOTE-framework/commit/9c1b970f49b5018096f0f6e6d2ec5136bcb74ff5"
+    },
+    {
+      "sha": "fe9a309f67431804e3edb540dc1b0f2ebb65ca61",
+      "message": "Preserve current GLPI runbook status in classroom roadmap",
+      "created_at": "2026-09-22T20:53:20Z",
+      "html_url": "https://github.com/student-operated-technology-ecosystem/SOTE-framework/commit/fe9a309f67431804e3edb540dc1b0f2ebb65ca61"
+    }
+  ]
+}
