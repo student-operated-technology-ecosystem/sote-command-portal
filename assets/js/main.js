@@ -169,21 +169,19 @@ function renderLiveIssues(){
  host.innerHTML=shown.length?shown.map(i=>{const type=issueType(i);return '<article class="project-card live-project-card"><div class="project-card-top"><span class="status-badge status-online">'+escapeLive(issueLabel(type))+'</span><span class="priority-pill">#'+i.number+'</span></div><h3>'+escapeLive(i.title)+'</h3><p>Tracked operational work from the SOTE Framework repository.</p><div class="project-meta"><span><strong>Source</strong>SOTE Framework</span></div><a class="card-link" href="'+escapeLive(i.html_url)+'" target="_blank" rel="noopener noreferrer">Open GitHub Issue →</a></article>';}).join(''):'<article class="project-card"><h3>No matching work</h3><p>Try another filter or search term.</p></article>';
 }
 function setLiveMetric(n,v){const e=document.querySelector('[data-metric="'+n+'"]');if(e)e.textContent=v;}
-async function loadSoteDashboard(){
+function loadSoteDashboard(){
  if(!document.querySelector('[data-live-projects]'))return;
- try{
-  const response=await fetch('assets/data/projects.json?ts='+Date.now(),{cache:'no-store'});
-  if(!response.ok)throw new Error('Dashboard snapshot unavailable');
-  const data=await response.json();liveIssues=data.issues||[];const commits=data.commits||[];
-  setLiveMetric('active',liveIssues.filter(i=>issueType(i)==='active').length);
-  setLiveMetric('planned',liveIssues.filter(i=>issueType(i)==='planned').length);
-  setLiveMetric('classroom',liveIssues.filter(i=>issueType(i)==='classroom').length);
-  setLiveMetric('recent',commits.length);
-  renderLiveIssues();
-  const activity=document.querySelector('[data-github-activity]');
-  if(activity)activity.innerHTML=commits.map(c=>{const first=(c.message||'Repository update').split('\n')[0];const when=c.created_at?new Date(c.created_at).toLocaleDateString(undefined,{month:'short',day:'numeric',year:'numeric'}):'';return '<article class="activity-item"><div><strong>'+escapeLive(first)+'</strong><span>'+escapeLive(when)+'</span></div><a href="'+escapeLive(c.html_url)+'" target="_blank" rel="noopener noreferrer">View commit →</a></article>';}).join('');
-  const stamp=document.querySelector('[data-github-updated]');if(stamp&&data.generated_at)stamp.textContent='· snapshot '+new Date(data.generated_at).toLocaleString();
- }catch(e){const err=document.querySelector('[data-github-error]');if(err)err.hidden=false;const host=document.querySelector('[data-live-projects]');if(host)host.innerHTML='';}
+ const data=window.SOTE_PROJECT_DATA;
+ if(!data){const host=document.querySelector('[data-live-projects]');if(host)host.innerHTML='<article class="project-card"><h3>Project snapshot unavailable</h3><p>The dashboard data bundle has not loaded yet.</p></article>';return;}
+ liveIssues=data.issues||[];const commits=data.commits||[];
+ setLiveMetric('active',liveIssues.filter(i=>issueType(i)==='active').length);
+ setLiveMetric('planned',liveIssues.filter(i=>issueType(i)==='planned').length);
+ setLiveMetric('classroom',liveIssues.filter(i=>issueType(i)==='classroom').length);
+ setLiveMetric('recent',commits.length);
+ renderLiveIssues();
+ const activity=document.querySelector('[data-github-activity]');
+ if(activity)activity.innerHTML=commits.map(c=>{const first=(c.message||'Repository update').split('\n')[0];const when=c.created_at?new Date(c.created_at).toLocaleDateString(undefined,{month:'short',day:'numeric',year:'numeric'}):'';return '<article class="activity-item"><div><strong>'+escapeLive(first)+'</strong><span>'+escapeLive(when)+'</span></div><a href="'+escapeLive(c.html_url)+'" target="_blank" rel="noopener noreferrer">View commit →</a></article>';}).join('');
+ const stamp=document.querySelector('[data-github-updated]');if(stamp&&data.generated_at)stamp.textContent='· snapshot '+new Date(data.generated_at).toLocaleString();
 }
 document.querySelector('[data-live-project-search]')?.addEventListener('input',renderLiveIssues);
 document.querySelectorAll('[data-live-filter]').forEach(btn=>btn.addEventListener('click',()=>{liveFilter=btn.dataset.liveFilter;document.querySelectorAll('[data-live-filter]').forEach(b=>b.classList.remove('active'));btn.classList.add('active');renderLiveIssues();}));
