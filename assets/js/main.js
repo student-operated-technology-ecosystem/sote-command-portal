@@ -1,3 +1,72 @@
+
+/* Site-wide public shell normalization */
+(() => {
+  const script = document.currentScript;
+  const siteRoot = script ? new URL('../../', script.src).pathname : '/';
+  const href = file => siteRoot + file;
+  const bannerText = 'External Testing Preview — Not an official public CCAC website.';
+
+  let banner = document.querySelector('.prototype-banner');
+  if (!banner) {
+    banner = document.createElement('div');
+    banner.className = 'prototype-banner';
+    document.body.prepend(banner);
+  }
+  banner.textContent = bannerText;
+
+  const header = document.querySelector('.site-header');
+  if (header) {
+    const current = location.pathname.split('/').pop() || 'index.html';
+    const exploreFiles = ['ecosystem.html','tour.html','characters.html','zones.html','badges.html','student-technology-corps.html','corps.html','mission-board.html','tour-mode.html','tour-guide-kit.html','environment-map.html','start-here.html'];
+    const activeFor = file => {
+      if (file === 'ecosystem.html' && (exploreFiles.includes(current) || location.pathname.includes('/characters/') || location.pathname.includes('/missions/') || location.pathname.includes('/zones/') || location.pathname.includes('/spaces/') || location.pathname.includes('/pages/'))) return ' class="active"';
+      return current === file ? ' class="active"' : '';
+    };
+    header.innerHTML = '<div class="container header-inner">' +
+      '<a class="brand" href="'+href('index.html')+'" aria-label="SOTE Command Portal home">' +
+      '<img src="'+href('assets/img/brand/sote_paw_badge_icon.webp')+'" alt="" width="52" height="52">' +
+      '<span><strong>SOTE Command Portal</strong><small>Student-Operated Technology Ecosystem</small></span></a>' +
+      '<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">Menu</button>' +
+      '<nav id="primary-nav" class="primary-nav" aria-label="Primary navigation">' +
+      '<a'+activeFor('index.html')+' href="'+href('index.html')+'">Home</a>' +
+      '<a'+activeFor('ace-help-desk.html')+' href="'+href('ace-help-desk.html')+'">Ace Help Desk</a>' +
+      '<a'+activeFor('knowledge-base.html')+' href="'+href('knowledge-base.html')+'">Knowledge Base</a>' +
+      '<a'+activeFor('projects.html')+' href="'+href('projects.html')+'">Projects</a>' +
+      '<a'+activeFor('ecosystem.html')+' href="'+href('ecosystem.html')+'">Explore SOTE</a>' +
+      '</nav></div>';
+    const button = header.querySelector('.nav-toggle');
+    const nav = header.querySelector('#primary-nav');
+    button?.addEventListener('click', () => {
+      const open = nav.classList.toggle('open');
+      button.setAttribute('aria-expanded', String(open));
+    });
+  }
+
+  document.querySelectorAll('.site-footer').forEach(footer => {
+    footer.querySelectorAll('p').forEach(p => {
+      if (/static package|true baseline|portal version|canonical baseline/i.test(p.textContent)) {
+        p.textContent = 'Student-Operated Technology Ecosystem';
+      }
+    });
+  });
+
+  const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+  const nodes = [];
+  while (walker.nextNode()) nodes.push(walker.currentNode);
+  nodes.forEach(node => {
+    if (node.parentElement?.closest('.prototype-banner')) return;
+    node.nodeValue = node.nodeValue
+      .replace(/Prototype Preview/gi, 'External Testing Preview')
+      .replace(/Working draft for SOTE review and tester feedback\.?/gi, '')
+      .replace(/\bv0\.\d+\s+(?:approved[- ]media\s+)?baseline\b/gi, '')
+      .replace(/\bDemo mission, fully functional\b/gi, 'Visitor mission')
+      .replace(/\bTechnology Cadet demo mission\b/gi, 'Technology Cadet mission')
+      .replace(/\bTechnology Cadet demo\b/gi, 'Technology Cadet mission')
+      .replace(/\bThis demo runs\b/gi, 'This mission runs')
+      .replace(/\bv0\.8 media note:\s*/gi, 'Media note: ');
+  });
+})();
+
 const navButton = document.querySelector('.nav-toggle');
 const nav = document.querySelector('#primary-nav');
 if (navButton && nav) {
