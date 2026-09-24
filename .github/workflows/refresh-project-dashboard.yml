@@ -4,6 +4,10 @@ on:
   schedule:
     - cron: "17 * * * *"
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/refresh-project-dashboard.yml"
 
 permissions:
   contents: write
