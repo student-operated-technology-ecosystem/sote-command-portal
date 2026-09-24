@@ -47,13 +47,13 @@ jobs:
             cat "$body"
             rm -f "$body"
           }
-          issues="$(api_get "Issues" "https://api.github.com/repos/student-operated-technology-ecosystem/SOTE-framework/issues?state=open&per_page=100&sort=updated&direction=desc")"
-          commits="$(api_get "Commits" "https://api.github.com/repos/student-operated-technology-ecosystem/SOTE-framework/commits?per_page=8")"
-          jq -n --arg generated_at "$(date -u +%Y-%m-%dT%H:%M:%SZ)" --arg source "student-operated-technology-ecosystem/SOTE-framework" --argjson issues "$issues" --argjson commits "$commits" '{
+          api_get "Issues" "https://api.github.com/repos/student-operated-technology-ecosystem/SOTE-framework/issues?state=open&per_page=100&sort=updated&direction=desc" > /tmp/issues.json
+          api_get "Commits" "https://api.github.com/repos/student-operated-technology-ecosystem/SOTE-framework/commits?per_page=8" > /tmp/commits.json
+          jq -n --arg generated_at "$(date -u +%Y-%m-%dT%H:%M:%SZ)" --arg source "student-operated-technology-ecosystem/SOTE-framework" --slurpfile issues /tmp/issues.json --slurpfile commits /tmp/commits.json '{
             generated_at:$generated_at,
             source:$source,
-            issues:[$issues[] | select(.pull_request|not) | {number,title,updated_at,html_url,labels:[.labels[].name]}],
-            commits:[$commits[] | {sha,message:.commit.message,created_at:.commit.committer.date,html_url}]
+            issues:[$issues[0][] | select(.pull_request|not) | {number,title,updated_at,html_url,labels:[.labels[].name]}],
+            commits:[$commits[0][] | {sha,message:.commit.message,created_at:.commit.committer.date,html_url}]
           }' > assets/data/projects.json
           printf 'window.SOTE_PROJECT_DATA = ' > assets/data/projects.js
           cat assets/data/projects.json >> assets/data/projects.js
