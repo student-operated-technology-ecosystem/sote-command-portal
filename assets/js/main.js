@@ -68,15 +68,6 @@
   });
 })();
 
-const navButton = document.querySelector('.nav-toggle');
-const nav = document.querySelector('#primary-nav');
-if (navButton && nav) {
-  navButton.addEventListener('click', () => {
-    const isOpen = nav.classList.toggle('open');
-    navButton.setAttribute('aria-expanded', String(isOpen));
-  });
-}
-
 const filterInput = document.querySelector('[data-filter-input]');
 if (filterInput) {
   filterInput.addEventListener('input', () => {
