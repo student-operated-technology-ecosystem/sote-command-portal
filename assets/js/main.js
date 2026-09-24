@@ -41,6 +41,22 @@
       const open = nav.classList.toggle('open');
       button.setAttribute('aria-expanded', String(open));
     });
+    nav?.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      nav.classList.remove('open');
+      button?.setAttribute('aria-expanded', 'false');
+    }));
+    document.addEventListener('click', event => {
+      if (!header.contains(event.target)) {
+        nav?.classList.remove('open');
+        button?.setAttribute('aria-expanded', 'false');
+      }
+    });
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 720) {
+        nav?.classList.remove('open');
+        button?.setAttribute('aria-expanded', 'false');
+      }
+    });
   }
 
   document.querySelectorAll('.site-footer').forEach(footer => {
