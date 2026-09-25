@@ -19,6 +19,9 @@
     const current = location.pathname.split('/').pop() || 'index.html';
     const exploreFiles = ['ecosystem.html','tour.html','characters.html','zones.html','badges.html','student-technology-corps.html','corps.html','mission-board.html','tour-mode.html','tour-guide-kit.html','environment-map.html','start-here.html'];
     const activeFor = file => {
+      if (file === 'mission-command.html' && ['mission-command.html','missions.html','mission-proposal.html','mission-lifecycle.html'].includes(current)) return ' class="active"';
+      if (file === 'ace-help-desk.html' && ['ace-help-desk.html','tickets.html','guided-learning.html','knowledge-training.html'].includes(current)) return ' class="active"';
+      if (file === 'knowledge-base.html' && ['knowledge-base.html','knowledge-article.html'].includes(current)) return ' class="active"';
       if (file === 'ecosystem.html' && (exploreFiles.includes(current) || location.pathname.includes('/characters/') || location.pathname.includes('/missions/') || location.pathname.includes('/zones/') || location.pathname.includes('/spaces/') || location.pathname.includes('/pages/'))) return ' class="active"';
       return current === file ? ' class="active"' : '';
     };
@@ -31,9 +34,9 @@
       '<a'+activeFor('index.html')+' href="'+href('index.html')+'">Home</a>' +
       '<a'+activeFor('ace-help-desk.html')+' href="'+href('ace-help-desk.html')+'">Ace Help Desk</a>' +
       '<a'+activeFor('knowledge-base.html')+' href="'+href('knowledge-base.html')+'">Knowledge Base</a>' +
-      '<a'+activeFor('projects.html')+' href="'+href('projects.html')+'">Projects</a>' +
+      '<a'+activeFor('mission-command.html')+' href="'+href('mission-command.html')+'">Missions</a>' +
       '<a'+activeFor('ecosystem.html')+' href="'+href('ecosystem.html')+'">Explore SOTE</a>' +
-      '<a'+activeFor('operator.html')+' href="'+href('operator.html')+'">Operator Login</a>' +
+      '<a'+activeFor('operator.html')+' href="'+href('operator.html')+'">Operator workspace</a>' +
       '</nav></div>';
     const button = header.querySelector('.nav-toggle');
     const nav = header.querySelector('#primary-nav');
@@ -210,6 +213,12 @@ function applyKbFilters() {
 }
 
 document.querySelector('[data-kb-filter-input]')?.addEventListener('input', applyKbFilters);
+document.querySelector('[data-kb-filter-input]')?.addEventListener('keydown', event => {
+  if (event.key === 'Enter') {
+    event.preventDefault();
+    document.getElementById('articles')?.scrollIntoView({behavior:'smooth'});
+  }
+});
 document.querySelectorAll('[data-kb-category]').forEach(button => {
   button.addEventListener('click', () => {
     activeKbCategory = button.dataset.kbCategory;
