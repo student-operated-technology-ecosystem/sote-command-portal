@@ -118,35 +118,40 @@ Stop if equipment appears damaged, a step requires elevated permission, network 
 <section class="mission-stage" data-step="9" hidden>
 <span class="tag blue">Your workspace</span><h2>Fork the classroom repository.</h2>
 <p class="mission-lead">You cannot write directly into the official classroom repository. A <strong>fork</strong> creates your own GitHub copy to work in.</p>
-<div class="mission-action"><span>DO THIS</span><p>Open the fork page. Choose <strong>Create fork</strong>. When GitHub finishes, confirm that your username appears before <strong>CIT-205-classroom</strong> near the top.</p><a class="button" href="https://github.com/student-operated-technology-ecosystem/CIT-205-classroom/fork" target="_blank" rel="noopener noreferrer">Create your fork ↗</a></div>
+<div class="mission-action"><span>DO THIS</span><p>Open the fork page. Choose <strong>Create fork</strong>. If GitHub tells you that you already have a fork, open that fork instead. When the page loads, check the owner shown before <strong>CIT-205-classroom</strong>.</p><a class="button" href="https://github.com/student-operated-technology-ecosystem/CIT-205-classroom/fork" target="_blank" rel="noopener noreferrer">Create or open your fork ↗</a></div>
+<div class="mission-checkpoint"><strong>CHECKPOINT</strong><p>You should see <code>YOUR-GITHUB-USERNAME / CIT-205-classroom</code>. You should <b>not</b> see <code>student-operated-technology-ecosystem / CIT-205-classroom</code> as the repository you are editing.</p></div>
 <div class="mission-concept"><strong>Fork</strong><p>Your fork is your copy of the classroom repository. Working there protects the official copy while you build a proposed contribution.</p></div>
 </section>
 
 <section class="mission-stage" data-step="10" hidden>
 <span class="tag blue">Version control</span><h2>Create a branch for this article.</h2>
 <p class="mission-lead">A branch gives this one piece of work its own lane.</p>
-<div class="mission-action"><span>DO THIS IN YOUR FORK</span><ol class="checklist"><li>Select the branch control that currently says <strong>main</strong>.</li><li>Choose the option to view or create branches.</li><li>Create a new branch named <code>article/YOUR-GITHUB-USERNAME-training-network</code>.</li><li>Make sure the new branch is selected before continuing.</li></ol></div>
-<div class="mission-note"><strong>Check yourself</strong><p>The branch name shown above the file list should begin with <strong>article/</strong>. If it still says <strong>main</strong>, stop and ask before continuing.</p></div>
+<div class="mission-action"><span>SWITCH BACK TO YOUR GITHUB TAB</span><ol class="checklist"><li>Confirm you are still inside <strong>your fork</strong>.</li><li>Select the branch control that currently says <strong>main</strong>.</li><li>Create a branch named <code>article/YOUR-GITHUB-USERNAME-training-network</code>.</li><li>Switch to that new branch if GitHub does not do it automatically.</li></ol></div>
+<div class="mission-checkpoint"><strong>CHECKPOINT</strong><p>Before continuing, verify two things at the top of GitHub: the repository owner is <strong>your username</strong>, and the selected branch begins with <code>article/</code>.</p></div>
+<div class="mission-note"><strong>Why branch?</strong><p>The fork is your workspace. The branch isolates this one proposed change inside that workspace.</p></div>
 </section>
 
 <section class="mission-stage" data-step="11" hidden>
 <span class="tag blue">Create the file</span><h2>Add your Knowledge Article.</h2>
 <p class="mission-lead">Now you will create one Markdown file on your branch.</p>
-<div class="mission-action"><span>DO THIS IN YOUR FORK</span><ol class="checklist"><li>Open <strong>knowledge</strong>, then <strong>student-articles</strong>.</li><li>Choose <strong>Add file</strong> and then <strong>Create new file</strong>.</li><li>Name the file <code>KA-YOUR-GITHUB-USERNAME-training-network.md</code>.</li><li>Paste the practice article you copied in Step 8.</li><li>Use the <strong>Preview</strong> tab to see how the Markdown will look.</li></ol><a class="button secondary" href="https://github.com/student-operated-technology-ecosystem/CIT-205-classroom/tree/main/knowledge/student-articles" target="_blank" rel="noopener noreferrer">View destination in classroom repo ↗</a></div>
+<div class="mission-action"><span>STAY IN YOUR FORK</span><ol class="checklist"><li>Open <strong>knowledge</strong>, then <strong>student-articles</strong>.</li><li>Choose <strong>Add file</strong> and then <strong>Create new file</strong>.</li><li>Name the file <code>KA-YOUR-GITHUB-USERNAME-training-network.md</code>.</li><li>Paste the practice article you copied in Step 8.</li><li>Use the <strong>Preview</strong> tab to see how the Markdown will look.</li></ol></div>
+<div class="mission-checkpoint"><strong>CHECKPOINT BEFORE YOU SAVE</strong><p>The page should still show <strong>your username</strong> as the repository owner and your <code>article/...</code> branch. If either one is wrong, do not create the file yet.</p></div>
 <div class="mission-concept"><strong>Code and Preview</strong><p><b>Code</b> shows the Markdown source. <b>Preview</b> shows the formatted result. You will use both when writing Knowledge Articles.</p></div>
 </section>
 
 <section class="mission-stage" data-step="12" hidden>
 <span class="tag blue">Save the work</span><h2>Commit the article to your branch.</h2>
 <p class="mission-lead">In GitHub, saving a version of a change is called a <strong>commit</strong>.</p>
-<div class="mission-action"><span>DO THIS</span><ol class="checklist"><li>Choose <strong>Commit changes…</strong>.</li><li>Use the commit message <code>Add ACE-TRAIN-001 knowledge article</code>.</li><li>Confirm the commit is being made to your article branch, not <strong>main</strong>.</li><li>Commit the change.</li></ol></div>
+<div class="mission-action"><span>DO THIS</span><ol class="checklist"><li>Choose <strong>Commit changes…</strong>.</li><li>Use the commit message <code>Add ACE-TRAIN-001 knowledge article</code>.</li><li>Confirm the destination is your <code>article/...</code> branch.</li><li>Commit the change.</li></ol></div>
+<div class="mission-checkpoint"><strong>CHECKPOINT</strong><p>After the commit, your new <code>.md</code> file should appear inside <code>knowledge/student-articles/</code> while your article branch is selected.</p></div>
 <div class="mission-concept"><strong>Commit</strong><p>A commit is a recorded version of your work. It includes the change, who made it, and when it was made.</p></div>
 </section>
 
 <section class="mission-stage" data-step="13" hidden>
 <span class="tag blue">Propose the contribution</span><h2>Open a pull request.</h2>
 <p class="mission-lead">Your article exists in your fork. Now propose that it be reviewed for the classroom repository.</p>
-<div class="mission-action"><span>DO THIS</span><ol class="checklist"><li>Return to the front page of your fork.</li><li>Use GitHub's <strong>Contribute</strong> or <strong>Compare &amp; pull request</strong> option.</li><li>Confirm the destination is <strong>student-operated-technology-ecosystem/CIT-205-classroom</strong> and the base branch is <strong>main</strong>.</li><li>Title the pull request <code>ACE-TRAIN-001 Knowledge Article — YOUR NAME</code>.</li><li>In the description, state that this is a fictional classroom training article based on ACE-TRAIN-001.</li><li>Open the pull request.</li></ol></div>
+<div class="mission-action"><span>DO THIS</span><ol class="checklist"><li>Return to the front page of your fork by selecting <strong>CIT-205-classroom</strong> in GitHub's path near the top.</li><li>Use <strong>Contribute</strong> or <strong>Compare &amp; pull request</strong>.</li><li>Confirm the <strong>base repository</strong> is <code>student-operated-technology-ecosystem/CIT-205-classroom</code> and the <strong>base</strong> branch is <code>main</code>.</li><li>Confirm the <strong>head repository</strong> is your fork and the compare branch is your <code>article/...</code> branch.</li><li>Title the pull request <code>ACE-TRAIN-001 Knowledge Article — YOUR NAME</code>.</li><li>GitHub will load the classroom pull-request template. Complete the <strong>Scenario and Purpose</strong> and <strong>Evidence and Assumptions</strong> sections, check the safety/privacy boxes only after verifying each one, and identify where peer feedback would help most.</li><li>Open the pull request.</li></ol></div>
+<div class="mission-checkpoint"><strong>FINAL CHECK BEFORE CREATE</strong><p>You should be proposing <strong>your article branch → classroom main</strong>. The file list should contain only your training Knowledge Article.</p></div>
 <div class="mission-concept"><strong>Pull request</strong><p>A pull request does not silently change the official repository. It proposes your change so another person can inspect, discuss, and review it first.</p></div>
 </section>
 
