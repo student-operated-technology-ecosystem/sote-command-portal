@@ -754,3 +754,39 @@ body#top .home-hero-visual img { max-height:none; object-fit:cover; }
  .mission-flow{gap:7px}
  .mission-flow span{font-size:.82rem}
 }
+
+
+/* v1.9 Guided Mission mobile Markdown repair */
+.mission-code{
+  display:block;
+  width:100%;
+  max-width:100%;
+  min-width:0;
+  margin:22px 0 0;
+  padding:18px;
+  border:1px solid var(--line);
+  border-radius:16px;
+  background:#050b14;
+  color:#e7f0fb;
+  font:500 .9rem/1.55 ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+  white-space:pre-wrap;
+  overflow-wrap:anywhere;
+  word-break:break-word;
+  overflow-x:hidden;
+}
+.guided-mission-page,
+.guided-mission-page .mission-shell,
+.guided-mission-page .mission-container,
+.guided-mission-page .mission-stage{max-width:100%;overflow-x:hidden}
+@media(max-width:720px){
+  .mission-code{
+    margin-left:0;
+    margin-right:0;
+    padding:14px;
+    font-size:.78rem;
+    line-height:1.5;
+    white-space:pre-wrap;
+    overflow-wrap:anywhere;
+    word-break:break-word;
+  }
+}
