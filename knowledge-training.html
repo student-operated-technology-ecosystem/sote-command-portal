@@ -63,9 +63,9 @@
 </section>
 
 <section class="mission-stage" data-step="8" hidden>
-<span class="tag blue">Markdown</span><h2>Build the practice article.</h2>
-<p class="mission-lead">We will use a small Markdown article for this mission. Markdown is plain text with simple symbols that tell GitHub how to format headings, lists, and emphasis.</p>
-<div class="mission-action"><span>DO THIS</span><p>Copy the practice article below. Replace <strong>YOUR-GITHUB-USERNAME</strong> with your username when you create the file.</p><button class="button" id="copyArticle" type="button">Copy practice article</button></div>
+<span class="tag blue">Markdown</span><h2>Meet the practice article.</h2>
+<p class="mission-lead">This is the Markdown article you will place into GitHub later. For now, just look at how the headings, bold text, numbered steps, and bullet points are written.</p>
+<div class="mission-note"><strong>Do not copy anything yet.</strong><p>First we need to create your GitHub workspace. When you reach the file-creation step, this guide will give you the copy button again at the exact moment you need it.</p></div>
 <pre class="mission-code" id="practiceArticle"># Workstation Connected but Websites Will Not Load
 
 **Status:** Student Draft — not approved operational guidance
@@ -133,8 +133,8 @@ Stop if equipment appears damaged, a step requires elevated permission, network 
 
 <section class="mission-stage" data-step="11" hidden>
 <span class="tag blue">Create the file</span><h2>Add your Knowledge Article.</h2>
-<p class="mission-lead">Now you will create one Markdown file on your branch.</p>
-<div class="mission-action"><span>STAY IN YOUR FORK</span><ol class="checklist"><li>Open <strong>knowledge</strong>, then <strong>student-articles</strong>.</li><li>Choose <strong>Add file</strong> and then <strong>Create new file</strong>.</li><li>Name the file <code>KA-YOUR-GITHUB-USERNAME-training-network.md</code>.</li><li>Paste the practice article you copied in Step 8.</li><li>Use the <strong>Preview</strong> tab to see how the Markdown will look.</li></ol></div>
+<p class="mission-lead">Now you will create the Markdown file and paste the practice article into it.</p>
+<div class="mission-action"><span>STAY IN YOUR FORK</span><ol class="checklist"><li>Open <strong>knowledge</strong>, then <strong>student-articles</strong>.</li><li>Choose <strong>Add file</strong> and then <strong>Create new file</strong>.</li><li>Name the file <code>KA-YOUR-GITHUB-USERNAME-training-network.md</code>.</li><li>Return to this training tab and press <strong>Copy practice article</strong> below.</li><li>Switch back to GitHub and paste the copied article into the large file editor.</li><li>Use the <strong>Preview</strong> tab to see how the Markdown will look.</li></ol><button class="button" id="copyArticle" type="button">Copy practice article</button></div>
 <div class="mission-checkpoint"><strong>CHECKPOINT BEFORE YOU SAVE</strong><p>The page should still show <strong>your username</strong> as the repository owner and your <code>article/...</code> branch. If either one is wrong, do not create the file yet.</p></div>
 <div class="mission-concept"><strong>Code and Preview</strong><p><b>Code</b> shows the Markdown source. <b>Preview</b> shows the formatted result. You will use both when writing Knowledge Articles.</p></div>
 </section>
@@ -171,6 +171,6 @@ Stop if equipment appears damaged, a step requires elevated permission, network 
 (()=>{const stages=[...document.querySelectorAll('.mission-stage')],prev=document.getElementById('prevStep'),next=document.getElementById('nextStep'),current=document.getElementById('stepCurrent'),bar=document.getElementById('progressBar');let i=0;
 function show(n){i=Math.max(0,Math.min(stages.length-1,n));stages.forEach((s,x)=>s.hidden=x!==i);current.textContent=i+1;bar.style.width=((i+1)/stages.length*100)+'%';prev.disabled=i===0;next.hidden=i===stages.length-1;window.scrollTo({top:0,behavior:'smooth'});}
 prev.addEventListener('click',()=>show(i-1));next.addEventListener('click',()=>show(i+1));
-const copy=document.getElementById('copyArticle'); if(copy){copy.addEventListener('click',async()=>{const text=document.getElementById('practiceArticle').innerText;try{await navigator.clipboard.writeText(text);copy.textContent='Copied ✓';setTimeout(()=>copy.textContent='Copy practice article',1800);}catch(e){copy.textContent='Select and copy the text below';}});}
+const copy=document.getElementById('copyArticle'); if(copy){copy.addEventListener('click',async()=>{const text=document.getElementById('practiceArticle').innerText;try{await navigator.clipboard.writeText(text);copy.textContent='Copied ✓ Now switch back to GitHub and paste';setTimeout(()=>copy.textContent='Copy practice article',3200);}catch(e){copy.textContent='Copy failed — go back to Step 8 and select the article text manually';}});}
 show(0);})();
 </script></body></html>
