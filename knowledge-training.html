@@ -184,9 +184,11 @@ Stop if equipment appears damaged, a step requires elevated permission, network 
 
 <script src="assets/js/main.js?v=20260925-service"></script>
 <script>
-(()=>{const stages=[...document.querySelectorAll('.mission-stage')],prev=document.getElementById('prevStep'),next=document.getElementById('nextStep'),current=document.getElementById('stepCurrent'),bar=document.getElementById('progressBar');let i=0;
-function show(n){i=Math.max(0,Math.min(stages.length-1,n));stages.forEach((s,x)=>s.hidden=x!==i);current.textContent=i+1;bar.style.width=((i+1)/stages.length*100)+'%';prev.disabled=i===0;next.hidden=i===stages.length-1;window.scrollTo({top:0,behavior:'smooth'});}
-prev.addEventListener('click',()=>show(i-1));next.addEventListener('click',()=>show(i+1));
+(()=>{const stages=[...document.querySelectorAll('.mission-stage')],prev=document.getElementById('prevStep'),next=document.getElementById('nextStep'),current=document.getElementById('stepCurrent'),bar=document.getElementById('progressBar'),storageKey='sote-kb-guided-mission-step';let i=0;
+function stepFromLocation(){const match=window.location.hash.match(/^#step-(\d+)$/);if(match){const n=parseInt(match[1],10);if(n>=1&&n<=stages.length)return n-1;}const saved=parseInt(localStorage.getItem(storageKey)||'',10);if(saved>=1&&saved<=stages.length)return saved-1;return 0;}
+function show(n,{scroll=true,history='replace'}={}){i=Math.max(0,Math.min(stages.length-1,n));stages.forEach((s,x)=>s.hidden=x!==i);current.textContent=i+1;bar.style.width=((i+1)/stages.length*100)+'%';prev.disabled=i===0;next.hidden=i===stages.length-1;localStorage.setItem(storageKey,String(i+1));const hash='#step-'+(i+1);if(history==='push')window.history.pushState({step:i+1},'',hash);else if(window.location.hash!==hash)window.history.replaceState({step:i+1},'',hash);if(scroll)window.scrollTo({top:0,behavior:'smooth'});}
+prev.addEventListener('click',()=>show(i-1,{history:'push'}));next.addEventListener('click',()=>show(i+1,{history:'push'}));
+window.addEventListener('popstate',()=>show(stepFromLocation(),{scroll:false,history:'replace'}));
 const copy=document.getElementById('copyArticle'); if(copy){copy.addEventListener('click',async()=>{const text=document.getElementById('practiceArticle').innerText;try{await navigator.clipboard.writeText(text);copy.textContent='Copied ✓ Now switch back to GitHub and paste';setTimeout(()=>copy.textContent='Copy practice article',3200);}catch(e){copy.textContent='Copy failed — go back to Step 8 and select the article text manually';}});}
-show(0);})();
+show(stepFromLocation(),{scroll:false,history:'replace'});})();
 </script></body></html>
