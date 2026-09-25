@@ -17,11 +17,11 @@
   const header = document.querySelector('.site-header');
   if (header) {
     const current = location.pathname.split('/').pop() || 'index.html';
-    const exploreFiles = ['ecosystem.html','tour.html','characters.html','zones.html','badges.html','student-technology-corps.html','corps.html','mission-board.html','tour-mode.html','tour-guide-kit.html','environment-map.html','start-here.html'];
+    const exploreFiles = ['ecosystem.html','explore-zones.html','explore-guides.html','tour.html','characters.html','zones.html','badges.html','student-technology-corps.html','corps.html','mission-board.html','tour-mode.html','tour-guide-kit.html','environment-map.html','start-here.html'];
     const activeFor = file => {
       if (file === 'mission-command.html' && ['mission-command.html','missions.html','mission-proposal.html','mission-lifecycle.html'].includes(current)) return ' class="active"';
-      if (file === 'ace-help-desk.html' && ['ace-help-desk.html','tickets.html','guided-learning.html','knowledge-training.html'].includes(current)) return ' class="active"';
-      if (file === 'knowledge-base.html' && ['knowledge-base.html','knowledge-article.html'].includes(current)) return ' class="active"';
+      if (file === 'ace-help-desk.html' && ['ace-help-desk.html','tickets.html','ticket-queue.html','guided-learning.html','knowledge-training.html'].includes(current)) return ' class="active"';
+      if (file === 'knowledge-base.html' && ['knowledge-base.html','knowledge-article.html','knowledge-contribute.html'].includes(current)) return ' class="active"';
       if (file === 'ecosystem.html' && (exploreFiles.includes(current) || location.pathname.includes('/characters/') || location.pathname.includes('/missions/') || location.pathname.includes('/zones/') || location.pathname.includes('/spaces/') || location.pathname.includes('/pages/'))) return ' class="active"';
       return current === file ? ' class="active"' : '';
     };
@@ -213,12 +213,6 @@ function applyKbFilters() {
 }
 
 document.querySelector('[data-kb-filter-input]')?.addEventListener('input', applyKbFilters);
-document.querySelector('[data-kb-filter-input]')?.addEventListener('keydown', event => {
-  if (event.key === 'Enter') {
-    event.preventDefault();
-    document.getElementById('articles')?.scrollIntoView({behavior:'smooth'});
-  }
-});
 document.querySelectorAll('[data-kb-category]').forEach(button => {
   button.addEventListener('click', () => {
     activeKbCategory = button.dataset.kbCategory;
