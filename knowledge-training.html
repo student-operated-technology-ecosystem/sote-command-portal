@@ -4,64 +4,157 @@
 <header class="site-header"><div class="container header-inner"><a class="brand" href="index.html"><img src="assets/img/brand/sote_paw_badge_icon.webp" alt="" width="52" height="52"><span><strong>SOTE Command Portal</strong><small>Student-Operated Technology Ecosystem</small></span></a><button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">Menu</button><nav id="primary-nav" class="primary-nav" aria-label="Primary navigation"><a href="index.html">Home</a><a class="active" href="ace-help-desk.html">Ace Help Desk</a><a href="knowledge-base.html">Knowledge Base</a><a href="projects.html">Projects</a><a href="ecosystem.html">Explore SOTE</a><a href="operator.html">Operator Login</a></nav></div></header>
 
 <main id="main" class="mission-shell"><div class="container mission-container">
-<div class="mission-topbar"><div><p class="eyebrow">CIT-205 Guided Mission</p><strong>Knowledge Base Training</strong></div><div class="mission-progress-copy" aria-live="polite">Step <span id="stepCurrent">1</span> of 8</div></div>
+<div class="mission-topbar"><div><p class="eyebrow">CIT-205 Guided Mission</p><strong>Knowledge Base Training</strong></div><div class="mission-progress-copy" aria-live="polite">Step <span id="stepCurrent">1</span> of 14</div></div>
 <div class="mission-progress" aria-hidden="true"><span id="progressBar"></span></div>
 
 <section class="mission-stage" data-step="1">
-<span class="tag blue">Mission briefing</span><h1>Welcome to the Knowledge Base.</h1>
-<p class="mission-lead">Today you are going to complete a small piece of real SOTE-style work. You do not need to know GitHub yet. This guide stays with you and tells you exactly what to do next.</p>
-<div class="mission-ticket"><span>TRAINING MISSION</span><strong>ACE-TRAIN-001</strong><p>A classroom workstation problem has been resolved, but the solution is not yet documented. Your job is to learn how a technician turns that resolution into reusable knowledge.</p></div>
-<div class="mission-checks"><p><strong>Time:</strong> about 30–40 minutes</p><p><strong>Format:</strong> instructor-led</p><p><strong>Access:</strong> your own GitHub account</p></div>
-<div class="mission-note"><strong>Training boundary</strong><p>You do not need to join the SOTE organization or receive infrastructure access. Use only classroom-safe, fictionalized information.</p></div>
+<span class="tag blue">Mission briefing</span><h1>Build knowledge from a help desk ticket.</h1>
+<p class="mission-lead">You are going to complete a small, safe version of the same workflow used to turn support work into reusable knowledge. You do not need GitHub experience. This guide stays open and tells you exactly what to do next.</p>
+<div class="mission-ticket"><span>TRAINING TICKET</span><strong>ACE-TRAIN-001</strong><p>A workstation user reports that websites will not load. The incident has enough evidence for us to document a safe troubleshooting path.</p></div>
+<div class="mission-checks"><p><strong>Time:</strong> about 35–45 minutes</p><p><strong>Format:</strong> instructor-led</p><p><strong>Goal:</strong> submit a practice Knowledge Article pull request</p></div>
+<div class="mission-note"><strong>Training boundary</strong><p>This is fictional classroom work. Do not use real credentials, student records, private tickets, internal network details, or private screenshots. Classroom participation does not grant SOTE infrastructure authority.</p></div>
 </section>
 
 <section class="mission-stage" data-step="2" hidden>
-<span class="tag blue">Setup</span><h2>Get GitHub ready.</h2>
-<p class="mission-lead">We are going to use two browser tabs. <strong>Keep this training page open.</strong> The portal is your guide. GitHub is your workspace.</p>
-<div class="mission-action"><span>DO THIS</span><p>Open GitHub, sign in with your own account, then come back to this tab. Do not navigate anywhere else yet.</p><a class="button" href="https://github.com/login" target="_blank" rel="noopener noreferrer">Open GitHub in a new tab ↗</a></div>
-<div class="mission-note"><strong>Why two tabs?</strong><p>You should never have to abandon the instructions to complete a task. Every time we send you to GitHub, return here for the next move.</p></div>
+<span class="tag blue">Setup</span><h2>Keep the guide. Open the workspace.</h2>
+<p class="mission-lead">Use two browser tabs today. <strong>Keep this SOTE training page open.</strong> The portal is your guide. GitHub is your workspace.</p>
+<div class="mission-action"><span>DO THIS</span><p>Open GitHub in a new tab, sign in with your own account, then return here. Do not start clicking around yet.</p><a class="button" href="https://github.com/login" target="_blank" rel="noopener noreferrer">Open GitHub in a new tab ↗</a></div>
+<div class="mission-note"><strong>Why this matters</strong><p>You should never have to leave the instructions behind in order to complete the task.</p></div>
 </section>
 
 <section class="mission-stage" data-step="3" hidden>
 <span class="tag blue">Workspace</span><h2>Meet the repository.</h2>
-<p class="mission-lead">Now we will enter the CIT-205 classroom workspace directly. No hunting through GitHub menus.</p>
-<div class="mission-action"><span>DO THIS</span><p>Open the CIT-205 Classroom repository. Look at the repository name near the top of the GitHub page, then return here.</p><a class="button" href="https://github.com/student-operated-technology-ecosystem/CIT-205-classroom" target="_blank" rel="noopener noreferrer">Open CIT-205 Classroom ↗</a></div>
-<div class="mission-concept"><strong>You just met a repository.</strong><p>A <b>repository</b> is a project's workspace. It holds its files, folders, instructions, and change history. For this class, CIT-205 Classroom is our practice workspace.</p></div>
+<p class="mission-lead">Now enter the CIT-205 classroom workspace directly.</p>
+<div class="mission-action"><span>DO THIS</span><p>Open the CIT-205 Classroom repository. Find the repository name near the top of the page and notice the <strong>Public</strong> label. Then return here.</p><a class="button" href="https://github.com/student-operated-technology-ecosystem/CIT-205-classroom" target="_blank" rel="noopener noreferrer">Open CIT-205 Classroom ↗</a></div>
+<div class="mission-concept"><strong>Repository</strong><p>A repository is a project's workspace. It contains files, folders, instructions, and the history of changes.</p></div>
 </section>
 
 <section class="mission-stage" data-step="4" hidden>
-<span class="tag blue">Navigation</span><h2>Find a knowledge article.</h2>
-<p class="mission-lead">Instead of memorizing GitHub's interface, you are going to use it once and learn the pieces as you encounter them.</p>
-<div class="mission-action"><span>DO THIS</span><p>Open the <strong>knowledge</strong> folder below. Inside it, open the worked example. Notice the path GitHub shows above the file.</p><a class="button" href="https://github.com/student-operated-technology-ecosystem/CIT-205-classroom/tree/main/knowledge" target="_blank" rel="noopener noreferrer">Open the Knowledge folder ↗</a></div>
-<div class="mission-concept"><strong>Repository → Folder → File</strong><p>That is most of the GitHub navigation you need today. The path at the top is your trail back through the workspace.</p></div>
+<span class="tag blue">Navigation</span><h2>Follow the trail to a file.</h2>
+<p class="mission-lead">You do not need to memorize GitHub. You only need to understand where you are.</p>
+<div class="mission-action"><span>DO THIS</span><p>Open the <strong>knowledge</strong> folder. Then open <strong>examples</strong>. Then open the no-display Knowledge Article. Watch the path above the file change as you move.</p><a class="button" href="https://github.com/student-operated-technology-ecosystem/CIT-205-classroom/tree/main/knowledge" target="_blank" rel="noopener noreferrer">Open the Knowledge folder ↗</a></div>
+<div class="mission-concept"><strong>Repository → Folder → File</strong><p>That path is your breadcrumb trail. Selecting a name in the path moves you back toward the repository front door.</p></div>
 </section>
 
 <section class="mission-stage" data-step="5" hidden>
-<span class="tag blue">Knowledge</span><h2>Inspect a finished article.</h2>
-<p class="mission-lead">Before you create knowledge, see what useful technician-facing knowledge looks like.</p>
-<div class="mission-action"><span>DO THIS</span><p>Open the worked Knowledge Article. As a class, identify the problem, the checks performed, the resolution, and what another technician would need to repeat the fix.</p><a class="button" href="https://github.com/student-operated-technology-ecosystem/CIT-205-classroom/blob/main/knowledge/examples/KA-EXAMPLE-No-Display.md" target="_blank" rel="noopener noreferrer">Open worked example ↗</a></div>
-<div class="mission-note"><strong>The point</strong><p>A Knowledge Article is not a diary of what happened. It is reusable operational knowledge that helps the next technician solve the same problem safely and efficiently.</p></div>
+<span class="tag blue">Example</span><h2>Read knowledge like a technician.</h2>
+<p class="mission-lead">Before writing anything, inspect a finished classroom example.</p>
+<div class="mission-action"><span>DO THIS</span><p>Open the worked article. With the class, identify four things: the reported problem, one question to ask, one safe troubleshooting step, and one reason to stop and escalate.</p><a class="button" href="https://github.com/student-operated-technology-ecosystem/CIT-205-classroom/blob/main/knowledge/examples/KA-EXAMPLE-No-Display.md" target="_blank" rel="noopener noreferrer">Open worked example ↗</a></div>
+<div class="mission-note"><strong>What makes this knowledge?</strong><p>Another technician can act from it without needing the original technician standing beside them.</p></div>
 </section>
 
 <section class="mission-stage" data-step="6" hidden>
-<span class="tag">ACE-TRAIN-001</span><h2>Turn the ticket into knowledge.</h2>
-<p class="mission-lead">Now the mission becomes yours. You have a resolved support scenario. Your task is to convert it into a technician-facing article.</p>
-<div class="mission-action"><span>DO THIS</span><p>Open the training assignment. Read the scenario first. Then use the classroom Knowledge Article template to organize the resolution. Follow the instructor as we build the first sections together.</p><div class="mission-action-links"><a class="button" href="https://github.com/student-operated-technology-ecosystem/CIT-205-classroom/blob/main/assignments/SCENARIO-TO-KNOWLEDGE-ARTICLE.md" target="_blank" rel="noopener noreferrer">Open training scenario ↗</a><a class="button secondary" href="https://github.com/student-operated-technology-ecosystem/CIT-205-classroom/blob/main/templates/CLASSROOM-KA-TEMPLATE.md" target="_blank" rel="noopener noreferrer">Open KA template ↗</a></div></div>
-<div class="mission-concept"><strong>Workflow connection</strong><p>The ticket records the incident. The Knowledge Article preserves what the organization learned from it.</p></div>
+<span class="tag">ACE-TRAIN-001</span><h2>Read the ticket evidence.</h2>
+<p class="mission-lead">Here is the entire training ticket. You do not need to search for another document.</p>
+<div class="mission-ticket"><span>USER REPORT</span><strong>“This computer says it is connected, but websites will not load.”</strong>
+<p><b>Environment:</b> fictional classroom Windows workstation using a wired network connection.</p>
+<p><b>What changed:</b> the desk area was cleaned and cables were moved earlier that morning.</p>
+<p><b>Observed evidence:</b> the workstation powers on normally. The network icon shows a wired connection. Nearby classroom workstations can reach websites.</p>
+<p><b>Safe checks already performed:</b> the Ethernet cable is visibly connected at the workstation. No equipment has been opened, reset, or reconfigured.</p>
+<p><b>Training resolution evidence:</b> after reseating the accessible Ethernet connection at the workstation, network access returned. A test website loaded successfully.</p></div>
+<div class="mission-note"><strong>Your job</strong><p>Document only what the evidence supports. Do not invent a root cause that was never proven.</p></div>
 </section>
 
 <section class="mission-stage" data-step="7" hidden>
-<span class="tag blue">Contribution</span><h2>See how a change becomes accountable.</h2>
-<p class="mission-lead">GitHub does more than store files. It records who proposed a change, what changed, and how that change was reviewed.</p>
-<div class="mission-action"><span>DO THIS</span><p>Open the example Pull Request. Look at the conversation and the changed file. Then open repository history and notice that each accepted change leaves a record.</p><div class="mission-action-links"><a class="button" href="https://github.com/student-operated-technology-ecosystem/CIT-205-classroom/pull/4" target="_blank" rel="noopener noreferrer">Inspect example PR ↗</a><a class="button secondary" href="https://github.com/student-operated-technology-ecosystem/CIT-205-classroom/commits/main/" target="_blank" rel="noopener noreferrer">View history ↗</a></div></div>
-<div class="mission-concept"><strong>Two words to keep</strong><p>A <b>pull request</b> proposes a contribution for review. <b>History</b> shows the record of accepted changes. You do not need to master every GitHub feature to use this workflow.</p></div>
+<span class="tag blue">Think first</span><h2>Turn evidence into technician guidance.</h2>
+<p class="mission-lead">Before touching GitHub, decide what belongs in the article.</p>
+<div class="mission-action"><span>WITH THE CLASS</span><p>Identify:</p><ul class="checklist"><li>two clarification questions you would ask the user;</li><li>the safest first observable check;</li><li>what action appears to have restored service;</li><li>how you would verify the problem is resolved;</li><li>one condition that should cause a technician to stop and escalate.</li></ul></div>
+<div class="mission-concept"><strong>Important distinction</strong><p>“Reseating the connection restored service” is supported. “The cable was definitely loose” is not proven. Good documentation separates evidence from assumption.</p></div>
 </section>
 
 <section class="mission-stage" data-step="8" hidden>
-<span class="tag green">Mission complete</span><h2>You followed the Knowledge workflow.</h2>
-<p class="mission-lead">You entered a repository, navigated to a file, inspected reusable knowledge, connected a resolved ticket to documentation, and saw how GitHub preserves review and history.</p>
-<div class="mission-flow"><span>Ticket</span><b>→</b><span>Investigation</span><b>→</b><span>Knowledge</span><b>→</b><span>Review</span><b>→</b><span>Reusable Solution</span></div>
-<div class="mission-note"><strong>What matters</strong><p>GitHub is not the mission. The mission is contributing trustworthy knowledge to SOTE. GitHub is one of the tools underneath that workflow.</p></div>
+<span class="tag blue">Markdown</span><h2>Build the practice article.</h2>
+<p class="mission-lead">We will use a small Markdown article for this mission. Markdown is plain text with simple symbols that tell GitHub how to format headings, lists, and emphasis.</p>
+<div class="mission-action"><span>DO THIS</span><p>Copy the practice article below. Replace <strong>YOUR-GITHUB-USERNAME</strong> with your username when you create the file.</p><button class="button" id="copyArticle" type="button">Copy practice article</button></div>
+<pre class="mission-code" id="practiceArticle"># Workstation Connected but Websites Will Not Load
+
+**Status:** Student Draft — not approved operational guidance
+**Scenario:** ACE-TRAIN-001
+**Applies to:** Fictional classroom Windows workstation using a wired network connection
+
+## Problem and Symptoms
+
+The user reports that the workstation appears connected to the network, but websites will not load. Nearby classroom workstations can reach websites.
+
+## Questions to Ask
+
+- When did the problem begin?
+- Did anything change or move around the workstation before the problem started?
+
+## Before You Begin
+
+Obtain permission before moving cables or interrupting the user's work. Do not open equipment, reset network hardware, or change network configuration during this classroom exercise.
+
+## Troubleshooting Steps
+
+1. Confirm the workstation powers on normally.
+2. Observe the network status shown by the workstation.
+3. Compare the symptom with another nearby classroom workstation.
+4. Visually inspect the accessible Ethernet connection at the workstation.
+5. If permitted, reseat the accessible Ethernet connection without forcing or removing secured equipment.
+6. Test access to an instructor-approved website.
+
+## Likely Resolution
+
+Network access returned after the accessible Ethernet connection at the workstation was reseated. The evidence does not prove why the connection failed.
+
+## Verification
+
+Confirm that the workstation can load an instructor-approved website and that the user can resume normal network use.
+
+## Stop and Escalate
+
+Stop if equipment appears damaged, a step requires elevated permission, network configuration changes are required, or the safe checks do not restore access. Record the symptoms, checks, and results for the next technician.
+
+## Sources and Related Knowledge
+
+- ACE-TRAIN-001 classroom training scenario
+
+## Revision Notes
+
+- Initial guided-mission student draft.</pre>
+</section>
+
+<section class="mission-stage" data-step="9" hidden>
+<span class="tag blue">Your workspace</span><h2>Fork the classroom repository.</h2>
+<p class="mission-lead">You cannot write directly into the official classroom repository. A <strong>fork</strong> creates your own GitHub copy to work in.</p>
+<div class="mission-action"><span>DO THIS</span><p>Open the fork page. Choose <strong>Create fork</strong>. When GitHub finishes, confirm that your username appears before <strong>CIT-205-classroom</strong> near the top.</p><a class="button" href="https://github.com/student-operated-technology-ecosystem/CIT-205-classroom/fork" target="_blank" rel="noopener noreferrer">Create your fork ↗</a></div>
+<div class="mission-concept"><strong>Fork</strong><p>Your fork is your copy of the classroom repository. Working there protects the official copy while you build a proposed contribution.</p></div>
+</section>
+
+<section class="mission-stage" data-step="10" hidden>
+<span class="tag blue">Version control</span><h2>Create a branch for this article.</h2>
+<p class="mission-lead">A branch gives this one piece of work its own lane.</p>
+<div class="mission-action"><span>DO THIS IN YOUR FORK</span><ol class="checklist"><li>Select the branch control that currently says <strong>main</strong>.</li><li>Choose the option to view or create branches.</li><li>Create a new branch named <code>article/YOUR-GITHUB-USERNAME-training-network</code>.</li><li>Make sure the new branch is selected before continuing.</li></ol></div>
+<div class="mission-note"><strong>Check yourself</strong><p>The branch name shown above the file list should begin with <strong>article/</strong>. If it still says <strong>main</strong>, stop and ask before continuing.</p></div>
+</section>
+
+<section class="mission-stage" data-step="11" hidden>
+<span class="tag blue">Create the file</span><h2>Add your Knowledge Article.</h2>
+<p class="mission-lead">Now you will create one Markdown file on your branch.</p>
+<div class="mission-action"><span>DO THIS IN YOUR FORK</span><ol class="checklist"><li>Open <strong>knowledge</strong>, then <strong>student-articles</strong>.</li><li>Choose <strong>Add file</strong> and then <strong>Create new file</strong>.</li><li>Name the file <code>KA-YOUR-GITHUB-USERNAME-training-network.md</code>.</li><li>Paste the practice article you copied in Step 8.</li><li>Use the <strong>Preview</strong> tab to see how the Markdown will look.</li></ol><a class="button secondary" href="https://github.com/student-operated-technology-ecosystem/CIT-205-classroom/tree/main/knowledge/student-articles" target="_blank" rel="noopener noreferrer">View destination in classroom repo ↗</a></div>
+<div class="mission-concept"><strong>Code and Preview</strong><p><b>Code</b> shows the Markdown source. <b>Preview</b> shows the formatted result. You will use both when writing Knowledge Articles.</p></div>
+</section>
+
+<section class="mission-stage" data-step="12" hidden>
+<span class="tag blue">Save the work</span><h2>Commit the article to your branch.</h2>
+<p class="mission-lead">In GitHub, saving a version of a change is called a <strong>commit</strong>.</p>
+<div class="mission-action"><span>DO THIS</span><ol class="checklist"><li>Choose <strong>Commit changes…</strong>.</li><li>Use the commit message <code>Add ACE-TRAIN-001 knowledge article</code>.</li><li>Confirm the commit is being made to your article branch, not <strong>main</strong>.</li><li>Commit the change.</li></ol></div>
+<div class="mission-concept"><strong>Commit</strong><p>A commit is a recorded version of your work. It includes the change, who made it, and when it was made.</p></div>
+</section>
+
+<section class="mission-stage" data-step="13" hidden>
+<span class="tag blue">Propose the contribution</span><h2>Open a pull request.</h2>
+<p class="mission-lead">Your article exists in your fork. Now propose that it be reviewed for the classroom repository.</p>
+<div class="mission-action"><span>DO THIS</span><ol class="checklist"><li>Return to the front page of your fork.</li><li>Use GitHub's <strong>Contribute</strong> or <strong>Compare &amp; pull request</strong> option.</li><li>Confirm the destination is <strong>student-operated-technology-ecosystem/CIT-205-classroom</strong> and the base branch is <strong>main</strong>.</li><li>Title the pull request <code>ACE-TRAIN-001 Knowledge Article — YOUR NAME</code>.</li><li>In the description, state that this is a fictional classroom training article based on ACE-TRAIN-001.</li><li>Open the pull request.</li></ol></div>
+<div class="mission-concept"><strong>Pull request</strong><p>A pull request does not silently change the official repository. It proposes your change so another person can inspect, discuss, and review it first.</p></div>
+</section>
+
+<section class="mission-stage" data-step="14" hidden>
+<span class="tag green">Mission complete</span><h2>Inspect the evidence you created.</h2>
+<p class="mission-lead">Before you finish, look at your own pull request. Select <strong>Files changed</strong> and confirm that the only proposed file is your training Knowledge Article.</p>
+<div class="mission-flow"><span>Ticket</span><b>→</b><span>Evidence</span><b>→</b><span>Knowledge</span><b>→</b><span>Commit</span><b>→</b><span>Pull Request</span><b>→</b><span>Review</span></div>
+<div class="mission-note"><strong>You just completed the workflow.</strong><p>You used a help desk ticket to create reusable knowledge, placed the work in your own GitHub workspace, recorded the change, and proposed it for review. GitHub was the tool. The operational goal was trustworthy shared knowledge.</p></div>
 <div class="mission-action-links"><a class="button" href="knowledge-base.html">Return to Knowledge Base →</a><a class="button secondary" href="guided-learning.html">Guided Learning home</a></div>
 </section>
 
@@ -72,5 +165,7 @@
 <script>
 (()=>{const stages=[...document.querySelectorAll('.mission-stage')],prev=document.getElementById('prevStep'),next=document.getElementById('nextStep'),current=document.getElementById('stepCurrent'),bar=document.getElementById('progressBar');let i=0;
 function show(n){i=Math.max(0,Math.min(stages.length-1,n));stages.forEach((s,x)=>s.hidden=x!==i);current.textContent=i+1;bar.style.width=((i+1)/stages.length*100)+'%';prev.disabled=i===0;next.hidden=i===stages.length-1;window.scrollTo({top:0,behavior:'smooth'});}
-prev.addEventListener('click',()=>show(i-1));next.addEventListener('click',()=>show(i+1));show(0);})();
+prev.addEventListener('click',()=>show(i-1));next.addEventListener('click',()=>show(i+1));
+const copy=document.getElementById('copyArticle'); if(copy){copy.addEventListener('click',async()=>{const text=document.getElementById('practiceArticle').innerText;try{await navigator.clipboard.writeText(text);copy.textContent='Copied ✓';setTimeout(()=>copy.textContent='Copy practice article',1800);}catch(e){copy.textContent='Select and copy the text below';}});}
+show(0);})();
 </script></body></html>
