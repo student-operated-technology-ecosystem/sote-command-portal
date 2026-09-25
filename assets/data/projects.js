@@ -1,5 +1,5 @@
 window.SOTE_PROJECT_DATA = {
-  "generated_at": "2026-09-25T18:34:46Z",
+  "generated_at": "2026-09-25T22:18:24Z",
   "source": "student-operated-technology-ecosystem/SOTE-framework",
   "issues": [
     {
