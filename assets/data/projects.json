@@ -1,7 +1,14 @@
 {
-  "generated_at": "2026-09-25T13:44:49Z",
+  "generated_at": "2026-09-25T18:34:46Z",
   "source": "student-operated-technology-ecosystem/SOTE-framework",
   "issues": [
+    {
+      "number": 53,
+      "title": "MISSION COMMAND | Portal mission management and proposal submission",
+      "updated_at": "2026-09-25T14:13:53Z",
+      "html_url": "https://github.com/student-operated-technology-ecosystem/SOTE-framework/issues/53",
+      "labels": []
+    },
     {
       "number": 51,
       "title": "Rack 3 Network Device Deployment",
@@ -157,6 +164,42 @@
   ],
   "commits": [
     {
+      "sha": "3e3a759cee2983ba1061be7ee9d6e1b5adb9de64",
+      "message": "Mission Command: add MISSION-COMMAND.md",
+      "created_at": "2026-09-25T14:13:44Z",
+      "html_url": "https://github.com/student-operated-technology-ecosystem/SOTE-framework/commit/3e3a759cee2983ba1061be7ee9d6e1b5adb9de64"
+    },
+    {
+      "sha": "a21e0973c4d301b90e85b6ab1c20bbc4fafbc41a",
+      "message": "Mission Command: add mission-deployment-validation-handoff.md",
+      "created_at": "2026-09-25T14:13:27Z",
+      "html_url": "https://github.com/student-operated-technology-ecosystem/SOTE-framework/commit/a21e0973c4d301b90e85b6ab1c20bbc4fafbc41a"
+    },
+    {
+      "sha": "4357b27dc3cc122f074c432af28bee2b6451d455",
+      "message": "Mission Command: add mission-budget-bom.md",
+      "created_at": "2026-09-25T14:13:25Z",
+      "html_url": "https://github.com/student-operated-technology-ecosystem/SOTE-framework/commit/4357b27dc3cc122f074c432af28bee2b6451d455"
+    },
+    {
+      "sha": "3dcd97b1c473a1936ed972f1ed1f1a82a0fe0ddb",
+      "message": "Mission Command: add mission-command-review.md",
+      "created_at": "2026-09-25T14:13:23Z",
+      "html_url": "https://github.com/student-operated-technology-ecosystem/SOTE-framework/commit/3dcd97b1c473a1936ed972f1ed1f1a82a0fe0ddb"
+    },
+    {
+      "sha": "e906f096e69c4b9c37a685ec5c129e4bfb622eb3",
+      "message": "Mission Command: add mission-proposal.md",
+      "created_at": "2026-09-25T14:13:20Z",
+      "html_url": "https://github.com/student-operated-technology-ecosystem/SOTE-framework/commit/e906f096e69c4b9c37a685ec5c129e4bfb622eb3"
+    },
+    {
+      "sha": "bfa8c6be35fc2c85e087f5800c4d2198780c8ad7",
+      "message": "Mission Command: add 03-sote-mission-command.md",
+      "created_at": "2026-09-25T14:13:18Z",
+      "html_url": "https://github.com/student-operated-technology-ecosystem/SOTE-framework/commit/bfa8c6be35fc2c85e087f5800c4d2198780c8ad7"
+    },
+    {
       "sha": "6a0fba68ba17f9c6b570ff2611d4a407dedc4a51",
       "message": "Remove abandoned CIT-205 organization enrollment workflow",
       "created_at": "2026-09-24T14:23:03Z",
@@ -167,42 +210,6 @@
       "message": "Remove abandoned CIT-205 organization enrollment workflow",
       "created_at": "2026-09-24T14:23:00Z",
       "html_url": "https://github.com/student-operated-technology-ecosystem/SOTE-framework/commit/d58b1b848331d375a2e50fd001d21a4d5ca7fd08"
-    },
-    {
-      "sha": "324de6fab4d984589cab5329e4df73f5e33a6bd0",
-      "message": "Add CIT-205 GitHub enrollment roster with Caleb",
-      "created_at": "2026-09-24T14:21:17Z",
-      "html_url": "https://github.com/student-operated-technology-ecosystem/SOTE-framework/commit/324de6fab4d984589cab5329e4df73f5e33a6bd0"
-    },
-    {
-      "sha": "0ea395509e38e21780a9d7247188a6f146111d0b",
-      "message": "Add CIT-205 enrollment script",
-      "created_at": "2026-09-24T14:21:15Z",
-      "html_url": "https://github.com/student-operated-technology-ecosystem/SOTE-framework/commit/0ea395509e38e21780a9d7247188a6f146111d0b"
-    },
-    {
-      "sha": "cc465747b32cbd4655d790f42a920b0e5ea0fbef",
-      "message": "Add CIT-205 student enrollment workflow",
-      "created_at": "2026-09-24T14:21:14Z",
-      "html_url": "https://github.com/student-operated-technology-ecosystem/SOTE-framework/commit/cc465747b32cbd4655d790f42a920b0e5ea0fbef"
-    },
-    {
-      "sha": "f5168307295fcc41a59b14f545a1310b114c4679",
-      "message": "Document Command Portal Knowledge Base publication pipeline",
-      "created_at": "2026-09-23T18:46:39Z",
-      "html_url": "https://github.com/student-operated-technology-ecosystem/SOTE-framework/commit/f5168307295fcc41a59b14f545a1310b114c4679"
-    },
-    {
-      "sha": "368de33a5e94cd965453fae12ebfc8fce7b01894",
-      "message": "Add reviewed Knowledge Base catalog publishing workflow",
-      "created_at": "2026-09-23T18:46:31Z",
-      "html_url": "https://github.com/student-operated-technology-ecosystem/SOTE-framework/commit/368de33a5e94cd965453fae12ebfc8fce7b01894"
-    },
-    {
-      "sha": "4a03ea7ed20249676d10f3a9ffc46c8c64c38bc2",
-      "message": "Document the deployed public CIT-205 classroom repository (#50)",
-      "created_at": "2026-09-23T17:07:11Z",
-      "html_url": "https://github.com/student-operated-technology-ecosystem/SOTE-framework/commit/4a03ea7ed20249676d10f3a9ffc46c8c64c38bc2"
     }
   ]
 }
