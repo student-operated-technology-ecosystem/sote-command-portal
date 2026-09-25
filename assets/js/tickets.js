@@ -25,6 +25,7 @@
     host.innerHTML = '<p>No ticket-designated items are available in the current snapshot. Operators can check the operations repository for the full queue.</p>';
     return;
   }
+  host.replaceChildren();
   tickets.forEach(issue => {
     const item = document.createElement('article');
     item.className = 'ticket-row';
