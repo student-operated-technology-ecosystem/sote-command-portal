@@ -658,3 +658,10 @@ body#top .home-hero-visual img { max-height:none; object-fit:cover; }
   .ticket-row { grid-template-columns:46px 1fr; gap:8px; }
   .ticket-state { grid-column:2; }
 }
+
+/* Validation drafts must not look like approved/online procedures. */
+.kb-card .status-badge.status-online {
+  color: #ffe5ad;
+  background: rgba(244,181,68,.13);
+  border-color: rgba(244,181,68,.52);
+}
