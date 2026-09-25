@@ -4,7 +4,7 @@
 <header class="site-header"><div class="container header-inner"><a class="brand" href="index.html"><img src="assets/img/brand/sote_paw_badge_icon.webp" alt="" width="52" height="52"><span><strong>SOTE Command Portal</strong><small>Student-Operated Technology Ecosystem</small></span></a><button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">Menu</button><nav id="primary-nav" class="primary-nav" aria-label="Primary navigation"><a href="index.html">Home</a><a class="active" href="ace-help-desk.html">Ace Help Desk</a><a href="knowledge-base.html">Knowledge Base</a><a href="projects.html">Projects</a><a href="ecosystem.html">Explore SOTE</a><a href="operator.html">Operator Login</a></nav></div></header>
 
 <main id="main" class="mission-shell"><div class="container mission-container">
-<div class="mission-topbar"><div><p class="eyebrow">CIT-205 Guided Mission</p><strong>Knowledge Base Training</strong></div><div class="mission-progress-copy" aria-live="polite">Step <span id="stepCurrent">1</span> of 14</div></div>
+<div class="mission-topbar"><div><p class="eyebrow">CIT-205 Guided Mission</p><strong>Knowledge Base Training</strong></div><div class="mission-progress-copy" aria-live="polite">Step <span id="stepCurrent">1</span> of 15</div></div>
 <div class="mission-progress" aria-hidden="true"><span id="progressBar"></span></div>
 
 <section class="mission-stage" data-step="1">
@@ -208,11 +208,22 @@ Stop if equipment appears damaged, a step requires elevated permission, network 
 </section>
 
 <section class="mission-stage" data-step="14" hidden>
-<span class="tag green">Mission complete</span><h2>Inspect the evidence you created.</h2>
-<p class="mission-lead">Before you finish, look at your own pull request. Select <strong>Files changed</strong> and confirm that the only proposed file is your training Knowledge Article.</p>
-<div class="mission-flow"><span>Ticket</span><b>→</b><span>Evidence</span><b>→</b><span>Knowledge</span><b>→</b><span>Commit</span><b>→</b><span>Pull Request</span><b>→</b><span>Review</span></div>
-<div class="mission-note"><strong>You just completed the workflow.</strong><p>You used a help desk ticket to create reusable knowledge, placed the work in your own GitHub workspace, recorded the change, and proposed it for review. GitHub was the tool. The operational goal was trustworthy shared knowledge.</p></div>
-<div class="mission-action-links"><a class="button" href="knowledge-base.html">Return to Knowledge Base →</a><a class="button secondary" href="guided-learning.html">Guided Learning home</a></div>
+<span class="tag blue">After submission</span><h2>What happens to your pull request now?</h2>
+<p class="mission-lead">Creating the pull request does <strong>not</strong> publish the article into the classroom Knowledge Base. It moves the article into review.</p>
+<div class="mission-flow"><span>Student Draft</span><b>→</b><span>Pull Request</span><b>→</b><span>Peer Review</span><b>→</b><span>Revision</span><b>→</b><span>Instructor Review</span><b>→</b><span>Classroom Accepted</span></div>
+<div class="mission-action"><span>1 · PEER REVIEW</span><p>A classmate reads the rendered article, then uses <strong>Files changed</strong> to attach feedback to exact lines. The reviewer proposes improvements; the reviewer does not directly rewrite your branch.</p></div>
+<div class="mission-action"><span>2 · REVISE THE SAME BRANCH</span><p>You edit the article on the same <code>article/...</code> branch and commit the revision. The open pull request updates automatically, so the discussion and revision history stay together.</p></div>
+<div class="mission-action"><span>3 · INSTRUCTOR REVIEW</span><p>The instructor checks the article, peer feedback, and your revision. If it is ready for classroom use, the instructor merges the pull request into the classroom repository's <code>main</code> branch.</p></div>
+<div class="mission-action"><span>4 · CLASSROOM ACCEPTED</span><p>After the merge, the article becomes part of the shared <strong>CIT-205 Classroom Knowledge Base</strong>. That means it is accepted for classroom learning. It does <strong>not</strong> automatically become official SOTE operational guidance.</p></div>
+<div class="mission-note"><strong>Classroom knowledge and SOTE canon are separate.</strong><p>A strong classroom article can later be reviewed, adapted, and promoted into the governed SOTE infrastructure Knowledge Base. That promotion is a separate decision. Classroom acceptance is the proving ground; SOTE canon is the operational publication layer.</p></div>
+</section>
+
+<section class="mission-stage" data-step="15" hidden>
+<span class="tag green">Mission complete</span><h2>You proposed a new Knowledge Article.</h2>
+<p class="mission-lead">Look at your open pull request and select <strong>Files changed</strong>. Confirm that the proposal contains only your training Knowledge Article.</p>
+<div class="mission-flow"><span>Word Draft</span><b>→</b><span>Markdown</span><b>→</b><span>Fork</span><b>→</b><span>Branch</span><b>→</b><span>Commit</span><b>→</b><span>Pull Request</span><b>→</b><span>Review</span></div>
+<div class="mission-note"><strong>The workflow is the lesson.</strong><p>You did not publish directly into shared knowledge. You proposed a change, preserved its history, and created a review point before anything can enter the classroom Knowledge Base.</p></div>
+<div class="mission-action-links"><a class="button" href="knowledge-improvement-training.html">Next mission: improve an existing article →</a><a class="button secondary" href="guided-learning.html">Guided Learning home</a></div>
 </section>
 
 <div class="mission-nav"><button class="button secondary" id="prevStep" type="button" disabled>← Previous</button><button class="button" id="nextStep" type="button">Next →</button></div>
