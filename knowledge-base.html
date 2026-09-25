@@ -3,39 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="SOTE Knowledge Base: approved operational knowledge and classroom contribution pathways.">
+<meta name="description" content="SOTE Knowledge Base: search public-safe articles in validation and learn the contribution workflow.">
 <title>Knowledge Base | SOTE Command Portal</title>
 <link rel="icon" href="assets/img/brand/sote_paw_badge_icon.webp" type="image/webp">
-<link rel="stylesheet" href="assets/css/styles.css">
-<style>
-@media (max-width: 760px){
-  .compact-hero{padding:32px 0 28px}
-  .compact-hero .hero-grid{display:block}
-  .compact-hero h1{font-size:clamp(2.5rem,12vw,3.65rem);line-height:.98;margin-bottom:18px}
-  .compact-hero .hero-text{font-size:1.08rem;line-height:1.55}
-  .compact-hero .hero-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:22px}
-  .compact-hero .hero-actions .button{width:100%;padding:13px 14px;text-align:center;font-size:.95rem}
-  .compact-hero .hero-panel{margin-top:22px;display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:14px}
-  .compact-hero .hero-panel span{padding:11px 12px;font-size:.86rem}
-  .compact-hero .hero-panel strong{grid-column:1/-1;padding:4px 4px 0;font-size:.9rem}
-}
-@media (max-width: 430px){
-  .compact-hero .hero-actions{grid-template-columns:1fr}
-}
-</style><style>
-.mobile-title,.mobile-copy{display:none}
-@media (max-width:760px){
-  .desktop-title,.desktop-copy{display:none!important}
-  .mobile-title,.mobile-copy{display:inline}
-  .compact-hero{padding:24px 0 18px}
-  .compact-hero h1{font-size:clamp(2.45rem,11vw,3.3rem);line-height:1;margin:8px 0 12px}
-  .compact-hero .hero-text{font-size:1.02rem;line-height:1.45;margin-bottom:0}
-  .compact-hero .hero-actions{display:grid!important;grid-template-columns:1fr 1fr!important;gap:8px!important;margin-top:18px!important}
-  .compact-hero .hero-actions .button{padding:12px 8px!important;font-size:.86rem!important;white-space:nowrap}
-  .compact-hero .hero-panel{display:none!important}
-  #articles{padding-top:26px}
-}
-</style></head>
+<link rel="stylesheet" href="assets/css/styles.css?v=20260925-service">
+</head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
 <div class="prototype-banner">SOTE Command Portal operational knowledge preview. Public-safe content only.</div>
@@ -44,22 +16,10 @@
 <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">Menu</button>
 <nav id="primary-nav" class="primary-nav" aria-label="Primary navigation"><a href="index.html">Home</a><a href="ace-help-desk.html">Ace Help Desk</a><a href="knowledge-base.html">Knowledge Base</a><a href="projects.html">Projects</a><a href="ecosystem.html">Explore SOTE</a><a href="operator.html">Operator Login</a></nav></div></header>
 <main id="main">
-<section class="hero compact-hero"><div class="container hero-grid"><div>
-<p class="eyebrow">Operational knowledge</p><h1><span class="desktop-title">SOTE Knowledge Base</span><span class="mobile-title">Knowledge Base</span></h1>
-<p class="hero-text"><span class="desktop-copy">Find approved technical knowledge, understand where it came from, and learn how SOTE turns troubleshooting into reusable institutional knowledge.</span><span class="mobile-copy">Approved SOTE procedures, troubleshooting, and operational knowledge.</span></p>
-<div class="hero-actions"><a class="button" href="#articles">Browse Knowledge</a><a class="button secondary" href="#contribute"><span class="desktop-copy">Contribute Knowledge</span><span class="mobile-copy">Contribute</span></a></div>
-</div><div class="hero-panel"><span>Ticket / Mission</span><span>Troubleshoot + Evidence</span><span>Knowledge Article</span><span>Review + Merge</span><strong>Future technician benefits</strong></div></div></section>
+<section class="hero compact-hero service-hero"><div class="container"><p class="eyebrow">SOTE Knowledge Base</p><h1>Find what you need to do next.</h1><p class="hero-text">Search procedures and learning articles by task, device, or symptom. Check each article’s validation status before using it for operational work.</p><div class="filter-panel kb-hero-search"><label for="kb-search">What are you trying to do?</label><input id="kb-search" data-kb-filter-input type="search" placeholder="Try console access, rack inventory, or temperature..."></div><div class="hero-actions"><a class="button secondary" href="tickets.html#new">Request help</a></div></div></section>
 
-<section class="section alt"><div class="container"><div class="section-heading"><h2>One knowledge system, different jobs.</h2><p>The Command Portal is the readable front door. The SOTE Framework repository remains the controlled source for operational Markdown, review history, and accepted changes.</p></div>
-<div class="four-grid">
-<article class="card"><span class="tag blue">GLPI</span><h3>Work enters</h3><p>Tickets record incidents, requests, troubleshooting context, and future links to approved knowledge.</p></article>
-<article class="card"><span class="tag orange">GitHub</span><h3>Knowledge changes</h3><p>Branches and pull requests make proposed documentation changes visible and reviewable before acceptance.</p></article>
-<article class="card"><span class="tag green">Knowledge Base</span><h3>Technicians read</h3><p>Approved articles become easy to discover and use from the Command Portal.</p></article>
-<article class="card"><span class="tag purple">Codex</span><h3>SOTE stays consistent</h3><p>Names, vocabulary, zones, characters, mission language, and public-safe rules remain governed by the Codex.</p></article>
-</div></div></section>
+<section class="section" id="articles"><div class="container"><div class="section-heading"><h2>Articles in validation</h2><p>These public-safe drafts support classroom review and testing. They are not yet approved production procedures. If you need support with a current issue, <a href="tickets.html#new">start a Help Desk request</a>.</p></div>
 
-<section class="section" id="articles"><div class="container"><div class="section-heading"><h2>Current operational Knowledge Articles</h2><p>These articles are currently in validation. Open an article to read the public-safe technician procedure, see its current status, and use it for classroom review and learning.</p></div>
-<div class="filter-panel"><label for="kb-search">Search the Knowledge Base</label><input id="kb-search" data-kb-filter-input type="search" placeholder="Try Cisco, console, rack, temperature, power..."></div>
 <div class="status-filter-bar"><button class="active" data-kb-category="all">All</button><button data-kb-category="network">Network devices</button><button data-kb-category="environment">Equipment & environment</button></div>
 <div class="project-board" data-kb-list>
 <article class="project-card"><h3>Loading Knowledge Base…</h3><p>Reading the current public-safe catalog.</p></article>
@@ -67,24 +27,8 @@
 <p class="page-note" data-kb-empty hidden>No articles match that search yet.</p>
 </div></section>
 
-<section class="section alt" id="contribute"><div class="container">
-<div class="section-heading"><p class="eyebrow">Contribute</p><h2>Add to the Knowledge Base</h2><p>Turn a solved problem into reusable knowledge. Classroom participants can use the guided training session; experienced contributors can go directly to the contribution workflow.</p></div>
-<div class="card-grid">
-<article class="card"><span class="tag green">Direct path</span><h3>Contribute Knowledge</h3><p>Already know the workflow? Open the contribution guide and prepare your Knowledge Article for review.</p><a class="button" href="https://github.com/student-operated-technology-ecosystem/CIT-205-classroom/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer">Contribute Knowledge →</a></article>
-<article class="card"><span class="tag blue">Guided learning</span><h3>Training Session</h3><p>New to GitHub or the SOTE knowledge workflow? Use the CIT-205 training session for onboarding, the assignment, article template, peer review, revision, and version-history practice.</p><a class="button secondary" href="knowledge-training.html">Open Training Session →</a></article>
-</div>
-</div></section>
-
-<section class="section"><div class="container"><div class="section-heading"><h2>Knowledge article standard</h2><p>Operational articles use a consistent structure so technicians know what they are allowed to do, what success looks like, what evidence to preserve, and when to stop.</p></div>
-<div class="card-grid">
-<article class="card"><h3>Purpose & scope</h3><p>What the article teaches, where it applies, and what authorization is required.</p></article>
-<article class="card"><h3>Stop & escalate</h3><p>Explicit boundaries for safety, destructive actions, uncertainty, and production impact.</p></article>
-<article class="card"><h3>Procedure & results</h3><p>Execution-order steps plus expected and alternate states.</p></article>
-<article class="card"><h3>Evidence</h3><p>Outputs, screenshots, measurements, logs, or notes that make the work defensible.</p></article>
-<article class="card"><h3>Troubleshooting</h3><p>Safe recovery guidance without inviting improvisation beyond authorization.</p></article>
-<article class="card"><h3>Version history</h3><p>Related missions, runbooks, knowledge, and a traceable history of accepted changes.</p></article>
-</div></div></section>
+<section class="section alt" id="contribute"><div class="container"><div class="section-heading"><p class="eyebrow">Improve the knowledge</p><h2>Found a gap or solved a problem?</h2><p>Operators can propose a correction or turn a completed ticket into an article. Changes are reviewed before becoming approved guidance.</p></div><div class="knowledge-next"><a class="button" href="knowledge-training.html">Learn the contribution workflow</a><a class="text-link" href="https://github.com/student-operated-technology-ecosystem/CIT-205-classroom/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer">Experienced contributors: open the review guide →</a></div></div></section>
 </main>
 <footer class="site-footer"><div class="container footer-grid"><div><strong>SOTE Command Portal</strong><p>Operational knowledge built from real learning and reviewed work.</p></div><div><strong>Knowledge source</strong><p>SOTE Framework repository</p></div><div><strong>Safety rule</strong><p>No private student data, credentials, secrets, or sensitive infrastructure details.</p></div></div></footer>
-<script src="assets/js/main.js?v=20260923-navfix2"></script>
+<script src="assets/js/main.js?v=20260925-service"></script>
 </body></html>

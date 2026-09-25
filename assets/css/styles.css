@@ -599,3 +599,62 @@ th { color: var(--gold); background: rgba(7,17,31,.55); }
   body#top .home-paths .card-link{padding-top:5px;font-size:.88rem}
   body#top .tag{font-size:.68rem;padding:5px 9px}
 }
+
+/* Service-facing editorial pass */
+body { background: radial-gradient(circle at 90% 0%, rgba(95,211,255,.10), transparent 34%), var(--bg); }
+.service-hero { padding: 58px 0 46px; border-bottom: 1px solid var(--line); }
+.service-hero h1 { max-width: 920px; font-size: clamp(2.6rem,5vw,4.6rem); line-height: 1.04; }
+.service-hero .hero-text { max-width: 700px; }
+.service-hero .hero-actions { margin-top: 28px; }
+.home-feature-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; }
+.home-feature { display:flex; flex-direction:column; min-height:225px; background:rgba(255,255,255,.035); box-shadow:none; }
+.home-feature .eyebrow { font-size:.72rem; margin-bottom:12px; }
+.home-feature .card-link { margin-top:auto; }
+body#top .home-hero { padding:62px 0 44px; }
+body#top .home-paths { padding:38px 0 60px; border-top:1px solid var(--line); }
+body#top .home-hero-copy h1 { font-size:clamp(2.7rem,5vw,4.8rem); line-height:1.02; }
+body#top .home-hero-visual img { max-height:none; object-fit:cover; }
+.narrow-content { max-width:820px; }
+.ticket-form { display:grid; gap:12px; background:rgba(255,255,255,.035); box-shadow:none; }
+.ticket-form label { display:block; font-weight:700; margin-top:8px; }
+.ticket-form input,.ticket-form textarea { display:block; width:100%; padding:13px 15px; border-radius:10px; border:1px solid var(--line); background:#101c2a; color:var(--text); font:inherit; }
+.ticket-form textarea { min-height:150px; resize:vertical; }
+.ticket-actions { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+.ticket-form .button { justify-self:start; cursor:pointer; margin-top:8px; }
+.required { font-size:.75rem; font-weight:400; color:var(--muted); }
+.form-boundary { border-left:3px solid var(--gold); padding-left:14px; font-size:.9rem; }
+.form-help { font-size:.84rem; margin:0; }
+.ticket-list { display:grid; gap:0; border-top:1px solid var(--line); }
+.ticket-row { display:grid; grid-template-columns:70px 1fr auto; gap:16px; align-items:center; padding:17px 4px; border-bottom:1px solid var(--line); }
+.ticket-row h3 { margin:0; font-size:1rem; font-weight:650; }
+.ticket-number { color:var(--gold); font-weight:700; }
+.ticket-state { color:var(--green); font-size:.8rem; }
+.service-steps { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; border-top:1px solid var(--line); border-bottom:1px solid var(--line); padding:25px 0; }
+.service-steps span { color:var(--gold); font-weight:700; display:block; margin-bottom:8px; }
+.service-steps strong { font-size:1.1rem; }
+.service-steps p { margin:6px 0 0; }
+.service-secondary { margin:50px 0 12px; max-width:700px; }
+.text-link { color:var(--gold); font-weight:700; text-decoration:none; }
+.text-link:hover,.text-link:focus { text-decoration:underline; }
+.knowledge-next { display:flex; flex-wrap:wrap; align-items:center; gap:20px; }
+.kb-hero-search { max-width:700px; margin:28px 0 0; }
+.kb-hero-search label { display:block; font-weight:700; margin-bottom:8px; }
+.kb-hero-search input { width:100%; padding:16px 18px; border:1px solid rgba(95,211,255,.4); border-radius:12px; background:#101c2a; color:var(--text); font:inherit; }
+.kb-hero-search input:focus { outline:2px solid var(--blue); outline-offset:2px; }
+.ka-document h4 { color:var(--text); font-size:1.1rem; margin:22px 0 8px; }
+.ka-contents { display:flex; flex-wrap:wrap; gap:8px 16px; border-block:1px solid var(--line); padding:18px 0; margin:22px 0; }
+.ka-contents strong { width:100%; color:var(--gold); }
+.ka-contents a { color:var(--blue); font-size:.85rem; text-decoration:none; }
+.ka-contents a:hover { text-decoration:underline; }
+.ka-document h2 { scroll-margin-top:110px; }
+@media(max-width:760px){
+  .home-feature-grid,.service-steps,.ticket-actions { grid-template-columns:1fr; }
+  body#top .home-hero { padding:26px 0 30px; }
+  body#top .home-hero-copy { text-align:left; }
+  body#top .home-hero-copy .hero-text { max-width:none; margin:14px 0 0; }
+  body#top .home-hero-visual img { max-height:220px; }
+  .service-hero { padding:36px 0; }
+  .service-hero .hero-actions { display:flex!important; }
+  .ticket-row { grid-template-columns:46px 1fr; gap:8px; }
+  .ticket-state { grid-column:2; }
+}
