@@ -1,5 +1,6 @@
 name: Refresh SOTE Project Dashboard
 
+# Touching this workflow intentionally triggers an immediate dashboard refresh.
 on:
   schedule:
     - cron: "17 * * * *"
