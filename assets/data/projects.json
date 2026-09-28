@@ -1,7 +1,21 @@
 {
-  "generated_at": "2026-09-28T15:25:14Z",
+  "generated_at": "2026-09-28T18:10:07Z",
   "source": "student-operated-technology-ecosystem/SOTE-framework",
   "issues": [
+    {
+      "number": 55,
+      "title": "MISSION | SOTE Help Desk Library Pilot",
+      "updated_at": "2026-09-28T17:56:20Z",
+      "html_url": "https://github.com/student-operated-technology-ecosystem/SOTE-framework/issues/55",
+      "labels": []
+    },
+    {
+      "number": 54,
+      "title": "MISSION | Cybersecurity Collaboration Lab Connectivity",
+      "updated_at": "2026-09-28T17:56:00Z",
+      "html_url": "https://github.com/student-operated-technology-ecosystem/SOTE-framework/issues/54",
+      "labels": []
+    },
     {
       "number": 53,
       "title": "MISSION COMMAND | Portal mission management and proposal submission",
