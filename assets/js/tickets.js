@@ -20,15 +20,17 @@
   const host = document.getElementById('ticket-list');
   if (!host) return;
   const issues = window.SOTE_PROJECT_DATA?.issues || [];
-  const tickets = issues.filter(issue => /^\[TICKET\]/i.test(issue.title || '')).slice(0, 8);
+  const tickets = issues.filter(issue => /^\[TICKET\]/i.test(issue.title || '')).slice(0, 25);
   if (!tickets.length) {
-    host.innerHTML = '<p>No ticket-designated items are available in the current snapshot. Operators can check the operations repository for the full queue.</p>';
+    host.innerHTML = '<p>No ticket-designated items are available in the current snapshot.</p>';
     return;
   }
   host.replaceChildren();
   tickets.forEach(issue => {
-    const item = document.createElement('article');
+    const item = document.createElement('a');
     item.className = 'ticket-row';
+    item.href = 'ticket.html?id=' + encodeURIComponent(issue.number);
+    item.setAttribute('aria-label', 'Open ticket #' + issue.number + ': ' + issue.title.replace(/^\[TICKET\]\s*/i, ''));
     const label = document.createElement('span');
     label.className = 'ticket-number';
     label.textContent = '#' + issue.number;
@@ -36,7 +38,7 @@
     title.textContent = issue.title.replace(/^\[TICKET\]\s*/i, '');
     const status = document.createElement('span');
     status.className = 'ticket-state';
-    status.textContent = 'Open';
+    status.textContent = issue.state === 'closed' ? 'Resolved' : 'Open';
     item.append(label, title, status);
     host.append(item);
   });
