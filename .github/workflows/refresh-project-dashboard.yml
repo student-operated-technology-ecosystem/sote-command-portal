@@ -53,7 +53,7 @@ jobs:
           jq -n --arg generated_at "$(date -u +%Y-%m-%dT%H:%M:%SZ)" --arg source "student-operated-technology-ecosystem/SOTE-framework" --slurpfile issues /tmp/issues.json --slurpfile commits /tmp/commits.json '{
             generated_at:$generated_at,
             source:$source,
-            issues:[$issues[0][] | select(.pull_request|not) | {number,title,updated_at,html_url,labels:[.labels[].name]}],
+            issues:[$issues[0][] | select(.pull_request|not) | {number,title,body,updated_at,html_url,labels:[.labels[].name]}],
             commits:[$commits[0][] | {sha,message:.commit.message,created_at:.commit.committer.date,html_url}]
           }' > assets/data/projects.json
           printf 'window.SOTE_PROJECT_DATA = ' > assets/data/projects.js
