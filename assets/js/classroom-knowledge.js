@@ -60,7 +60,8 @@
     if(!/^KA-[A-Za-z0-9_.-]+\.md$/.test(file)) { root.innerHTML='<div class="callout"><h1>Article not found</h1><p>Return to the Knowledge Base and choose an available article.</p></div>'; return true; }
     try {
       const r=await fetch(RAW+encodeURIComponent(file)); if(!r.ok) throw Error(); const text=await r.text();
-      root.innerHTML='<div class="ka-status-warning"><strong>Classroom Accepted</strong><span>Accepted for CIT-205 learning. This is not authorization to modify production or SOTE infrastructure.</span></div><article class="ka-document">'+markdown(text)+'</article><div class="destination-links"><a href="knowledge-contribute.html">Found a gap? Suggest an improvement →</a></div>';
+      const improve='knowledge-contribute.html?source=classroom&file='+encodeURIComponent(file);
+      root.innerHTML='<div class="ka-status-warning"><strong>Classroom Accepted</strong><span>Accepted for CIT-205 learning. This is not authorization to modify production or SOTE infrastructure.</span></div><article class="ka-document">'+markdown(text)+'</article><div class="destination-links"><a href="'+improve+'">Found a problem? Propose a change →</a></div>';
       document.title='CIT-205 Knowledge Article | SOTE Command Portal';
     } catch(e) { root.innerHTML='<div class="callout"><h1>Article unavailable</h1><p>The classroom article could not be loaded.</p></div>'; }
     return true;
