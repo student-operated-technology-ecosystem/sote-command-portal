@@ -1,0 +1,93 @@
+{
+  "generated_for": "visibility-layer-phase1",
+  "source_model": "GitHub-backed pre-NetBox infrastructure metadata",
+  "zones": [
+    {
+      "id": "zone-0",
+      "name": "Classroom / Endpoints",
+      "trust_level": "instructional",
+      "standing_authority": ["Students within assigned workstation scope", "Mission Technicians within approved mission scope"],
+      "areas": ["CEIT 325 Classroom"]
+    },
+    {
+      "id": "zone-1",
+      "name": "Rack 1 / Mission Control",
+      "trust_level": "instructional-infrastructure",
+      "standing_authority": ["SOTE Operations", "Mission Command"],
+      "mission_authority": "Mission Technicians may administer specifically designated instructional equipment only.",
+      "areas": ["Mission Control", "Designated Networking 2 instructional devices", "Aggregation core"]
+    },
+    {
+      "id": "zone-2",
+      "name": "Rack 2 / Production SOTE",
+      "trust_level": "production",
+      "standing_authority": ["SOTE Operations", "Mission Command"],
+      "mission_authority": "Mission Technicians may consume authorized services; infrastructure administration requires explicit mission authorization.",
+      "areas": ["Production switching", "GLPI", "DHCP", "DNS", "Future NetBox", "Future Secret Storage"]
+    },
+    {
+      "id": "zone-3",
+      "name": "Rack 3 / Restricted Cyber Range",
+      "trust_level": "restricted",
+      "standing_authority": ["Mission Command"],
+      "mission_authority": "SOTE Operators require specific authorization and supervision for infrastructure work. Mission Technicians may receive bounded target/service access without infrastructure authority.",
+      "areas": ["Cyber range infrastructure", "Designated attack/defend targets", "Restricted switching/firewall/control plane"]
+    }
+  ],
+  "racks": [
+    {
+      "id": "rack-1",
+      "name": "Rack 1 / Mission Control",
+      "zone": "zone-1",
+      "status": "build-in-progress",
+      "purpose": "Instructional networking access plus the protected aggregation pathway connecting classroom systems to SOTE.",
+      "authority": "SOTE Operations and Mission Command for core infrastructure; Mission Technicians only on designated instructional devices.",
+      "current_priority": "Recommission and validate aggregation switching and the classroom-to-Rack-2 pathway.",
+      "services": ["Console access", "Instructional Cisco networking", "Aggregation pathway"],
+      "continuity": {
+        "inventory": "partial",
+        "location": "known",
+        "connections": "in-progress",
+        "runbooks": "in-progress",
+        "recovery": "in-progress",
+        "independent_validation": "pending"
+      }
+    },
+    {
+      "id": "rack-2",
+      "name": "Rack 2 / Production SOTE",
+      "zone": "zone-2",
+      "status": "build-in-progress",
+      "purpose": "Production SOTE infrastructure and service hosting.",
+      "authority": "SOTE Operations and Mission Command.",
+      "current_priority": "Establish production switching, DHCP/DNS, and classroom-reachable GLPI after the Rack 1 path is validated.",
+      "services": ["Production switching", "DHCP", "DNS", "GLPI", "Future NetBox", "Future Secret Storage"],
+      "continuity": {
+        "inventory": "partial",
+        "location": "known",
+        "connections": "in-progress",
+        "runbooks": "in-progress",
+        "recovery": "pending",
+        "independent_validation": "pending"
+      }
+    },
+    {
+      "id": "rack-3",
+      "name": "Rack 3 / Restricted Cyber Range",
+      "zone": "zone-3",
+      "status": "restricted-build",
+      "purpose": "Controlled cybersecurity infrastructure and intentionally hostile instructional targets isolated from production.",
+      "authority": "Mission Command standing authority. Operator infrastructure access requires specific authorization and supervision.",
+      "current_priority": "Document and build the cyber-range control plane while preserving strict separation from production SOTE.",
+      "services": ["Cyber range", "Attack/defend targets", "Future defensive monitoring", "Restricted network control plane"],
+      "continuity": {
+        "inventory": "partial",
+        "location": "known",
+        "connections": "partial",
+        "runbooks": "pending",
+        "recovery": "pending",
+        "independent_validation": "pending"
+      }
+    }
+  ]
+}
