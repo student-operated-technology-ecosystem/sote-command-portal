@@ -1,9 +1,24 @@
 {
-  "generated_for": "visibility-layer-phase1",
-  "source_model": "GitHub-backed pre-NetBox infrastructure metadata",
+  "generated_for": "visibility-layer-phase2",
+  "source_model": "GitHub-backed public-safe pre-NetBox infrastructure projection",
+  "schema_version": "2.0",
+  "security_boundary": "Infrastructure transparency is acceptable. Infrastructure accessibility is not.",
+  "continuity_controls": [
+    "inventoried",
+    "located",
+    "connected",
+    "addressed",
+    "configured_reproducibly",
+    "documented",
+    "recoverable",
+    "role_owned",
+    "discoverable",
+    "independently_validated"
+  ],
   "zones": [
     {
       "id": "zone-0",
+      "type": "trust_zone",
       "name": "Classroom / Endpoints",
       "trust_level": "instructional",
       "standing_authority": ["Students within assigned workstation scope", "Mission Technicians within approved mission scope"],
@@ -11,6 +26,7 @@
     },
     {
       "id": "zone-1",
+      "type": "trust_zone",
       "name": "Rack 1 / Mission Control",
       "trust_level": "instructional-infrastructure",
       "standing_authority": ["SOTE Operations", "Mission Command"],
@@ -19,6 +35,7 @@
     },
     {
       "id": "zone-2",
+      "type": "trust_zone",
       "name": "Rack 2 / Production SOTE",
       "trust_level": "production",
       "standing_authority": ["SOTE Operations", "Mission Command"],
@@ -27,6 +44,7 @@
     },
     {
       "id": "zone-3",
+      "type": "trust_zone",
       "name": "Rack 3 / Restricted Cyber Range",
       "trust_level": "restricted",
       "standing_authority": ["Mission Command"],
@@ -37,57 +55,155 @@
   "racks": [
     {
       "id": "rack-1",
+      "type": "rack",
       "name": "Rack 1 / Mission Control",
       "zone": "zone-1",
       "status": "build-in-progress",
       "purpose": "Instructional networking access plus the protected aggregation pathway connecting classroom systems to SOTE.",
       "authority": "SOTE Operations and Mission Command for core infrastructure; Mission Technicians only on designated instructional devices.",
+      "owned_by_role": ["SOTE Operations", "Mission Command"],
       "current_priority": "Recommission and validate aggregation switching and the classroom-to-Rack-2 pathway.",
       "services": ["Console access", "Instructional Cisco networking", "Aggregation pathway"],
+      "relationships": {
+        "connected_to": ["zone-0", "rack-2"],
+        "provides": ["instructional-cisco-access", "aggregation-pathway"],
+        "depends_on": ["mission-control-aggregation"]
+      },
       "continuity": {
-        "inventory": "partial",
-        "location": "known",
-        "connections": "in-progress",
-        "runbooks": "in-progress",
-        "recovery": "in-progress",
-        "independent_validation": "pending"
+        "inventoried": "partial",
+        "located": "complete",
+        "connected": "in-progress",
+        "addressed": "partial",
+        "configured_reproducibly": "in-progress",
+        "documented": "in-progress",
+        "recoverable": "in-progress",
+        "role_owned": "complete",
+        "discoverable": "in-progress",
+        "independently_validated": "pending"
       }
     },
     {
       "id": "rack-2",
+      "type": "rack",
       "name": "Rack 2 / Production SOTE",
       "zone": "zone-2",
       "status": "build-in-progress",
       "purpose": "Production SOTE infrastructure and service hosting.",
       "authority": "SOTE Operations and Mission Command.",
+      "owned_by_role": ["SOTE Operations", "Mission Command"],
       "current_priority": "Establish production switching, DHCP/DNS, and classroom-reachable GLPI after the Rack 1 path is validated.",
       "services": ["Production switching", "DHCP", "DNS", "GLPI", "Future NetBox", "Future Secret Storage"],
+      "relationships": {
+        "connected_to": ["rack-1"],
+        "provides": ["production-switching", "dhcp-dns", "glpi"],
+        "depends_on": ["aggregation-pathway", "rack2-production-switching"]
+      },
       "continuity": {
-        "inventory": "partial",
-        "location": "known",
-        "connections": "in-progress",
-        "runbooks": "in-progress",
-        "recovery": "pending",
-        "independent_validation": "pending"
+        "inventoried": "partial",
+        "located": "complete",
+        "connected": "in-progress",
+        "addressed": "in-progress",
+        "configured_reproducibly": "in-progress",
+        "documented": "in-progress",
+        "recoverable": "pending",
+        "role_owned": "complete",
+        "discoverable": "in-progress",
+        "independently_validated": "pending"
       }
     },
     {
       "id": "rack-3",
+      "type": "rack",
       "name": "Rack 3 / Restricted Cyber Range",
       "zone": "zone-3",
       "status": "restricted-build",
       "purpose": "Controlled cybersecurity infrastructure and intentionally hostile instructional targets isolated from production.",
       "authority": "Mission Command standing authority. Operator infrastructure access requires specific authorization and supervision.",
+      "owned_by_role": ["Mission Command"],
       "current_priority": "Document and build the cyber-range control plane while preserving strict separation from production SOTE.",
       "services": ["Cyber range", "Attack/defend targets", "Future defensive monitoring", "Restricted network control plane"],
+      "relationships": {
+        "connected_to": ["rack-1"],
+        "provides": ["cyber-range-targets"],
+        "depends_on": ["rack3-control-plane"]
+      },
       "continuity": {
-        "inventory": "partial",
-        "location": "known",
-        "connections": "partial",
-        "runbooks": "pending",
-        "recovery": "pending",
-        "independent_validation": "pending"
+        "inventoried": "partial",
+        "located": "complete",
+        "connected": "partial",
+        "addressed": "partial",
+        "configured_reproducibly": "pending",
+        "documented": "pending",
+        "recoverable": "pending",
+        "role_owned": "complete",
+        "discoverable": "partial",
+        "independently_validated": "pending"
       }
     }
+  ],
+  "components": [
+    {
+      "id": "mission-control-aggregation",
+      "type": "device_group",
+      "name": "Mission Control Aggregation",
+      "status": "recommissioning",
+      "located_in": "rack-1",
+      "owned_by_role": ["SOTE Operations", "Mission Command"],
+      "purpose": "Protected backbone and aggregation capability linking classroom access to the wider SOTE environment.",
+      "public_detail": "Public-safe role and status only; management addressing and configuration are intentionally omitted.",
+      "relationships": {"provides": ["aggregation-pathway"], "connected_to": ["rack-2"]}
+    },
+    {
+      "id": "instructional-cisco-pool",
+      "type": "device_group",
+      "name": "Designated Instructional Cisco Equipment",
+      "status": "developing",
+      "located_in": "rack-1",
+      "owned_by_role": ["SOTE Operations"],
+      "purpose": "Mission-scoped physical networking equipment for advanced classroom and networking missions.",
+      "public_detail": "Specific administrative scope is granted by mission, not by physical access to Rack 1.",
+      "relationships": {"depends_on": ["aggregation-pathway"]}
+    },
+    {
+      "id": "rack2-production-switching",
+      "type": "device_group",
+      "name": "Rack 2 Production Switching",
+      "status": "deploying",
+      "located_in": "rack-2",
+      "owned_by_role": ["SOTE Operations", "Mission Command"],
+      "purpose": "Production Layer 2 foundation for Rack 2 services and the initial controlled subnet.",
+      "public_detail": "Public projection omits management interfaces, addressing, and security configuration.",
+      "relationships": {"depends_on": ["aggregation-pathway"], "provides": ["dhcp-dns", "glpi"]}
+    },
+    {
+      "id": "glpi-server",
+      "type": "device",
+      "name": "GLPI Bare-Metal Server",
+      "status": "deploying",
+      "located_in": "rack-2",
+      "owned_by_role": ["SOTE Operations"],
+      "purpose": "Current physical host for the developing GLPI service before later production migration decisions.",
+      "public_detail": "Hardware/service role is visible; privileged system access and management details remain protected.",
+      "relationships": {"provides": ["glpi"], "depends_on": ["rack2-production-switching"]}
+    },
+    {
+      "id": "rack3-control-plane",
+      "type": "device_group",
+      "name": "Rack 3 Cyber Range Control Plane",
+      "status": "restricted-build",
+      "located_in": "rack-3",
+      "owned_by_role": ["Mission Command"],
+      "purpose": "Restricted infrastructure supporting controlled cyber-range target systems.",
+      "public_detail": "Only high-level purpose and continuity state are public. Control-plane implementation details are intentionally excluded.",
+      "relationships": {"provides": ["cyber-range-targets"]}
+    }
+  ],
+  "capabilities": [
+    {"id": "aggregation-pathway", "type": "service", "name": "Aggregation Pathway", "status": "in-progress", "located_in": "rack-1", "owned_by_role": ["SOTE Operations", "Mission Command"]},
+    {"id": "instructional-cisco-access", "type": "service", "name": "Instructional Cisco Access", "status": "developing", "located_in": "rack-1", "owned_by_role": ["SOTE Operations"]},
+    {"id": "production-switching", "type": "service", "name": "Production Switching", "status": "deploying", "located_in": "rack-2", "owned_by_role": ["SOTE Operations", "Mission Command"]},
+    {"id": "dhcp-dns", "type": "service", "name": "DHCP & DNS", "status": "deploying", "located_in": "rack-2", "owned_by_role": ["SOTE Operations"]},
+    {"id": "glpi", "type": "service", "name": "GLPI", "status": "deploying", "located_in": "rack-2", "owned_by_role": ["SOTE Operations"]},
+    {"id": "cyber-range-targets", "type": "service", "name": "Cyber Range Targets", "status": "developing", "located_in": "rack-3", "owned_by_role": ["Mission Command"]}
   ]
 }
