@@ -1,0 +1,73 @@
+{
+  "generated_for": "visibility-layer-phase1",
+  "source_model": "GitHub-backed pre-GLPI/pre-NetBox service catalog",
+  "security_principle": "Infrastructure transparency is acceptable. Infrastructure accessibility is not.",
+  "services": [
+    {
+      "id": "ace-help-desk",
+      "name": "Ace Help Desk",
+      "status": "active",
+      "class": "public-interaction",
+      "system_of_record": "GitHub interim / GLPI future",
+      "purpose": "User-facing support, classroom guided learning, ticket workflows, and knowledge management.",
+      "public_visibility": "Public portal entry is allowed.",
+      "privilege_boundary": "Anonymous low-risk submission may be allowed with validation, rate limiting, logging, and tightly scoped backend permissions. Ticket administration requires the backend system's own authentication.",
+      "portal_path": "ace-help-desk.html"
+    },
+    {
+      "id": "knowledge-base",
+      "name": "Knowledge Base",
+      "status": "active",
+      "class": "public-information",
+      "system_of_record": "GitHub",
+      "purpose": "Validated operational procedures and classroom knowledge rendered in a readable portal view.",
+      "public_visibility": "Public-safe articles may be browsed anonymously.",
+      "privilege_boundary": "Contribution and approval continue through GitHub identity and repository permissions rather than ProfessorSneaker accounts.",
+      "portal_path": "knowledge-base.html"
+    },
+    {
+      "id": "glpi",
+      "name": "GLPI",
+      "status": "deploying",
+      "class": "protected-service",
+      "system_of_record": "GLPI",
+      "purpose": "Target service-management system of record for tickets, requests, assignments, incidents, and operational workflow.",
+      "public_visibility": "ProfessorSneaker may disclose that GLPI exists and may present sanitized service information.",
+      "privilege_boundary": "GLPI itself is not made publicly accessible merely because ProfessorSneaker references it. Privileged actions authenticate at GLPI or through a narrowly scoped integration.",
+      "location": "Rack 2"
+    },
+    {
+      "id": "dhcp-dns",
+      "name": "DHCP & DNS",
+      "status": "deploying",
+      "class": "protected-infrastructure",
+      "system_of_record": "GitHub today / infrastructure source of truth future",
+      "purpose": "Foundational network services for production SOTE.",
+      "public_visibility": "The portal may disclose their role and deployment status.",
+      "privilege_boundary": "No public management interface or administrative pathway is exposed through ProfessorSneaker.",
+      "location": "Rack 2"
+    },
+    {
+      "id": "netbox",
+      "name": "NetBox",
+      "status": "future",
+      "class": "protected-service",
+      "system_of_record": "NetBox",
+      "purpose": "Planned infrastructure source of truth for racks, devices, interfaces, cabling, addressing, VLANs, and topology.",
+      "public_visibility": "ProfessorSneaker may render sanitized infrastructure facts sourced from NetBox.",
+      "privilege_boundary": "NetBox authentication and permissions remain separate. Public portal integration must use read-only, minimum-scope access and must not expose sensitive topology or management detail.",
+      "location": "Rack 2"
+    },
+    {
+      "id": "secret-storage",
+      "name": "Secret Storage System",
+      "status": "future",
+      "class": "restricted-service",
+      "system_of_record": "Secret Storage System",
+      "purpose": "Centralized role-appropriate credential and secret storage for SOTE infrastructure and services.",
+      "public_visibility": "The portal may disclose that the capability exists and point authorized operators to documented procedures.",
+      "privilege_boundary": "ProfessorSneaker must never contain, cache, render, proxy, or expose secrets. Authentication occurs at the secret-storage system through approved identity and access controls.",
+      "location": "Rack 2"
+    }
+  ]
+}
