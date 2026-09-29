@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.0",
+  "schema_version": "1.1",
   "generated_for": "visibility-layer-phase2",
   "source_model": "Public-safe relationship projection across SOTE systems of record",
   "security_boundary": "This graph describes relationships without exposing privileged access paths, management addresses, credentials, or sensitive topology.",
@@ -20,7 +20,13 @@
     {"id":"mission-53","type":"mission","name":"Portal mission management and proposal submission","status":"Active","issue":53,"url":"https://github.com/student-operated-technology-ecosystem/SOTE-framework/issues/53"},
     {"id":"mission-54","type":"mission","name":"Cybersecurity Collaboration Lab Connectivity","status":"Discovery","issue":54,"url":"https://github.com/student-operated-technology-ecosystem/SOTE-framework/issues/54"},
     {"id":"mission-55","type":"mission","name":"SOTE Help Desk Library Pilot","status":"Discovery","issue":55,"url":"https://github.com/student-operated-technology-ecosystem/SOTE-framework/issues/55"},
-    {"id":"mission-56","type":"mission","name":"Deploy SOTE Secret Storage","status":"Future / Backlog","issue":56,"url":"https://github.com/student-operated-technology-ecosystem/SOTE-framework/issues/56"}
+    {"id":"mission-56","type":"mission","name":"Deploy SOTE Secret Storage","status":"Future / Backlog","issue":56,"url":"https://github.com/student-operated-technology-ecosystem/SOTE-framework/issues/56"},
+    {"id":"role-mission-command","type":"role","name":"Mission Command","status":"governance","path":"organization.html","summary":"Strategic governance, architecture authority, mission portfolio priority, risk acceptance, exceptional access, and continuity."},
+    {"id":"role-mission-director","type":"role","name":"Mission Director","status":"governance","path":"organization.html","summary":"Transferable executive role accountable for SOTE strategy, architecture governance, resources, partnerships, risk, and continuity."},
+    {"id":"role-sote-operations","type":"role","name":"SOTE Operations","status":"operational","path":"organization.html","summary":"Persistent day-to-day operational layer responsible for approved infrastructure, services, documentation, validation, and handoff."},
+    {"id":"role-networking-operations","type":"role","name":"SOTE Operator | Networking Operations","status":"operational","path":"organization.html","summary":"Networking-aligned operational capability within SOTE Operations. The role persists even as individual student workers change."},
+    {"id":"role-cybersecurity-operations","type":"role","name":"SOTE Operator | Cybersecurity Operations","status":"developing","path":"organization.html","summary":"Cybersecurity-aligned operational capability expected as positions are filled and operators are onboarded. Rack 3 authority remains separately governed."},
+    {"id":"role-mission-technician","type":"role","name":"Mission Technician","status":"mission-scoped","path":"organization.html","summary":"Temporary mission role for bounded authentic technical work. Enrollment alone does not confer SOTE authority."}
   ],
   "edges": [
     {"from":"mission-control-aggregation","to":"rack-1","type":"located_in"},
@@ -44,6 +50,39 @@
     {"from":"mission-55","to":"knowledge-base","type":"uses"},
     {"from":"mission-56","to":"secret-storage","type":"creates"},
     {"from":"mission-56","to":"rack-2","type":"planned_for"},
-    {"from":"mission-56","to":"glpi","type":"protects_credentials_for"}
+    {"from":"mission-56","to":"glpi","type":"protects_credentials_for"},
+
+    {"from":"rack-1","to":"role-mission-command","type":"governed_by"},
+    {"from":"rack-1","to":"role-sote-operations","type":"operated_by"},
+    {"from":"rack-1","to":"role-networking-operations","type":"operated_by"},
+    {"from":"mission-control-aggregation","to":"role-sote-operations","type":"operated_by"},
+    {"from":"mission-control-aggregation","to":"role-mission-command","type":"governed_by"},
+
+    {"from":"rack-2","to":"role-mission-command","type":"governed_by"},
+    {"from":"rack-2","to":"role-sote-operations","type":"operated_by"},
+    {"from":"rack-2","to":"role-networking-operations","type":"operated_by"},
+    {"from":"rack2-production-switching","to":"role-sote-operations","type":"operated_by"},
+    {"from":"glpi-server","to":"role-sote-operations","type":"operated_by"},
+    {"from":"glpi","to":"role-sote-operations","type":"operated_by"},
+    {"from":"dhcp-dns","to":"role-sote-operations","type":"operated_by"},
+    {"from":"netbox","to":"role-sote-operations","type":"planned_operator"},
+    {"from":"secret-storage","to":"role-sote-operations","type":"planned_operator"},
+    {"from":"secret-storage","to":"role-mission-command","type":"governed_by"},
+
+    {"from":"rack-3","to":"role-mission-command","type":"governed_by"},
+    {"from":"rack3-control-plane","to":"role-mission-command","type":"governed_by"},
+    {"from":"rack3-control-plane","to":"role-cybersecurity-operations","type":"operated_by_when_authorized"},
+
+    {"from":"ace-help-desk","to":"role-sote-operations","type":"operated_by"},
+    {"from":"knowledge-base","to":"role-sote-operations","type":"maintained_by"},
+
+    {"from":"mission-53","to":"role-mission-command","type":"governed_by"},
+    {"from":"mission-54","to":"role-mission-command","type":"governed_by"},
+    {"from":"mission-55","to":"role-mission-command","type":"governed_by"},
+    {"from":"mission-56","to":"role-mission-command","type":"governed_by"},
+    {"from":"role-mission-director","to":"role-mission-command","type":"leads"},
+    {"from":"role-networking-operations","to":"role-sote-operations","type":"part_of"},
+    {"from":"role-cybersecurity-operations","to":"role-sote-operations","type":"part_of"},
+    {"from":"role-mission-technician","to":"role-mission-command","type":"mission_authority_from"}
   ]
 }
