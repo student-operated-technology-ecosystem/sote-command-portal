@@ -13,7 +13,7 @@
       state: .state,
       updated_at: .updated_at,
       public_summary: (
-        (.body // "" | capture("(?s)<!-- PUBLIC SUMMARY START -->\\s*(?<summary>.*?)\\s*<!-- PUBLIC SUMMARY END -->").summary? // "")
+        (.body // "" | (try capture("(?s)<!-- PUBLIC SUMMARY START -->\\s*(?<summary>.*?)\\s*<!-- PUBLIC SUMMARY END -->").summary catch ""))
         | gsub("[\\r\\n\\t]+"; " ") | gsub(" +"; " ") | .[0:180]
       ),
       portfolio_state: (
