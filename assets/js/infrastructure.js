@@ -2,15 +2,20 @@
   const root = document.documentElement;
   const rackId = document.body?.dataset?.rackId;
   const dashboardHost = document.querySelector('[data-infrastructure-dashboard]');
-  if (!rackId && !dashboardHost) return;
+  const componentHost = document.querySelector('[data-component-dashboard]');
+  if (!rackId && !dashboardHost && !componentHost) return;
 
   const labels = {
-    inventory: 'Inventory',
-    location: 'Location',
-    connections: 'Connections',
-    runbooks: 'Runbooks',
-    recovery: 'Recovery',
-    independent_validation: 'Independent validation'
+    inventoried: 'Inventoried',
+    located: 'Located',
+    connected: 'Connected',
+    addressed: 'Addressed',
+    configured_reproducibly: 'Configured reproducibly',
+    documented: 'Documented',
+    recoverable: 'Recoverable',
+    role_owned: 'Role-owned',
+    discoverable: 'Discoverable',
+    independently_validated: 'Independently validated'
   };
 
   const humanize = value => String(value || 'unknown')
@@ -20,9 +25,26 @@
   const statusClass = value => {
     const v = String(value || '').toLowerCase();
     if (['known', 'complete', 'validated', 'operational'].includes(v)) return 'green';
-    if (['partial', 'in-progress'].includes(v)) return 'blue';
-    if (['pending', 'unknown'].includes(v)) return 'red';
+    if (['partial', 'in-progress', 'developing', 'deploying', 'recommissioning'].includes(v)) return 'blue';
+    if (['pending', 'unknown', 'restricted-build'].includes(v)) return 'red';
     return '';
+  };
+
+  const continuityNote = (key, value) => {
+    const valueText = humanize(value);
+    const notes = {
+      inventoried: `${valueText} inventory coverage in the current infrastructure record.`,
+      located: `${valueText} physical or logical location documentation.`,
+      connected: `${valueText} physical and logical connectivity documentation.`,
+      addressed: `${valueText} network identity and addressing documentation where applicable.`,
+      configured_reproducibly: `${valueText} reproducible configuration or rebuild representation.`,
+      documented: `${valueText} runbook and operational documentation coverage.`,
+      recoverable: `${valueText} recovery, restore, or rebuild documentation.`,
+      role_owned: `${valueText} persistent role-based ownership rather than individual dependency.`,
+      discoverable: `${valueText} ability for a new operator to locate the authoritative records.`,
+      independently_validated: `${valueText} validation by someone other than the primary builder.`
+    };
+    return notes[key] || valueText;
   };
 
   const renderContinuity = rack => {
@@ -34,19 +56,6 @@
         <h3>${labels[key] || humanize(key)}</h3>
         <p>${continuityNote(key, value)}</p>
       </article>`).join('');
-  };
-
-  const continuityNote = (key, value) => {
-    const valueText = humanize(value);
-    const notes = {
-      inventory: `${valueText} asset inventory coverage in the current infrastructure record.`,
-      location: `${valueText} physical location documentation.`,
-      connections: `${valueText} physical and logical connectivity documentation.`,
-      runbooks: `${valueText} operational procedure coverage.`,
-      recovery: `${valueText} recovery or rebuild documentation.`,
-      independent_validation: `${valueText} non-builder validation status.`
-    };
-    return notes[key] || valueText;
   };
 
   const renderRack = data => {
@@ -61,19 +70,41 @@
     renderContinuity(rack);
   };
 
+  const tally = continuity => {
+    const values = Object.values(continuity || {});
+    const established = values.filter(v => ['known', 'complete', 'validated', 'operational'].includes(v)).length;
+    const developing = values.filter(v => ['partial', 'in-progress', 'developing', 'deploying', 'recommissioning'].includes(v)).length;
+    return { established, developing, pending: values.length - established - developing, total: values.length };
+  };
+
   const renderDashboard = data => {
     if (!dashboardHost) return;
     dashboardHost.innerHTML = data.racks.map(rack => {
-      const values = Object.values(rack.continuity || {});
-      const good = values.filter(v => ['known', 'complete', 'validated', 'operational'].includes(v)).length;
-      const progressing = values.filter(v => ['partial', 'in-progress'].includes(v)).length;
-      const pending = values.length - good - progressing;
+      const counts = tally(rack.continuity);
       return `<article class="card">
         <span class="tag ${rack.id === 'rack-3' ? 'red' : rack.id === 'rack-2' ? 'green' : 'blue'}">${humanize(rack.status)}</span>
         <h3>${rack.name}</h3>
         <p>${rack.purpose}</p>
-        <div class="pill-row"><span class="pill">${good} established</span><span class="pill">${progressing} developing</span><span class="pill">${pending} pending</span></div>
+        <div class="pill-row"><span class="pill">${counts.established} established</span><span class="pill">${counts.developing} developing</span><span class="pill">${counts.pending} pending</span></div>
         <a class="card-link" href="${rack.id}.html">Open rack view →</a>
+      </article>`;
+    }).join('');
+  };
+
+  const renderComponents = data => {
+    if (!componentHost) return;
+    componentHost.innerHTML = (data.components || []).map(component => {
+      const rack = data.racks?.find(item => item.id === component.located_in);
+      const provides = component.relationships?.provides || [];
+      const depends = component.relationships?.depends_on || [];
+      return `<article class="card">
+        <span class="tag ${statusClass(component.status)}">${humanize(component.status)}</span>
+        <h3>${component.name}</h3>
+        <p>${component.purpose}</p>
+        <div class="project-meta"><span><strong>Location</strong>${rack?.name || humanize(component.located_in)}</span><span><strong>Owner</strong>${(component.owned_by_role || []).join(', ')}</span></div>
+        ${provides.length ? `<p><strong>Provides:</strong> ${provides.map(humanize).join(', ')}</p>` : ''}
+        ${depends.length ? `<p><strong>Depends on:</strong> ${depends.map(humanize).join(', ')}</p>` : ''}
+        <p class="page-note">${component.public_detail || 'Public-safe projection only.'}</p>
       </article>`;
     }).join('');
   };
@@ -86,6 +117,7 @@
     .then(data => {
       renderRack(data);
       renderDashboard(data);
+      renderComponents(data);
       root.dataset.infrastructureLoaded = 'true';
     })
     .catch(() => {
