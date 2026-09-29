@@ -1,7 +1,15 @@
 {
-  "generated_at": "2026-09-29T15:49:06Z",
+  "generated_at": "2026-09-29T20:45:20Z",
   "source": "student-operated-technology-ecosystem/SOTE-framework",
   "issues": [
+    {
+      "number": 56,
+      "title": "Mission: Deploy SOTE Secret Storage",
+      "body": "## Mission Brief\n\nSOTE increasingly operates infrastructure requiring credentials, service accounts, API tokens, recovery keys, administrative passwords, and other sensitive information.\n\nThese secrets **must not be stored in GitHub repositories, Knowledge Base articles, GLPI tickets, configuration documentation, or individual operators' personal password managers.**\n\nThis mission will design and deploy a centralized **SOTE Secret Storage** service providing secure, recoverable, role-appropriate credential storage for the Student-Operated Technology Ecosystem.\n\n**Vaultwarden should be investigated as the leading candidate**, but operators should validate the platform rather than treating the implementation as predetermined.\n\n### Target Environment\nRack 2 / Proxmox\n\n### Dependency\nRack 2 virtualization infrastructure must be operational before deployment. Investigation, requirements gathering, and design may begin before that dependency is complete.\n\n## Mission Objectives\n\n- [ ] Define what SOTE considers a **secret**.\n- [ ] Identify where SOTE secrets are currently being created or could eventually appear.\n- [ ] Evaluate Vaultwarden and reasonable alternatives.\n- [ ] Design the service for the Rack 2 / Proxmox environment.\n- [ ] Define operator access and administrative roles.\n- [ ] Develop backup and recovery procedures.\n- [ ] Determine what happens if the vault itself becomes unavailable.\n- [ ] Establish credential naming and organization standards.\n- [ ] Deploy and validate the selected platform.\n- [ ] Create operator and administrator runbooks.\n\n## Core Operating Rule\n\n> **Documentation may tell an operator where to retrieve a secret. Documentation must never contain the secret itself.**\n\nExample:\n\n**Good:** `Retrieve GLPI / Database / Production from SOTE Secret Storage.`\n\n**Not acceptable:** placing the actual GLPI database password in a Markdown file, GitHub issue, KB article, or GLPI ticket.\n\nThis rule should ultimately be incorporated into broader SOTE governance documentation.\n\n## Expected Deliverables\n\n- [ ] Secret Storage Requirements Brief\n- [ ] Platform Evaluation / Recommendation\n- [ ] Architecture Diagram\n- [ ] Deployment Runbook\n- [ ] Operator Access Procedure\n- [ ] Backup & Recovery Runbook\n- [ ] Credential Naming Standard\n- [ ] Emergency / Break-Glass Access Procedure\n- [ ] Validation Report\n- [ ] Knowledge Base article: **Using SOTE Secret Storage**\n\n## Acceptance Criteria\n\nMission Command may consider SOTE Secret Storage operational when:\n\n- An authorized SOTE operator can retrieve an appropriate credential.\n- An unauthorized user cannot retrieve protected credentials.\n- No secret is exposed through GitHub, GLPI, or SOTE documentation.\n- The vault survives a normal service restart.\n- A documented backup can be successfully restored.\n- Administrative access can be recovered using the documented break-glass procedure.\n\n## Assignment\n\n**Backlog / Proposed Mission.** Do not assign an operator yet. Deployment should wait for Rack 2 / Proxmox readiness; research and architecture work may proceed earlier.",
+      "updated_at": "2026-09-29T16:59:23Z",
+      "html_url": "https://github.com/student-operated-technology-ecosystem/SOTE-framework/issues/56",
+      "labels": []
+    },
     {
       "number": 55,
       "title": "MISSION | SOTE Help Desk Library Pilot",
@@ -197,52 +205,52 @@
   ],
   "commits": [
     {
-      "sha": "3e3a759cee2983ba1061be7ee9d6e1b5adb9de64",
-      "message": "Mission Command: add MISSION-COMMAND.md",
-      "created_at": "2026-09-25T14:13:44Z",
-      "html_url": "https://github.com/student-operated-technology-ecosystem/SOTE-framework/commit/3e3a759cee2983ba1061be7ee9d6e1b5adb9de64"
+      "sha": "f85c1fcad7f2012f118bdd296ac8268f7012233e",
+      "message": "Formalize SOTE organizational model and trust architecture",
+      "created_at": "2026-09-29T20:39:42Z",
+      "html_url": "https://github.com/student-operated-technology-ecosystem/SOTE-framework/commit/f85c1fcad7f2012f118bdd296ac8268f7012233e"
     },
     {
-      "sha": "a21e0973c4d301b90e85b6ab1c20bbc4fafbc41a",
-      "message": "Mission Command: add mission-deployment-validation-handoff.md",
-      "created_at": "2026-09-25T14:13:27Z",
-      "html_url": "https://github.com/student-operated-technology-ecosystem/SOTE-framework/commit/a21e0973c4d301b90e85b6ab1c20bbc4fafbc41a"
+      "sha": "b415b9d67745f6566aca7ef1961234e7389bfac8",
+      "message": "Establish SOTE Continuity Standard",
+      "created_at": "2026-09-29T20:17:11Z",
+      "html_url": "https://github.com/student-operated-technology-ecosystem/SOTE-framework/commit/b415b9d67745f6566aca7ef1961234e7389bfac8"
     },
     {
-      "sha": "4357b27dc3cc122f074c432af28bee2b6451d455",
-      "message": "Mission Command: add mission-budget-bom.md",
-      "created_at": "2026-09-25T14:13:25Z",
-      "html_url": "https://github.com/student-operated-technology-ecosystem/SOTE-framework/commit/4357b27dc3cc122f074c432af28bee2b6451d455"
+      "sha": "902db665056db3f5268393684d102db5343c261f",
+      "message": "Canonize Oct-Nov SOTE deployment plan",
+      "created_at": "2026-09-29T19:45:19Z",
+      "html_url": "https://github.com/student-operated-technology-ecosystem/SOTE-framework/commit/902db665056db3f5268393684d102db5343c261f"
     },
     {
-      "sha": "3dcd97b1c473a1936ed972f1ed1f1a82a0fe0ddb",
-      "message": "Mission Command: add mission-command-review.md",
-      "created_at": "2026-09-25T14:13:23Z",
-      "html_url": "https://github.com/student-operated-technology-ecosystem/SOTE-framework/commit/3dcd97b1c473a1936ed972f1ed1f1a82a0fe0ddb"
+      "sha": "fde4b712514e6564c67f9a49d0e93a4bfc03fd85",
+      "message": "Canonize Sept 29 SOTE executive mission briefing",
+      "created_at": "2026-09-29T19:44:58Z",
+      "html_url": "https://github.com/student-operated-technology-ecosystem/SOTE-framework/commit/fde4b712514e6564c67f9a49d0e93a4bfc03fd85"
     },
     {
-      "sha": "e906f096e69c4b9c37a685ec5c129e4bfb622eb3",
-      "message": "Mission Command: add mission-proposal.md",
-      "created_at": "2026-09-25T14:13:20Z",
-      "html_url": "https://github.com/student-operated-technology-ecosystem/SOTE-framework/commit/e906f096e69c4b9c37a685ec5c129e4bfb622eb3"
+      "sha": "cb8bb7966dbd905b2e44b9ddf23a34531dde00cd",
+      "message": "Add GLPI bare-metal deployment runbook",
+      "created_at": "2026-09-29T19:00:09Z",
+      "html_url": "https://github.com/student-operated-technology-ecosystem/SOTE-framework/commit/cb8bb7966dbd905b2e44b9ddf23a34531dde00cd"
     },
     {
-      "sha": "bfa8c6be35fc2c85e087f5800c4d2198780c8ad7",
-      "message": "Mission Command: add 03-sote-mission-command.md",
-      "created_at": "2026-09-25T14:13:18Z",
-      "html_url": "https://github.com/student-operated-technology-ecosystem/SOTE-framework/commit/bfa8c6be35fc2c85e087f5800c4d2198780c8ad7"
+      "sha": "88c79d7c3835d49061ed173087d95571611c2a76",
+      "message": "Add PCIe Slot 2 hardware exception record",
+      "created_at": "2026-09-29T18:59:33Z",
+      "html_url": "https://github.com/student-operated-technology-ecosystem/SOTE-framework/commit/88c79d7c3835d49061ed173087d95571611c2a76"
     },
     {
-      "sha": "6a0fba68ba17f9c6b570ff2611d4a407dedc4a51",
-      "message": "Remove abandoned CIT-205 organization enrollment workflow",
-      "created_at": "2026-09-24T14:23:03Z",
-      "html_url": "https://github.com/student-operated-technology-ecosystem/SOTE-framework/commit/6a0fba68ba17f9c6b570ff2611d4a407dedc4a51"
+      "sha": "57cc76db37827e91b43985811787b40f49f5f8da",
+      "message": "Add bare-metal hardware validation runbook",
+      "created_at": "2026-09-29T18:59:22Z",
+      "html_url": "https://github.com/student-operated-technology-ecosystem/SOTE-framework/commit/57cc76db37827e91b43985811787b40f49f5f8da"
     },
     {
-      "sha": "d58b1b848331d375a2e50fd001d21a4d5ca7fd08",
-      "message": "Remove abandoned CIT-205 organization enrollment workflow",
-      "created_at": "2026-09-24T14:23:00Z",
-      "html_url": "https://github.com/student-operated-technology-ecosystem/SOTE-framework/commit/d58b1b848331d375a2e50fd001d21a4d5ca7fd08"
+      "sha": "66e16e64f86b5fd11275f6e9b36ef60ef3227bbb",
+      "message": "Add GLPI bare-metal deployment mission record",
+      "created_at": "2026-09-29T18:59:07Z",
+      "html_url": "https://github.com/student-operated-technology-ecosystem/SOTE-framework/commit/66e16e64f86b5fd11275f6e9b36ef60ef3227bbb"
     }
   ]
 }
