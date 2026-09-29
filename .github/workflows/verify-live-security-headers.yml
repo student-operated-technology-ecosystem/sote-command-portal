@@ -1,0 +1,18 @@
+name: Verify live security headers
+on:
+  schedule:
+    - cron: "43 6 * * *"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  headers:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check synthetic header contract
+        run: python3 scripts/check-headers.py --self-test
+      - name: Verify live apex and ticket route
+        run: |
+          python3 scripts/check-headers.py https://professorsneaker.com/
+          python3 scripts/check-headers.py https://professorsneaker.com/ticket.html
