@@ -10,9 +10,11 @@
   const groups = {
     operations: ['operations.html','mission-command.html','missions.html','mission.html','mission-proposal.html','mission-lifecycle.html','operator.html','ticket-queue.html','ticket.html','project-status.html'],
     infrastructure: ['infrastructure.html','rack-1.html','rack-2.html','rack-3.html','zones.html'],
-    services: ['services.html','ace-help-desk.html','tickets.html'],
+    services: ['services.html'],
     knowledge: ['knowledge-base.html','knowledge-article.html','knowledge-contribute.html'],
-    organization: ['organization.html','student-technology-corps.html']
+    organization: ['organization.html','student-technology-corps.html','get-involved.html'],
+    explore: ['ecosystem.html','explore-zones.html','explore-guides.html','tour.html','start-here.html','environment-map.html','tour-mode.html','tour-guide-kit.html'],
+    helpdesk: ['ace-help-desk.html','tickets.html']
   };
 
   const active = (key, file) => {
@@ -32,7 +34,8 @@
     '<a'+(active('services','services.html')?' class="active"':'')+' href="'+href('services.html')+'">Services</a>' +
     '<a'+(active('knowledge','knowledge-base.html')?' class="active"':'')+' href="'+href('knowledge-base.html')+'">Knowledge</a>' +
     '<a'+(active('organization','organization.html')?' class="active"':'')+' href="'+href('organization.html')+'">Organization</a>' +
-    '<a href="'+href('ace-help-desk.html')+'">Help Desk</a>' +
+    '<a'+(active('explore','ecosystem.html')?' class="active"':'')+' href="'+href('ecosystem.html')+'">Explore</a>' +
+    '<a'+(active('helpdesk','ace-help-desk.html')?' class="active"':'')+' href="'+href('ace-help-desk.html')+'">Help Desk</a>' +
     '</nav></div>';
 
   const button = header.querySelector('.nav-toggle');
