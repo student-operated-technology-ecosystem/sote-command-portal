@@ -1,6 +1,4 @@
-name: Refresh SOTE Project Dashboard
-
-# Touching this workflow intentionally triggers an immediate dashboard refresh.
+name: Refresh reviewed public snapshot
 on:
   schedule:
     - cron: "17 * * * *"
@@ -9,65 +7,38 @@ on:
     branches: [main]
     paths:
       - ".github/workflows/refresh-project-dashboard.yml"
-
+      - "scripts/public-snapshot.jq"
+      - "scripts/check-public-snapshot.py"
 permissions:
   contents: write
-
 jobs:
   refresh:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Build public-safe project snapshot
+      - name: Test synthetic public-data contract
+        run: python3 scripts/check-public-snapshot.py --self-test
+      - name: Generate reviewed projection
         shell: bash
         env:
           GH_TOKEN: ${{ secrets.SOTE_FRAMEWORK_READ_TOKEN }}
         run: |
           set -euo pipefail
-          if [ -z "${GH_TOKEN:-}" ]; then
-            echo "::error::SOTE_FRAMEWORK_READ_TOKEN is not configured."
-            exit 1
-          fi
-          mkdir -p assets/data
-          api_get() {
-            local label="$1"
-            local url="$2"
-            local body status
-            body="$(mktemp)"
-            status="$(curl -sS -o "$body" -w "%{http_code}" \
-              -H "Accept: application/vnd.github+json" \
-              -H "Authorization: Bearer $GH_TOKEN" \
-              -H "X-GitHub-Api-Version: 2022-11-28" \
-              "$url")"
-            if [ "$status" != "200" ]; then
-              echo "::error::$label request failed with HTTP $status" >&2
-              jq -r '.message // "GitHub API request failed"' "$body" >&2 || true
-              rm -f "$body"
-              return 1
-            fi
-            cat "$body"
-            rm -f "$body"
-          }
-          api_get "Issues" "https://api.github.com/repos/student-operated-technology-ecosystem/SOTE-framework/issues?state=open&per_page=100&sort=updated&direction=desc" > /tmp/issues.json
-          api_get "Commits" "https://api.github.com/repos/student-operated-technology-ecosystem/SOTE-framework/commits?per_page=8" > /tmp/commits.json
-          jq -n --arg generated_at "$(date -u +%Y-%m-%dT%H:%M:%SZ)" --arg source "student-operated-technology-ecosystem/SOTE-framework" --slurpfile issues /tmp/issues.json --slurpfile commits /tmp/commits.json '{
-            generated_at:$generated_at,
-            source:$source,
-            issues:[$issues[0][] | select(.pull_request|not) | {number,title,body,updated_at,html_url,labels:[.labels[].name]}],
-            commits:[$commits[0][] | {sha,message:.commit.message,created_at:.commit.committer.date,html_url}]
-          }' > assets/data/projects.json
+          test -n "${GH_TOKEN:-}" || { echo "::error::Read token missing"; exit 1; }
+          curl --fail-with-body -sS -H "Accept: application/vnd.github+json" -H "Authorization: Bearer $GH_TOKEN" "https://api.github.com/repos/student-operated-technology-ecosystem/SOTE-framework/issues?state=open&per_page=100" > /tmp/issues.json
+          jq -n --arg generated_at "$(date -u +%Y-%m-%dT%H:%M:%SZ)" --slurpfile issues /tmp/issues.json -f scripts/public-snapshot.jq > assets/data/projects.json
+          python3 scripts/check-public-snapshot.py assets/data/projects.json
           printf 'window.SOTE_PROJECT_DATA = ' > assets/data/projects.js
           cat assets/data/projects.json >> assets/data/projects.js
           printf ';\n' >> assets/data/projects.js
-      - name: Publish snapshot when changed
-        shell: bash
+          python3 scripts/check-public-snapshot.py assets/data/projects.js
+          rm -f /tmp/issues.json
+      - name: Publish when changed
         run: |
-          if git diff --quiet -- assets/data/projects.json assets/data/projects.js; then
-            echo "No dashboard changes."
-            exit 0
-          fi
+          set -euo pipefail
+          if git diff --quiet -- assets/data/projects.json assets/data/projects.js; then exit 0; fi
           git config user.name "sote-dashboard-bot"
           git config user.email "actions@users.noreply.github.com"
           git add assets/data/projects.json assets/data/projects.js
-          git commit -m "Refresh live SOTE project dashboard"
+          git commit -m "Refresh reviewed public snapshot"
           git push
