@@ -17,20 +17,14 @@
   }
 
   function render(host,payload){
-    const actions=Array.isArray(payload?.actions)?payload.actions:[];
+    const actions=payload?.schema_version===2 && Array.isArray(payload.actions)?payload.actions:[];
     if(!actions.length){
       host.innerHTML='<article class="card"><h3>No open continuity work is currently projected.</h3><p>Canonical continuity work remains in SOTE-framework GitHub issues.</p></article>';
       return;
     }
-    host.innerHTML=actions.map(a=>'<article class="card">'+
+    host.innerHTML=actions.filter(a=>Number.isInteger(a.issue)&&a.issue>0&&a.title==='Continuity work #'+a.issue).map(a=>'<article class="card">'+
       '<span class="tag '+statusClass(a.status)+'">'+esc(humanize(a.status||'open'))+'</span>'+
       '<h2>'+esc(a.title)+'</h2>'+
-      (a.summary?'<p>'+esc(a.summary)+'</p>':'')+
-      (a.controls?.length?'<p><strong>Continuity controls:</strong> '+a.controls.map(humanize).map(esc).join(' · ')+'</p>':'')+
-      (a.parent_issue?'<p><strong>Parent work:</strong> #'+esc(a.parent_issue)+'</p>':'')+
-      (a.assignees?.length?'<p><strong>Assigned:</strong> '+a.assignees.map(esc).join(', ')+'</p>':'')+
-      (a.completion_rule?'<p><strong>Completion rule:</strong> '+esc(a.completion_rule)+'</p>':'')+
-      (a.url?'<a class="card-link" target="_blank" rel="noopener" href="'+esc(a.url)+'">Open canonical issue #'+esc(a.issue)+' ↗</a>':'')+
       '</article>').join('');
     const stamp=document.querySelector('[data-continuity-generated]');
     if(stamp && payload.generated_at) stamp.textContent='Projection generated '+new Date(payload.generated_at).toLocaleString();
