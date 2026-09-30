@@ -1,0 +1,22 @@
+name: Public data and rendering safety
+on:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  public-boundary:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Synthetic private-data projections
+        run: |
+          python3 scripts/check-public-snapshot.py --self-test
+          python3 scripts/generate-continuity-actions.py --self-test
+      - name: Validate checked-in public snapshots
+        run: |
+          python3 scripts/check-public-snapshot.py assets/data/projects.json
+          python3 scripts/check-public-snapshot.py assets/data/projects.js
+          python3 scripts/check-continuity-actions.py data/continuity-actions.json
+      - name: Test malicious-looking metadata rendering
+        run: node scripts/check-rendering-safety.js
