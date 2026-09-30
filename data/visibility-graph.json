@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.1",
+  "schema_version": "1.2",
   "generated_for": "visibility-layer-phase2",
   "source_model": "Public-safe relationship projection across SOTE systems of record",
   "security_boundary": "This graph describes relationships without exposing privileged access paths, management addresses, credentials, or sensitive topology.",
@@ -26,7 +26,13 @@
     {"id":"role-sote-operations","type":"role","name":"SOTE Operations","status":"operational","path":"organization.html","summary":"Persistent day-to-day operational layer responsible for approved infrastructure, services, documentation, validation, and handoff."},
     {"id":"role-networking-operations","type":"role","name":"SOTE Operator | Networking Operations","status":"operational","path":"organization.html","summary":"Networking-aligned operational capability within SOTE Operations. The role persists even as individual student workers change."},
     {"id":"role-cybersecurity-operations","type":"role","name":"SOTE Operator | Cybersecurity Operations","status":"developing","path":"organization.html","summary":"Cybersecurity-aligned operational capability expected as positions are filled and operators are onboarded. Rack 3 authority remains separately governed."},
-    {"id":"role-mission-technician","type":"role","name":"Mission Technician","status":"mission-scoped","path":"organization.html","summary":"Temporary mission role for bounded authentic technical work. Enrollment alone does not confer SOTE authority."}
+    {"id":"role-mission-technician","type":"role","name":"Mission Technician","status":"mission-scoped","path":"organization.html","summary":"Temporary mission role for bounded authentic technical work. Enrollment alone does not confer SOTE authority."},
+    {"id":"doc-glpi-deployment","type":"document","name":"GLPI Bare-Metal Deployment Runbook","status":"draft / requires operator verification","url":"https://github.com/student-operated-technology-ecosystem/SOTE-framework/blob/main/implementations/ccac/management-services/glpi/deployment-runbook.md","summary":"Documents the current bare-metal GLPI deployment. Several Linux, network, database, and GLPI configuration details remain explicitly TO VERIFY."},
+    {"id":"doc-glpi-hardware-validation","type":"document","name":"Bare-Metal Server Hardware Validation Runbook","status":"current","url":"https://github.com/student-operated-technology-ecosystem/SOTE-framework/blob/main/implementations/ccac/management-services/glpi/hardware-validation-runbook.md","summary":"Defines the minimum hardware validation procedure and records the current GLPI server as validated with documented exceptions / deployment testing permitted."},
+    {"id":"doc-glpi-mission-record","type":"document","name":"GLPI Mission Record","status":"current","url":"https://github.com/student-operated-technology-ecosystem/SOTE-framework/blob/main/implementations/ccac/management-services/glpi/mission-record.md","summary":"Canonical mission-level record for the GLPI deployment and its current/future-state boundaries."},
+    {"id":"doc-glpi-pcie-exception","type":"document","name":"GLPI PCIe Slot 2 Exception Record","status":"open exception","url":"https://github.com/student-operated-technology-ecosystem/SOTE-framework/blob/main/implementations/ccac/management-services/glpi/pcie-slot2-exception-record.md","summary":"Tracks the documented PCIe Slot 2 training/link degradation that remains under investigation."},
+    {"id":"control-glpi-recovery","type":"continuity_control","name":"GLPI Recovery / Restore Procedure","status":"pending","summary":"The deployment runbook explicitly identifies backup approach and formal backup/restore testing as pending future work."},
+    {"id":"control-glpi-independent-validation","type":"continuity_control","name":"GLPI Independent Validation","status":"pending","summary":"The deployment runbook still requires operator verification; independent non-builder execution has not yet been recorded as complete."}
   ],
   "edges": [
     {"from":"mission-control-aggregation","to":"rack-1","type":"located_in"},
@@ -51,13 +57,11 @@
     {"from":"mission-56","to":"secret-storage","type":"creates"},
     {"from":"mission-56","to":"rack-2","type":"planned_for"},
     {"from":"mission-56","to":"glpi","type":"protects_credentials_for"},
-
     {"from":"rack-1","to":"role-mission-command","type":"governed_by"},
     {"from":"rack-1","to":"role-sote-operations","type":"operated_by"},
     {"from":"rack-1","to":"role-networking-operations","type":"operated_by"},
     {"from":"mission-control-aggregation","to":"role-sote-operations","type":"operated_by"},
     {"from":"mission-control-aggregation","to":"role-mission-command","type":"governed_by"},
-
     {"from":"rack-2","to":"role-mission-command","type":"governed_by"},
     {"from":"rack-2","to":"role-sote-operations","type":"operated_by"},
     {"from":"rack-2","to":"role-networking-operations","type":"operated_by"},
@@ -68,14 +72,11 @@
     {"from":"netbox","to":"role-sote-operations","type":"planned_operator"},
     {"from":"secret-storage","to":"role-sote-operations","type":"planned_operator"},
     {"from":"secret-storage","to":"role-mission-command","type":"governed_by"},
-
     {"from":"rack-3","to":"role-mission-command","type":"governed_by"},
     {"from":"rack3-control-plane","to":"role-mission-command","type":"governed_by"},
     {"from":"rack3-control-plane","to":"role-cybersecurity-operations","type":"operated_by_when_authorized"},
-
     {"from":"ace-help-desk","to":"role-sote-operations","type":"operated_by"},
     {"from":"knowledge-base","to":"role-sote-operations","type":"maintained_by"},
-
     {"from":"mission-53","to":"role-mission-command","type":"governed_by"},
     {"from":"mission-54","to":"role-mission-command","type":"governed_by"},
     {"from":"mission-55","to":"role-mission-command","type":"governed_by"},
@@ -83,6 +84,13 @@
     {"from":"role-mission-director","to":"role-mission-command","type":"leads"},
     {"from":"role-networking-operations","to":"role-sote-operations","type":"part_of"},
     {"from":"role-cybersecurity-operations","to":"role-sote-operations","type":"part_of"},
-    {"from":"role-mission-technician","to":"role-mission-command","type":"mission_authority_from"}
+    {"from":"role-mission-technician","to":"role-mission-command","type":"mission_authority_from"},
+    {"from":"glpi","to":"doc-glpi-deployment","type":"documented_by"},
+    {"from":"glpi-server","to":"doc-glpi-deployment","type":"documented_by"},
+    {"from":"glpi-server","to":"doc-glpi-hardware-validation","type":"validated_by"},
+    {"from":"glpi","to":"doc-glpi-mission-record","type":"documented_by"},
+    {"from":"glpi-server","to":"doc-glpi-pcie-exception","type":"documented_by"},
+    {"from":"glpi","to":"control-glpi-recovery","type":"recovery_documented_by"},
+    {"from":"glpi","to":"control-glpi-independent-validation","type":"validated_by"}
   ]
 }
