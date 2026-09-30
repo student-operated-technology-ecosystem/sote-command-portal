@@ -12,7 +12,7 @@
     infrastructure: ['infrastructure.html','continuity.html','relationships.html','rack-1.html','rack-2.html','rack-3.html','zones.html'],
     services: ['services.html'],
     knowledge: ['knowledge-base.html','knowledge-article.html','knowledge-contribute.html'],
-    organization: ['organization.html','student-technology-corps.html','get-involved.html'],
+    organization: ['organization.html','responsibility.html','student-technology-corps.html','get-involved.html'],
     explore: ['ecosystem.html','explore-zones.html','explore-guides.html','tour.html','start-here.html','environment-map.html','tour-mode.html','tour-guide-kit.html'],
     helpdesk: ['ace-help-desk.html','tickets.html']
   };
