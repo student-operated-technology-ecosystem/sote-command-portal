@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0",
+  "generated_for": "visibility-layer-phase2",
+  "source_model": "Public-safe continuity work projection backed by canonical GitHub issues",
+  "actions": [
+    {
+      "id": "continuity-57",
+      "title": "GLPI backup, recovery, and independent validation",
+      "status": "ready",
+      "issue": 57,
+      "url": "https://github.com/student-operated-technology-ecosystem/SOTE-framework/issues/57",
+      "parent_issue": 40,
+      "service": "glpi",
+      "controls": ["recoverable", "documented", "independently_validated"],
+      "assigned_role": "SOTE Operations",
+      "summary": "Complete the actual GLPI backup and recovery procedure, perform a controlled restore test, and have a non-builder Operator validate the documentation without oral coaching.",
+      "completion_rule": "Close only after an authorized non-builder Operator can locate the documentation and backup, execute the recovery process, and demonstrate a functioning recovered GLPI service."
+    }
+  ]
+}
