@@ -9,6 +9,7 @@ on:
       - ".github/workflows/refresh-project-dashboard.yml"
       - "scripts/public-snapshot.jq"
       - "scripts/check-public-snapshot.py"
+      - "scripts/generate-continuity-actions.py"
 permissions:
   contents: write
 jobs:
@@ -18,27 +19,32 @@ jobs:
       - uses: actions/checkout@v4
       - name: Test synthetic public-data contract
         run: python3 scripts/check-public-snapshot.py --self-test
-      - name: Generate reviewed projection
+      - name: Generate reviewed projections
         shell: bash
         env:
           GH_TOKEN: ${{ secrets.SOTE_FRAMEWORK_READ_TOKEN }}
         run: |
           set -euo pipefail
           test -n "${GH_TOKEN:-}" || { echo "::error::Read token missing"; exit 1; }
+          GENERATED_AT="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
           curl --fail-with-body -sS -H "Accept: application/vnd.github+json" -H "Authorization: Bearer $GH_TOKEN" "https://api.github.com/repos/student-operated-technology-ecosystem/SOTE-framework/issues?state=open&per_page=100" > /tmp/issues.json
-          jq -n --arg generated_at "$(date -u +%Y-%m-%dT%H:%M:%SZ)" --slurpfile issues /tmp/issues.json -f scripts/public-snapshot.jq > assets/data/projects.json
+
+          jq -n --arg generated_at "$GENERATED_AT" --slurpfile issues /tmp/issues.json -f scripts/public-snapshot.jq > assets/data/projects.json
           python3 scripts/check-public-snapshot.py assets/data/projects.json
           printf 'window.SOTE_PROJECT_DATA = ' > assets/data/projects.js
           cat assets/data/projects.json >> assets/data/projects.js
           printf ';\n' >> assets/data/projects.js
           python3 scripts/check-public-snapshot.py assets/data/projects.js
+
+          python3 scripts/generate-continuity-actions.py /tmp/issues.json data/continuity-actions.json --generated-at "$GENERATED_AT"
+          python3 -m json.tool data/continuity-actions.json >/dev/null
           rm -f /tmp/issues.json
       - name: Publish when changed
         run: |
           set -euo pipefail
-          if git diff --quiet -- assets/data/projects.json assets/data/projects.js; then exit 0; fi
+          if git diff --quiet -- assets/data/projects.json assets/data/projects.js data/continuity-actions.json; then exit 0; fi
           git config user.name "sote-dashboard-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add assets/data/projects.json assets/data/projects.js
-          git commit -m "Refresh reviewed public snapshot"
+          git add assets/data/projects.json assets/data/projects.js data/continuity-actions.json
+          git commit -m "Refresh reviewed public snapshots"
           git push
