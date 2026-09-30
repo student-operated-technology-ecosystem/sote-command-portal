@@ -18,7 +18,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Test synthetic public-data contract
-        run: python3 scripts/check-public-snapshot.py --self-test
+        run: |
+          python3 scripts/check-public-snapshot.py --self-test
+          python3 scripts/generate-continuity-actions.py --self-test
+          node scripts/check-rendering-safety.js
       - name: Generate reviewed projections
         shell: bash
         env:
@@ -37,7 +40,7 @@ jobs:
           python3 scripts/check-public-snapshot.py assets/data/projects.js
 
           python3 scripts/generate-continuity-actions.py /tmp/issues.json data/continuity-actions.json --generated-at "$GENERATED_AT"
-          python3 -m json.tool data/continuity-actions.json >/dev/null
+          python3 scripts/check-continuity-actions.py data/continuity-actions.json
           rm -f /tmp/issues.json
       - name: Publish when changed
         run: |
