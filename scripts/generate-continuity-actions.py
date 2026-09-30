@@ -1,100 +1,65 @@
 #!/usr/bin/env python3
-"""Generate a public-safe continuity work projection from SOTE-framework issues."""
-
-from __future__ import annotations
+"""Publish only explicitly approved, minimal continuity metadata."""
 
 import argparse
 import json
-import re
 from pathlib import Path
 
-PREFIX = "CONTINUITY |"
-STATUS_PREFIX = "status:"
+APPROVED = "portal-public-approved"
+CONTINUITY = "portal-public-continuity"
+STATES = ("active", "blocked", "completed", "queued", "open")
 
 
-def extract_parent(body: str):
-    match = re.search(r"\*\*Parent[^\n]*:\*\*\s*#(\d+)", body or "", re.I)
-    return int(match.group(1)) if match else None
+def labels(issue):
+    return {x.get("name", "") for x in issue.get("labels", []) if isinstance(x, dict)}
 
 
-def extract_csv_metadata(body: str, label: str):
-    match = re.search(rf"\*\*{re.escape(label)}:\*\*\s*([^\n]+)", body or "", re.I)
-    if not match:
-        return []
-    return [value.strip() for value in match.group(1).split(",") if value.strip()]
-
-
-def extract_metadata(body: str, label: str):
-    match = re.search(rf"\*\*{re.escape(label)}:\*\*\s*([^\n]+)", body or "", re.I)
-    return match.group(1).strip() if match else None
-
-
-def normalize_control(value: str):
-    return re.sub(r"[^a-z0-9]+", "_", value.strip().lower()).strip("_")
-
-
-def extract_controls(body: str):
-    return [normalize_control(v) for v in extract_csv_metadata(body, "Continuity controls") if normalize_control(v)]
-
-
-def extract_section(body: str, heading: str):
-    pattern = rf"(?ims)^##\s+{re.escape(heading)}\s*$\s*(.*?)(?=^##\s+|\Z)"
-    match = re.search(pattern, body or "")
-    if not match:
+def project(issue):
+    names = labels(issue)
+    if not {APPROVED, CONTINUITY} <= names or issue.get("pull_request"):
         return None
-    text = re.sub(r"\s+", " ", match.group(1)).strip()
-    text = re.sub(r"^[-*]\s+", "", text)
-    return text[:500] if text else None
+    number = issue.get("number")
+    if not isinstance(number, int) or number < 1:
+        return None
+    state = next((s for s in STATES if "portal-state:" + s in names), "open")
+    return {"id": f"continuity-{number}", "issue": number,
+            "title": f"Continuity work #{number}", "status": state}
 
 
-def issue_status(issue: dict):
-    for label in issue.get("labels") or []:
-        name = label.get("name") if isinstance(label, dict) else str(label)
-        if name and name.startswith(STATUS_PREFIX):
-            return name[len(STATUS_PREFIX) :]
-    return issue.get("state") or "open"
+def build(issues, generated_at):
+    actions = [item for issue in issues if (item := project(issue)) is not None]
+    actions.sort(key=lambda a: a["issue"], reverse=True)
+    return {"schema_version": 2, "generated_at": generated_at, "actions": actions}
 
 
-def project(issue: dict):
-    title = issue.get("title") or ""
-    body = issue.get("body") or ""
-    short_title = title[len(PREFIX) :].strip() if title.startswith(PREFIX) else title
-    return {
-        "id": f"continuity-{issue['number']}",
-        "title": short_title,
-        "status": issue_status(issue),
-        "issue": issue["number"],
-        "url": issue.get("html_url"),
-        "parent_issue": extract_parent(body),
-        "affected_objects": extract_csv_metadata(body, "Affected objects"),
-        "controls": extract_controls(body),
-        "responsible_role": extract_metadata(body, "Responsible role"),
-        "assignees": [a.get("login") for a in (issue.get("assignees") or []) if a.get("login")],
-        "summary": extract_section(body, "Objective"),
-        "completion_rule": extract_section(body, "Completion Rule"),
-        "updated_at": issue.get("updated_at"),
-    }
+def self_test():
+    private = {"number": 7, "title": "PRIVATE TITLE", "body": "PRIVATE BODY",
+               "assignees": [{"login": "PRIVATE USER"}], "html_url": "PRIVATE URL",
+               "labels": [{"name": CONTINUITY}]}
+    assert build([private], "test")["actions"] == []
+    private["labels"].append({"name": APPROVED})
+    result = build([private], "test")
+    assert result["actions"] == [{"id": "continuity-7", "issue": 7,
+                                  "title": "Continuity work #7", "status": "open"}]
+    encoded = json.dumps(result)
+    for secret in ("PRIVATE TITLE", "PRIVATE BODY", "PRIVATE USER", "PRIVATE URL"):
+        assert secret not in encoded
 
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("issues_json")
-    parser.add_argument("output_json")
-    parser.add_argument("--generated-at", required=True)
+    parser.add_argument("issues_json", nargs="?")
+    parser.add_argument("output_json", nargs="?")
+    parser.add_argument("--generated-at")
+    parser.add_argument("--self-test", action="store_true")
     args = parser.parse_args()
-
-    issues = json.loads(Path(args.issues_json).read_text())
-    actions = [project(i) for i in issues if (i.get("title") or "").startswith(PREFIX)]
-    actions.sort(key=lambda a: a["issue"], reverse=True)
-
-    payload = {
-        "schema_version": "1.2",
-        "generated_at": args.generated_at,
-        "generated_for": "visibility-layer-phase2",
-        "source_model": "Automatically generated public-safe continuity work projection backed by canonical SOTE-framework GitHub issues",
-        "source_rule": "Open GitHub issues whose titles begin with CONTINUITY |",
-        "actions": actions,
-    }
+    if args.self_test:
+        self_test()
+        print("continuity synthetic projection passed")
+        return
+    if not all((args.issues_json, args.output_json, args.generated_at)):
+        parser.error("issues_json, output_json and --generated-at required")
+    payload = build(json.loads(Path(args.issues_json).read_text()), args.generated_at)
     Path(args.output_json).write_text(json.dumps(payload, indent=2) + "\n")
 
 

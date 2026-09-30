@@ -3,6 +3,7 @@
   if (!host) return;
 
   const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const portalPath = value => typeof value === 'string' && /^(?:[a-z0-9-]+\/)*[a-z0-9-]+\.html(?:#[a-z0-9-]+)?$/i.test(value) ? value : '';
   const humanize = value => String(value || '').replace(/_/g,' ').replace(/-/g,' ').replace(/\b\w/g,c=>c.toUpperCase());
   const responsibilityTypes = new Set(['governed_by','operated_by','maintained_by','planned_operator','operated_by_when_authorized']);
   const labels = {
@@ -44,7 +45,7 @@
         '<div class="section-heading" style="margin-top:2rem"><h2>Published responsibility</h2><p>Responsibility belongs to the role, not to whichever person currently occupies it.</p></div>' +
         '<div class="card-grid">' + (responsibilities.length ? responsibilities.map(item => {
           const obj = item.object;
-          const open = obj.path ? '<a class="card-link" href="'+esc(obj.path)+'">Open related view →</a>' : '<a class="card-link" href="relationships.html?node='+encodeURIComponent(obj.id)+'">Explore object →</a>';
+          const open = portalPath(obj.path) ? '<a class="card-link" href="'+esc(portalPath(obj.path))+'">Open related view →</a>' : '<a class="card-link" href="relationships.html?node='+encodeURIComponent(obj.id)+'">Explore object →</a>';
           return '<article class="card"><span class="tag">'+esc(labels[item.edge.type]||humanize(item.edge.type))+'</span><h3>'+esc(obj.name)+'</h3><p>'+esc(humanize(obj.type))+' · '+esc(obj.status||'recorded')+'</p>'+open+'</article>';
         }).join('') : '<article class="card"><h3>No published responsibility records</h3><p>No public-safe operational ownership has been recorded for this role yet.</p></article>') + '</div>' +
         (orgLinks.length ? '<div class="section-heading" style="margin-top:2rem"><h2>Organizational relationships</h2></div><div class="pill-row">'+orgLinks.map(item=>'<span class="pill"><strong>'+esc(item.outgoing?humanize(item.edge.type):'Related role')+':</strong> '+esc(item.other.name)+'</span>').join('')+'</div>' : '');
