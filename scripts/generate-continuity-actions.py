@@ -17,16 +17,24 @@ def extract_parent(body: str):
     return int(match.group(1)) if match else None
 
 
-def extract_controls(body: str):
-    match = re.search(r"\*\*Continuity controls:\*\*\s*([^\n]+)", body or "", re.I)
+def extract_csv_metadata(body: str, label: str):
+    match = re.search(rf"\*\*{re.escape(label)}:\*\*\s*([^\n]+)", body or "", re.I)
     if not match:
         return []
-    controls = []
-    for value in match.group(1).split(","):
-        normalized = re.sub(r"[^a-z0-9]+", "_", value.strip().lower()).strip("_")
-        if normalized:
-            controls.append(normalized)
-    return controls
+    return [value.strip() for value in match.group(1).split(",") if value.strip()]
+
+
+def extract_metadata(body: str, label: str):
+    match = re.search(rf"\*\*{re.escape(label)}:\*\*\s*([^\n]+)", body or "", re.I)
+    return match.group(1).strip() if match else None
+
+
+def normalize_control(value: str):
+    return re.sub(r"[^a-z0-9]+", "_", value.strip().lower()).strip("_")
+
+
+def extract_controls(body: str):
+    return [normalize_control(v) for v in extract_csv_metadata(body, "Continuity controls") if normalize_control(v)]
 
 
 def extract_section(body: str, heading: str):
@@ -58,7 +66,9 @@ def project(issue: dict):
         "issue": issue["number"],
         "url": issue.get("html_url"),
         "parent_issue": extract_parent(body),
+        "affected_objects": extract_csv_metadata(body, "Affected objects"),
         "controls": extract_controls(body),
+        "responsible_role": extract_metadata(body, "Responsible role"),
         "assignees": [a.get("login") for a in (issue.get("assignees") or []) if a.get("login")],
         "summary": extract_section(body, "Objective"),
         "completion_rule": extract_section(body, "Completion Rule"),
@@ -78,7 +88,7 @@ def main():
     actions.sort(key=lambda a: a["issue"], reverse=True)
 
     payload = {
-        "schema_version": "1.1",
+        "schema_version": "1.2",
         "generated_at": args.generated_at,
         "generated_for": "visibility-layer-phase2",
         "source_model": "Automatically generated public-safe continuity work projection backed by canonical SOTE-framework GitHub issues",
