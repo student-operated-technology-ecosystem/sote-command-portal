@@ -5,6 +5,10 @@
   const componentHost = document.querySelector('[data-component-dashboard]');
   if (!rackId && !dashboardHost && !componentHost) return;
 
+  const esc = value => String(value ?? '').replace(/[&<>"']/g, c =>
+    ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const rackPath = id => /^rack-[123]$/.test(String(id)) ? id + '.html' : 'infrastructure.html';
+
   const labels = {
     inventoried: 'Inventoried',
     located: 'Located',
@@ -52,9 +56,9 @@
     if (!host || !rack?.continuity) return;
     host.innerHTML = Object.entries(rack.continuity).map(([key, value]) => `
       <article class="card">
-        <span class="tag ${statusClass(value)}">${humanize(value)}</span>
-        <h3>${labels[key] || humanize(key)}</h3>
-        <p>${continuityNote(key, value)}</p>
+        <span class="tag ${statusClass(value)}">${esc(humanize(value))}</span>
+        <h3>${esc(labels[key] || humanize(key))}</h3>
+        <p>${esc(continuityNote(key, value))}</p>
       </article>`).join('');
   };
 
@@ -66,7 +70,7 @@
     document.querySelectorAll('[data-rack-authority]').forEach(el => el.textContent = rack.authority);
     document.querySelectorAll('[data-rack-priority]').forEach(el => el.textContent = rack.current_priority);
     const services = document.querySelector('[data-rack-services]');
-    if (services) services.innerHTML = rack.services.map(service => `<span class="pill">${service}</span>`).join('');
+    if (services) services.innerHTML = (rack.services || []).map(service => `<span class="pill">${esc(service)}</span>`).join('');
     renderContinuity(rack);
   };
 
@@ -82,11 +86,11 @@
     dashboardHost.innerHTML = data.racks.map(rack => {
       const counts = tally(rack.continuity);
       return `<article class="card">
-        <span class="tag ${rack.id === 'rack-3' ? 'red' : rack.id === 'rack-2' ? 'green' : 'blue'}">${humanize(rack.status)}</span>
-        <h3>${rack.name}</h3>
-        <p>${rack.purpose}</p>
+        <span class="tag ${rack.id === 'rack-3' ? 'red' : rack.id === 'rack-2' ? 'green' : 'blue'}">${esc(humanize(rack.status))}</span>
+        <h3>${esc(rack.name)}</h3>
+        <p>${esc(rack.purpose)}</p>
         <div class="pill-row"><span class="pill">${counts.established} established</span><span class="pill">${counts.developing} developing</span><span class="pill">${counts.pending} pending</span></div>
-        <a class="card-link" href="${rack.id}.html">Open rack view →</a>
+        <a class="card-link" href="${rackPath(rack.id)}">Open rack view →</a>
       </article>`;
     }).join('');
   };
@@ -98,13 +102,13 @@
       const provides = component.relationships?.provides || [];
       const depends = component.relationships?.depends_on || [];
       return `<article class="card">
-        <span class="tag ${statusClass(component.status)}">${humanize(component.status)}</span>
-        <h3>${component.name}</h3>
-        <p>${component.purpose}</p>
-        <div class="project-meta"><span><strong>Location</strong>${rack?.name || humanize(component.located_in)}</span><span><strong>Owner</strong>${(component.owned_by_role || []).join(', ')}</span></div>
-        ${provides.length ? `<p><strong>Provides:</strong> ${provides.map(humanize).join(', ')}</p>` : ''}
-        ${depends.length ? `<p><strong>Depends on:</strong> ${depends.map(humanize).join(', ')}</p>` : ''}
-        <p class="page-note">${component.public_detail || 'Public-safe projection only.'}</p>
+        <span class="tag ${statusClass(component.status)}">${esc(humanize(component.status))}</span>
+        <h3>${esc(component.name)}</h3>
+        <p>${esc(component.purpose)}</p>
+        <div class="project-meta"><span><strong>Location</strong>${esc(rack?.name || humanize(component.located_in))}</span><span><strong>Owner</strong>${esc((component.owned_by_role || []).join(', '))}</span></div>
+        ${provides.length ? `<p><strong>Provides:</strong> ${provides.map(humanize).map(esc).join(', ')}</p>` : ''}
+        ${depends.length ? `<p><strong>Depends on:</strong> ${depends.map(humanize).map(esc).join(', ')}</p>` : ''}
+        <p class="page-note">${esc(component.public_detail || 'Public-safe projection only.')}</p>
       </article>`;
     }).join('');
   };
