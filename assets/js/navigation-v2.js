@@ -9,7 +9,7 @@
 
   const groups = {
     operations: ['operations.html','mission-command.html','missions.html','mission.html','mission-proposal.html','mission-lifecycle.html','operator.html','ticket-queue.html','ticket.html','project-status.html'],
-    infrastructure: ['infrastructure.html','continuity.html','relationships.html','rack-1.html','rack-2.html','rack-3.html','zones.html'],
+    infrastructure: ['infrastructure.html','continuity.html','continuity-work.html','relationships.html','rack-1.html','rack-2.html','rack-3.html','zones.html'],
     services: ['services.html'],
     knowledge: ['knowledge-base.html','knowledge-article.html','knowledge-contribute.html','documentation.html'],
     organization: ['organization.html','responsibility.html','student-technology-corps.html','get-involved.html'],
