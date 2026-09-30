@@ -1,6 +1,6 @@
 {
-  "schema_version": "1.1",
-  "generated_at": "2026-09-30T00:14:11Z",
+  "schema_version": "1.2",
+  "generated_at": "2026-09-30T00:20:35Z",
   "generated_for": "visibility-layer-phase2",
   "source_model": "Automatically generated public-safe continuity work projection backed by canonical SOTE-framework GitHub issues",
   "source_rule": "Open GitHub issues whose titles begin with CONTINUITY |",
@@ -12,18 +12,23 @@
       "issue": 57,
       "url": "https://github.com/student-operated-technology-ecosystem/SOTE-framework/issues/57",
       "parent_issue": 40,
+      "affected_objects": [
+        "glpi",
+        "rack-2"
+      ],
       "controls": [
         "recoverable",
         "documented",
         "independently_validated"
       ],
+      "responsible_role": "SOTE Operations",
       "assignees": [
         "bmobinacs",
         "zacharymeyer-IT"
       ],
       "summary": "Close the remaining continuity gap for the interim bare-metal GLPI service by proving that another SOTE Operator can recover the service from documented procedures without relying on the original builder's memory. This is not a new GLPI deployment mission. It is bounded closeout work required by the SOTE Definition of Operational and by the completion criteria already established in #40.",
       "completion_rule": "This work item may close when another authorized Operator can locate the documentation, locate the approved backup, execute the documented recovery process, and demonstrate a functioning recovered service without depending on the original builder standing beside them. > A backup that has never been restored is a hope, not a recovery plan.",
-      "updated_at": "2026-09-30T00:08:14Z"
+      "updated_at": "2026-09-30T00:20:00Z"
     }
   ]
 }
