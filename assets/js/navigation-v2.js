@@ -11,7 +11,7 @@
     operations: ['operations.html','mission-command.html','missions.html','mission.html','mission-proposal.html','mission-lifecycle.html','operator.html','ticket-queue.html','ticket.html','project-status.html'],
     infrastructure: ['infrastructure.html','continuity.html','relationships.html','rack-1.html','rack-2.html','rack-3.html','zones.html'],
     services: ['services.html'],
-    knowledge: ['knowledge-base.html','knowledge-article.html','knowledge-contribute.html'],
+    knowledge: ['knowledge-base.html','knowledge-article.html','knowledge-contribute.html','documentation.html'],
     organization: ['organization.html','responsibility.html','student-technology-corps.html','get-involved.html'],
     explore: ['ecosystem.html','explore-zones.html','explore-guides.html','tour.html','start-here.html','environment-map.html','tour-mode.html','tour-guide-kit.html'],
     helpdesk: ['ace-help-desk.html','tickets.html']
