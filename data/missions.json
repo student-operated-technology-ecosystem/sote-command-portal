@@ -40,5 +40,11 @@
     "type": "Operations",
     "location": "Mission Control",
     "outcome": "Update a project card with status, blocker, waiting-on field, and next action."
+  },
+  {
+    "title": "SOTE Communications Fabric",
+    "type": "Organizational Infrastructure",
+    "location": "Mission Control",
+    "outcome": "Investigate, pilot, and propose a persistent professional communications layer connecting current students, SOTE Operators, faculty, and alumni while preserving authoritative knowledge in SOTE systems."
   }
 ]
