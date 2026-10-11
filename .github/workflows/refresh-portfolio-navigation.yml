@@ -1,0 +1,28 @@
+name: Refresh site-wide portfolio navigation
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/refresh_portfolio_navigation.py'
+      - '.github/workflows/refresh-portfolio-navigation.yml'
+      - 'assets/js/main.js'
+      - 'assets/js/navigation-v2.js'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  refresh-navigation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Update shared-navigation script references
+        run: python3 scripts/refresh_portfolio_navigation.py
+      - name: Commit refreshed page references
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -u
+          if ! git diff --cached --quiet; then
+            git commit -m "Apply Student Portfolios menu across portal pages"
+            git push
+          fi
