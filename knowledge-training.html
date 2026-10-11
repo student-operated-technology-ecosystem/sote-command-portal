@@ -232,7 +232,7 @@ Stop if equipment appears damaged, a step requires elevated permission, network 
 <div class="mission-nav"><button class="button secondary" id="prevStep" type="button" disabled>← Previous</button><button class="button" id="nextStep" type="button">Next →</button></div>
 </div></main>
 
-<script src="assets/js/main.js?v=20260925-service"></script>
+<script src="assets/js/main.js?v=20261011-portfolio-navigation"></script>
 <script>
 (()=>{const stages=[...document.querySelectorAll('.mission-stage')],prev=document.getElementById('prevStep'),next=document.getElementById('nextStep'),current=document.getElementById('stepCurrent'),bar=document.getElementById('progressBar'),storageKey='sote-kb-guided-mission-step';let i=0;
 function stepFromLocation(){const match=window.location.hash.match(/^#step-(\d+)$/);if(match){const n=parseInt(match[1],10);if(n>=1&&n<=stages.length)return n-1;}const saved=parseInt(localStorage.getItem(storageKey)||'',10);if(saved>=1&&saved<=stages.length)return saved-1;return 0;}
