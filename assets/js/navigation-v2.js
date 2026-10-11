@@ -14,7 +14,8 @@
     knowledge: ['knowledge-base.html','knowledge-article.html','knowledge-contribute.html','documentation.html'],
     organization: ['organization.html','responsibility.html','student-technology-corps.html','get-involved.html'],
     explore: ['ecosystem.html','explore-zones.html','explore-guides.html','tour.html','start-here.html','environment-map.html','tour-mode.html','tour-guide-kit.html'],
-    helpdesk: ['ace-help-desk.html','tickets.html']
+    helpdesk: ['ace-help-desk.html','tickets.html'],
+    portfolios: ['portfolios.html']
   };
 
   const active = (key, file) => {
@@ -36,6 +37,7 @@
     '<a'+(active('organization','organization.html')?' class="active"':'')+' href="'+href('organization.html')+'">Organization</a>' +
     '<a'+(active('explore','ecosystem.html')?' class="active"':'')+' href="'+href('ecosystem.html')+'">Explore</a>' +
     '<a'+(active('helpdesk','ace-help-desk.html')?' class="active"':'')+' href="'+href('ace-help-desk.html')+'">Help Desk</a>' +
+    '<a'+(active('portfolios','portfolios.html')?' class="active"':'')+' href="'+href('portfolios.html')+'">Student Portfolios</a>' +
     '</nav></div>';
 
   const button = header.querySelector('.nav-toggle');
