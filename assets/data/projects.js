@@ -1,6 +1,6 @@
 window.SOTE_PROJECT_DATA = {
   "schema_version": 2,
-  "generated_at": "2026-10-11T08:47:08Z",
+  "generated_at": "2026-10-11T15:38:14Z",
   "source": "student-operated-technology-ecosystem/SOTE-framework",
   "issues": [],
   "commits": []
