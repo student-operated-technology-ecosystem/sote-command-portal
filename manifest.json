@@ -2,7 +2,7 @@
   "name": "CCAC SOTE Command Portal",
   "short_name": "SOTE Portal",
   "description": "CCAC Student-Operated Technology Ecosystem Command Portal v0.9 true baseline build.",
-  "start_url": "index.html",
+  "start_url": "index.html?v=20261011-pwa-refresh",
   "display": "standalone",
   "background_color": "#020617",
   "theme_color": "#081f3a",
