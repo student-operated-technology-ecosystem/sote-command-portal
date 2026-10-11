@@ -37,7 +37,7 @@
     '<a'+(active('organization','organization.html')?' class="active"':'')+' href="'+href('organization.html')+'">Organization</a>' +
     '<a'+(active('explore','ecosystem.html')?' class="active"':'')+' href="'+href('ecosystem.html')+'">Explore</a>' +
     '<a'+(active('helpdesk','ace-help-desk.html')?' class="active"':'')+' href="'+href('ace-help-desk.html')+'">Help Desk</a>' +
-    '<a'+(active('portfolios','portfolios.html')?' class="active"':'')+' href="'+href('portfolios.html')+'">Student Portfolios</a>' +
+    '<a'+(active('portfolios','portfolios.html')?' class="active"':'')+' href="'+href('portfolios.html?v=20261011-student-guide')+'">Student Portfolios</a>' +
     '</nav></div>';
 
   const button = header.querySelector('.nav-toggle');
