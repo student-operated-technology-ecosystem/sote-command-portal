@@ -3,7 +3,7 @@
 (() => {
   const script = document.currentScript;
   const siteRoot = script ? new URL('../../', script.src).pathname : '/';
-  const href = file => siteRoot + file;
+  const href = file => siteRoot + file + (file.endsWith('.html') ? '?v=20261011-pwa-refresh' : '');
   const bannerText = 'External Testing Preview — Not an official public CCAC website.';
 
   let banner = document.querySelector('.prototype-banner');
