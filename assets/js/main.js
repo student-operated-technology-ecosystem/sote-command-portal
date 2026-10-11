@@ -37,6 +37,7 @@
       '<a'+activeFor('mission-command.html')+' href="'+href('mission-command.html')+'">Missions</a>' +
       '<a'+activeFor('ecosystem.html')+' href="'+href('ecosystem.html')+'">Explore SOTE</a>' +
       '<a'+activeFor('operator.html')+' href="'+href('operator.html')+'">Operator workspace</a>' +
+      '<a'+activeFor('portfolios.html')+' href="'+href('portfolios.html')+'">Student Portfolios</a>' +
       '</nav></div>';
     const button = header.querySelector('.nav-toggle');
     const nav = header.querySelector('#primary-nav');
