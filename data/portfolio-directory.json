@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "portfolios": [
+    {
+      "id": "alex-morgan-example",
+      "name": "Alex Morgan",
+      "kind": "example",
+      "program": "CIT-205 · Fictional instructional model",
+      "summary": "Instructor-created example demonstrating portfolio structure and technical support evidence. This is not a real student.",
+      "skills": [
+        "Support tickets",
+        "Knowledge base",
+        "Validation",
+        "Troubleshooting"
+      ],
+      "site": "https://student-operated-technology-ecosystem.github.io/CIT-205-classroom/examples/exemplary-portfolio/",
+      "github": "https://github.com/student-operated-technology-ecosystem/CIT-205-classroom/tree/main/examples/exemplary-portfolio"
+    }
+  ]
+}
