@@ -1,0 +1,31 @@
+name: Refresh approved student portfolios
+on:
+  issues:
+    types: [opened, edited, labeled, unlabeled, closed, reopened]
+  workflow_dispatch:
+  schedule:
+    - cron: '17 7 * * *'
+permissions:
+  contents: write
+  issues: read
+concurrency:
+  group: portfolio-directory
+  cancel-in-progress: false
+jobs:
+  build-directory:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build public portfolio directory
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python3 scripts/build_portfolio_directory.py
+      - name: Commit directory changes
+        run: |
+          if ! git diff --quiet -- data/portfolio-directory.json; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add data/portfolio-directory.json
+            git commit -m "Refresh approved student portfolio directory"
+            git push
+          fi
