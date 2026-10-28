@@ -10,9 +10,36 @@
 <h2>Join the SOTE interest list</h2>
 <p>SOTE welcomes students interested in help desk operations, networking, cybersecurity, Linux, documentation, validation, and technology projects. You do not need prior professional IT experience.</p>
 <p>Submitting an interest form is <strong>not an application for employment</strong>, a promise of a paid position, or a guarantee of participation. We will review each student's interests and explore appropriate learning, project, and, where authorized, student employment pathways. Federal work-study eligibility and other employment arrangements are determined through applicable college processes.</p>
-<div id="form-container" aria-live="polite" style="padding:22px;border:1px dashed var(--gold);border-radius:12px;background:var(--bg-2)">
-<strong>Interest form is being connected.</strong><p style="margin-bottom:0">The application questions and page are prepared. Submissions are not yet enabled. Please check back soon.</p>
-</div></section>
+<div id="form-container"><form id="interest-form" style="display:grid;gap:18px" novalidate>
+<label>Full name *<input name="name" required maxlength="120" autocomplete="name" style="display:block;width:100%;padding:12px;margin-top:5px"></label>
+<label>CCAC email *<input name="email" type="email" required maxlength="160" autocomplete="email" placeholder="name@ccac.edu" style="display:block;width:100%;padding:12px;margin-top:5px"></label>
+<label>Program or area of study (optional)<input name="program" maxlength="150" style="display:block;width:100%;padding:12px;margin-top:5px"></label>
+<fieldset><legend>Mission interests (choose any)</legend><label><input type="checkbox" name="mission" value="Help Desk & User Support"> Help Desk & User Support</label><br><label><input type="checkbox" name="mission" value="Networking & Infrastructure"> Networking & Infrastructure</label><br><label><input type="checkbox" name="mission" value="Cybersecurity & Linux"> Cybersecurity & Linux</label><br><label><input type="checkbox" name="mission" value="Documentation & Knowledge Base"> Documentation & Knowledge Base</label><br><label><input type="checkbox" name="mission" value="Testing & Validation"> Testing & Validation</label><br><label><input type="checkbox" name="mission" value="Open to anything"> Open to anything</label></fieldset>
+<label>Why would you like to participate in SOTE? *<textarea name="motivation" required maxlength="2000" rows="4" style="display:block;width:100%;padding:12px"></textarea></label>
+<label>What courses, projects, experiences, or interests would you bring?<textarea name="experience" maxlength="2000" rows="3" style="display:block;width:100%;padding:12px"></textarea></label>
+<label>What would you most like to learn?<textarea name="learning" maxlength="2000" rows="3" style="display:block;width:100%;padding:12px"></textarea></label>
+<label>General availability<textarea name="availability" maxlength="1000" rows="2" style="display:block;width:100%;padding:12px"></textarea></label>
+<fieldset><legend>When are you interested in participating?</legend><label><input type="checkbox" name="term" value="Spring 2027"> Spring 2027</label><br><label><input type="checkbox" name="term" value="Summer 2027"> Summer 2027</label><br><label><input type="checkbox" name="term" value="Future opportunities"> Future opportunities</label></fieldset>
+<fieldset><legend>Which opportunities interest you?</legend><label><input type="radio" name="opportunity" value="Paid student employment" required> Paid student employment</label><br><label><input type="radio" name="opportunity" value="Project and learning participation"> Project and learning participation</label><br><label><input type="radio" name="opportunity" value="Both" checked> Both</label></fieldset>
+<label><input type="checkbox" name="acknowledge" required> I understand this is an expression of interest, not a job application or employment offer. *</label>
+<p id="form-status" role="status" style="color:var(--gold)"></p>
+<button type="submit" style="padding:15px;border:0;border-radius:10px;background:var(--gold);font-weight:700;cursor:pointer">Prepare interest submission</button>
+<p style="font-size:.9rem;color:var(--muted)">For now, this opens a prepared email in your email app. Review and send it to complete your expression of interest. No information is stored by this website.</p>
+</form></div></section>
 <section><h2>What we'll ask</h2><ol><li>Full name</li><li>CCAC email address</li><li>Current program or area of study (optional)</li><li>Mission areas of interest (select any)</li><li>Why would you like to participate in SOTE?</li><li>What courses, projects, experiences, or interests would you bring? No prior experience required.</li><li>What would you most like to learn?</li><li>General availability</li><li>Which semester(s) interest you? Spring 2027, Summer 2027, or future opportunities</li><li>Would you like to hear about potential paid student employment pathways, project participation, or both?</li><li>Acknowledgment that this is an interest form, not an employment application</li></ol></section>
 <section style="margin-top:32px"><h2>What happens next?</h2><p>Mission Command reviews interest submissions, considers possible mission assignments, and may contact students for a conversation. Any paid position requires separate college authorization and eligibility review.</p></section>
-</main><script src="assets/js/main.js"></script></body></html>
+</main><script>
+document.getElementById('interest-form').addEventListener('submit',function(event){
+ event.preventDefault();
+ const form=event.currentTarget;
+ if(!form.reportValidity())return;
+ const d=new FormData(form);
+ const email=String(d.get('email')||'').trim();
+ if(!/^[^@\\s]+@ccac\\.edu$/i.test(email)){document.getElementById('form-status').textContent='Please use your CCAC email address.';return;}
+ const lines=['SOTE Mission Crew | Student Interest','',...['name','email','program','motivation','experience','learning','availability','opportunity'].map(k=>k.toUpperCase()+': '+(d.get(k)||'')),'MISSION INTERESTS: '+d.getAll('mission').join(', '),'TERMS: '+d.getAll('term').join(', '),'','This is an expression of interest, not an employment application.'];
+ const subject=encodeURIComponent('SOTE Mission Crew Interest - '+d.get('name'));
+ const body=encodeURIComponent(lines.join('\\n'));
+ document.getElementById('form-status').textContent='Your email application will open. Please press Send in your email app.';
+ window.location.href='mailto:mrinsem@ccac.edu?subject='+subject+'&body='+body;
+});
+</script><script src="assets/js/main.js"></script></body></html>
