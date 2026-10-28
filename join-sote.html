@@ -38,8 +38,8 @@ document.getElementById('interest-form').addEventListener('submit',function(even
  
  const lines=['SOTE Mission Crew | Student Interest','',...['name','email','program','motivation','experience','learning','availability','opportunity'].map(k=>k.toUpperCase()+': '+(d.get(k)||'')),'MISSION INTERESTS: '+d.getAll('mission').join(', '),'TERMS: '+d.getAll('term').join(', '),'','This is an expression of interest, not an employment application.'];
  const subject=encodeURIComponent('SOTE Mission Crew Interest - '+d.get('name'));
- const body=encodeURIComponent(lines.join('\\n'));
+ const body=encodeURIComponent(lines.join('\n'));
  document.getElementById('form-status').textContent='Your email application will open. Please press Send in your email app.';
- window.location.href='mailto:mrinsem@ccac.edu?subject='+subject+'&body='+body;
+ const link=document.createElement('a'); link.href='mailto:mrinsem@ccac.edu?subject='+subject+'&body='+body; document.body.appendChild(link); link.click(); link.remove();
 });
 </script><script src="assets/js/main.js?v=20261028-join-sote"></script></body></html>
