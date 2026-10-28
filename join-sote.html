@@ -40,6 +40,6 @@ document.getElementById('interest-form').addEventListener('submit',function(even
  const subject=encodeURIComponent('SOTE Mission Crew Interest - '+(d.get('name')||'Test submission'));
  const body=encodeURIComponent(lines.join('\n'));
  document.getElementById('form-status').textContent='Your email application will open. Please press Send in your email app.';
- const link=document.createElement('a'); link.href='mailto:mrinsem@ccac.edu?subject='+subject+'&body='+body; document.body.appendChild(link); link.click(); link.remove();
+ const link=document.createElement('a'); link.href='mailto:mrinsem@ccac.edu,rrupe@ccac.edu?subject='+subject+'&body='+body; document.body.appendChild(link); link.click(); link.remove();
 });
 </script><script src="assets/js/main.js?v=20261028-join-sote"></script></body></html>
