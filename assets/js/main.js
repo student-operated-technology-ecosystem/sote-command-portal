@@ -23,7 +23,7 @@
       if (file === 'ace-help-desk.html' && ['ace-help-desk.html','tickets.html','ticket-queue.html','guided-learning.html','knowledge-training.html'].includes(current)) return ' class="active"';
       if (file === 'knowledge-base.html' && ['knowledge-base.html','knowledge-article.html','knowledge-contribute.html'].includes(current)) return ' class="active"';
       if (file === 'ecosystem.html' && (exploreFiles.includes(current) || location.pathname.includes('/characters/') || location.pathname.includes('/missions/') || location.pathname.includes('/zones/') || location.pathname.includes('/spaces/') || location.pathname.includes('/pages/'))) return ' class="active"';
-      return current === file ? ' class="active"' : '';
+      if (file === 'infrastructure.html' && current === 'infrastructure-missions.html') return ' class="active"'; return current === file ? ' class="active"' : '';
     };
     header.innerHTML = '<div class="container header-inner">' +
       '<a class="brand" href="'+href('index.html')+'" aria-label="SOTE Command Portal home">' +
