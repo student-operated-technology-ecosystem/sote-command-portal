@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "resources": [
+    {
+      "id": "jay-two-vulnerabilities",
+      "title": "Two Vulnerabilities",
+      "author": "Jay Powser",
+      "type": "faculty-lesson",
+      "topics": [
+        "security",
+        "vulnerabilities"
+      ],
+      "audience": "Faculty and students",
+      "format": "Blackboard-compatible HTML",
+      "source_url": "https://github.com/student-operated-technology-ecosystem/jay-shared-materials/blob/main/lessons/PHP2Shell_SSHole_LowLevel.html",
+      "preview_url": "https://htmlpreview.github.io/?https://github.com/student-operated-technology-ecosystem/jay-shared-materials/blob/main/lessons/PHP2Shell_SSHole_LowLevel.html",
+      "repository_url": "https://github.com/student-operated-technology-ecosystem/jay-shared-materials",
+      "review_status": "Faculty contributed; Blackboard rendering not independently validated",
+      "license_note": "See source repository for licensing",
+      "added": "2026-11-13"
+    }
+  ]
+}
